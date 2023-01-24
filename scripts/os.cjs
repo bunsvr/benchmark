@@ -21,7 +21,7 @@ const formatOS = str => {
 const { appendFileSync } = require("fs");
 const os = require("os");
 
-const desFile = "./bench/results.md";
+const desFile = `${process.env.ROOT}/results.md`;
 
 // Get OS details
 let str = "";

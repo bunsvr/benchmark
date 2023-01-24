@@ -1,9 +1,10 @@
+import { env } from "bun";
 import { appendFile } from "fs/promises";
 
 const date = new Date();
 
 // Destination file
-const desFile = "./bench/results.md";
+const desFile = `${env.ROOT}/results.md`;
 
 // Format date
 const formatDate = (d: number) => {

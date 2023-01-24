@@ -7,8 +7,10 @@ const rootDir = import.meta.dir;
 
 // Destination file
 const desFile = `${rootDir}/results.md`;
-await appendFile(desFile, "");
-await Bun.write(desFile, `Bun: ${Bun.version}\n`);
+
+// Prepare file
+await Bun.write(desFile, "");
+await appendFile(desFile, `Bun: ${Bun.version}\n`);
 
 // Benchmark results
 const results: number[] = [];
@@ -25,8 +27,17 @@ const urls = data.tests.map(v => {
 
 // Run scripts
 {
-    for (const script of data.scripts)
-        Bun.spawnSync([script.type, `${rootDir}/scripts/${script.file}`]);
+    for (const script of data.scripts) {
+        const args = [
+            script.type, 
+            `${rootDir}/scripts/${script.file}`
+        ] as [string, string];
+
+        console.log(args.join(" "));
+        Bun.spawnSync(args, {
+            env: { ROOT: rootDir }
+        });
+    }
 }
 
 // Run benchmark
