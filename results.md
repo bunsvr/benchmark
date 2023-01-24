@@ -1,6 +1,6 @@
 Bun: 0.5.1
 
-Tested at: 19:43, January 24th, 2023
+Tested at: 20:27, January 24th, 2023
 
 ## OS Details
 - CPU: Intel(R) Core(TM) i3-1005G1 CPU @ 1.20GHz
@@ -10,19 +10,8 @@ Tested at: 19:43, January 24th, 2023
 - Architecture: x64
 
 ## Results
-### GET `/`:
-- Native: 89461.65
-- BunSVR: 84367.51
-- Elysia: 77703.51
-### GET `/id/90`:
-- Native: 83980.86
-- BunSVR: 75345.07
-- Elysia: 70695.76
-### GET `/a/b`:
-- Native: 85579.71
-- BunSVR: 75947.82
-- Elysia: 53314.27
-### POST `/json`:
-- Elysia: 60565.8
-- BunSVR: 53858.2
-- Native: 48707.4
+| Name | Average | GET `/` | GET `/id/90` | GET `/a/b` | POST `/json` |
+| --- | --- | --- | --- | --- | --- | 
+| Native | 78515.92 | 90847.83 | 85422.41 | 85375.47 | 52417.96 |
+| BunSVR | 72996.58 | 83996.18 | 77046.22 | 77656.27 | 53287.65 |
+| Elysia | 67544.55 | 79120.59 | 73633.03 | 55226.99 | 62197.57 |

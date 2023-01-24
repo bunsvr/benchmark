@@ -114,24 +114,34 @@ const urls = data.tests.map(v => {
 
 // Sort results
 {
-    console.log("Sorting results...")
+    console.log("Sorting results...");
 
-    let str = "";
-    const categories = urls.map(v => `### ${v[1]} \`${v[0]}\``);
+    const round = (num: number) => Math.round(num * 100) / 100; 
+    const average = (arr: number[]) => round(arr.reduce((a, b) => a + b) / arr.length); 
+    const sortResults = () => {
+        const arr = [];
 
-    for (let i = 0; i < categories.length; ++i) 
-        str += categories[i] + ":\n" + frameworks
-            // { name, result }
-            .map((v, index) => ({
-                name: v,
-                res: results[i + index * urls.length]
-            }))
-            // Sort by result
-            .sort((a, b) => b.res - a.res)
-            // - name: result
-            .map(v => "- " + v.name + ": " + v.res + "\n")
-            .join("");
-    
+        for (let i = 0; i < frameworks.length; ++i) {
+            const allCategoryRes = results.slice(i * urls.length, (i + 1) * urls.length);
+            arr.push({
+                name: frameworks[i],
+                results: allCategoryRes,
+                average: average(allCategoryRes)
+            });
+        }
+
+        return arr
+            .sort((a, b) => b.average - a.average)
+            .map(val => `| ${val.name} | ${val.average} | ${val.results.join(" | ")} |`)
+            .join("\n");
+    }
+
+    // Prepare table headers
+    let str = 
+        "| Name | Average | " 
+        + urls.map(v => `${v[1]} \`${v[0]}\``).join(" | ") + " |\n| " 
+        + "--- | ".repeat(urls.length + 2) + "\n" 
+        + sortResults();
 
     await appendFile(desFile, str);
 }
