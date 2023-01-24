@@ -44,11 +44,8 @@ const urls = data.tests.map(v => {
 {
     // Format stuff
     const catchNumber = /Reqs\/sec\s+(\d+[.|,]\d+)/m;
-    const getReqSec = (v?: Buffer) => {
-        if (!v)
-            return -1;
-
-        const num = catchNumber.exec(v.toString());
+    const getReqSec = (v: string) => {
+        const num = catchNumber.exec(v);
 
         if (!num?.[1])
             return -1;
@@ -83,10 +80,11 @@ const urls = data.tests.map(v => {
 
     const run = () => {
         for (const command of commands) {
-            const res = getReqSec(Bun.spawnSync(command as [string, ...string[]]).stdout);
+            const out = Bun.spawnSync(command as [string, ...string[]]).stdout?.toString() || "-1";
+            const res = getReqSec(out);
 
             results.push(res);
-            console.log(`\`${command.join(" ")}\`:`, res);
+            console.log(out);
         }
     }
 
