@@ -1,0 +1,16 @@
+{
+  "name": "bench",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "^0.4.0"
+  },
+  "dependencies": {
+    "@bunsvr/core": "^0.0.10",
+    "@bunsvr/router": "^0.0.13",
+    "elysia": "^0.1.2"
+  },
+  "scripts": {
+    "bench": "bun index.ts"
+  }
+}
