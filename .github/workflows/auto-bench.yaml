@@ -15,8 +15,8 @@ jobs:
       - run: go install github.com/codesenberg/bombardier@latest
 
       - run: |
-        pwd
-        echo ${GOPATH}
-        echo ${GOROOT}
+          pwd
+          echo ${GOPATH}
+          echo ${GOROOT}
 
       - run: bun bench
