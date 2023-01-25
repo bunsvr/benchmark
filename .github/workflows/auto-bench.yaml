@@ -4,6 +4,8 @@ jobs:
   bench:
     name: Benchmark
     runs-on: ubuntu-latest
+    env: 
+      GOPATH: /home/runner/work/aquapi/go
     steps:
       - uses: actions/checkout@v3
       - uses: antongolub/action-setup-bun@v1
@@ -11,6 +13,5 @@ jobs:
 
       - uses: actions/setup-go@v3.5.0
       - run: go install github.com/codesenberg/bombardier@latest
-      - run: export GOPATH=$HOME/go && export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
       - run: bun bench
