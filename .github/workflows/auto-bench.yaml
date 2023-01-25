@@ -1,0 +1,9 @@
+name: autobench
+on: [push]
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: antongolub/action-setup-bun@v1
+      - run: bun install
+      - run: bun bench
