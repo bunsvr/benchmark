@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3.5.0
       - uses: antongolub/action-setup-bun@v1
+      - run: go install github.com/codesenberg/bombardier@latest
       - run: bun install
       - run: bun bench
