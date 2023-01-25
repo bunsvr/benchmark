@@ -14,4 +14,9 @@ jobs:
       - uses: actions/setup-go@v3.5.0
       - run: go install github.com/codesenberg/bombardier@latest
 
+      - run: |
+        pwd
+        echo ${GOPATH}
+        echo ${GOROOT}
+
       - run: bun bench
