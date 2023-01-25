@@ -3,6 +3,8 @@ on: push
 jobs:
   bench:
     name: Benchmark
+    env:
+      PATH: /home/runner/.bun/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/snap/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/runner/go/bin
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -10,8 +12,6 @@ jobs:
       - run: bun install
 
       - uses: actions/setup-go@v3.5.0
-      - run: |
-          export PATH=$PATH:$(go env GOPATH)/bin
-          go install github.com/codesenberg/bombardier@latest
+      - run: go install github.com/codesenberg/bombardier@latest
 
       - run: bun bench
