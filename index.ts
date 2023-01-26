@@ -119,8 +119,7 @@ const urls = data.tests.map(v => {
 {
     console.log("Sorting results...");
 
-    const round = (num: number) => Math.round(num * 100) / 100;
-    const average = (arr: number[]) => round(arr.reduce((a, b) => a + b) / arr.length);
+    const average = (arr: number[]) => arr.reduce((a, b) => a + b) / arr.length;
     const sortResults = () => {
         const arr = [];
 
@@ -135,7 +134,7 @@ const urls = data.tests.map(v => {
 
         return arr
             .sort((a, b) => b.average - a.average)
-            .map(val => `| ${val.name} | ${val.average} | ${val.results.join(" | ")} |`)
+            .map(val => `| ${val.name} | ${val.average} | ${val.results.map(v => v.toFixed(2)).join(" | ")} |`)
             .join("\n");
     }
 
