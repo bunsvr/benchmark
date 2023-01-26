@@ -10,7 +10,7 @@
         "baojs": "^0.2.1",
         "@kapsonfire/bun-bakery": "^0.4.4",
         "@bunsvr/core": "^0.0.10",
-        "@bunsvr/router": "^0.0.16",
+        "@bunsvr/router": "^0.0.17",
         "elysia": "^0.1.2",
         "hono": "^2.7.5",
         "hyperbun": "^0.4.6",
