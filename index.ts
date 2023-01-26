@@ -1,7 +1,6 @@
 import { appendFile, readdir } from "fs/promises";
 import Bun from "bun";
 import data from "./config.json";
-import pkg from "./package.json";
 
 // Root directory of the benchmark
 const rootDir = import.meta.dir;
