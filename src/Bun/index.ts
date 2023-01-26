@@ -10,7 +10,8 @@ export default {
 
         // Path '/json'
         if (path === "/json")
-            return Response.json(await req.json());
+            return new Response(
+                JSON.stringify(await req.json()));
         
         // Path '/id/:id'
         if (path.startsWith("/id/")) {

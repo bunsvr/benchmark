@@ -2,23 +2,27 @@
     "tests": [
         {
             "path": "/",
-            "method": "GET"
+            "method": "GET",
+            "description": "Should return 'Hi'"
         },
         {
             "path": "/id/90",
-            "method": "GET"
+            "method": "GET",
+            "description": "Should return the parameter value"
         },
         {
             "path": "/a/b",
-            "method": "GET"
+            "method": "GET",
+            "description": "Should return a 404 error"
         },
         {
             "path": "/json",
             "method": "POST",
-            "body": {
-                "a": "b",
-                "c": "d"
-            }
+            "body": "body.json",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "description": "Should return the body"
         }
     ],
     "scripts": [

@@ -19,9 +19,17 @@ const results: number[] = [];
 // Framework and test URLs
 const frameworks = await readdir(`${rootDir}/src`);
 const urls = data.tests.map(v => {
-    const arr = [v.path, v.method];
+    const arr: any[] = [v.path, v.method];
     if (v.body)
-        arr.push(JSON.stringify(v.body));
+        arr.push(v.body);
+    if (v.headers) {
+        const headerArr: string[] = [],
+            headers = v.headers as Record<string, string>;
+        for (const key in headers)
+            headerArr.push("--header", `${key}: ${headers[key]}`);
+
+        arr.push(headerArr);
+    }
 
     return arr;
 });
@@ -78,7 +86,9 @@ const urls = data.tests.map(v => {
     const commands = urls.map(v => {
         const arr = ["bombardier", ...defaultArgs, "http://localhost:3000" + v[0], "-m", v[1]];
         if (v[2])
-            arr.push("-b", v[2]);
+            arr.push("-f", `${rootDir}/assets/${v[2]}`);
+        if (v[3])
+            arr.push(...v[3]);
 
         return arr;
     });
@@ -102,7 +112,7 @@ const urls = data.tests.map(v => {
         const desDir = `${rootDir}/src/${framework}`;
 
         // Boot up
-        const server = Bun.spawn(["bun", `${desDir}/index.ts`], { cwd: desDir });
+        const server = Bun.spawn(["bun", `${desDir}/index.ts`], { cwd: desDir, stdout: "inherit" });
         console.log("Booting", framework + "...");
         await sleep();
 
