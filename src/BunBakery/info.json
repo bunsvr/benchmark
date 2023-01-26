@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "@kapsonfire/bun-bakery": "^0.4.4"
+    }
+}

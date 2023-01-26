@@ -23,6 +23,10 @@
     ],
     "scripts": [
         {
+            "file": "install.ts",
+            "type": "bun"
+        },
+        {
             "file": "time.ts",
             "type": "bun"
         },

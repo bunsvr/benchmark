@@ -1,0 +1,5 @@
+{
+    "dependencies": {
+        "@kakengloh/bagel": "^0.2.2"
+    }
+}

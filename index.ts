@@ -1,6 +1,7 @@
 import { appendFile, readdir } from "fs/promises";
 import Bun from "bun";
 import data from "./config.json";
+import pkg from "./package.json";
 
 // Root directory of the benchmark
 const rootDir = import.meta.dir;
@@ -29,7 +30,7 @@ const urls = data.tests.map(v => {
 {
     for (const script of data.scripts) {
         const args = [
-            script.type, 
+            script.type,
             `${rootDir}/scripts/${script.file}`
         ] as [string, string];
 
@@ -38,6 +39,10 @@ const urls = data.tests.map(v => {
             env: { ROOT: rootDir }
         });
     }
+
+    // Install dependencies
+    console.log("Install dependencies...");
+    Bun.spawnSync(["bun", "install"]);
 }
 
 // Run benchmark
@@ -58,7 +63,7 @@ const urls = data.tests.map(v => {
         const cmds = data.command;
         const args: string[] = [];
 
-        if (cmds.fasthttp) 
+        if (cmds.fasthttp)
             args.push("--fasthttp");
         if (cmds.connections)
             args.push("-c", String(cmds.connections));
@@ -69,7 +74,7 @@ const urls = data.tests.map(v => {
     }
     const defaultArgs = parseDefaultArgs();
 
-     // Run commands
+    // Run commands
     const commands = urls.map(v => {
         const arr = ["bombardier", ...defaultArgs, "http://localhost:3000" + v[0], "-m", v[1]];
         if (v[2])
@@ -114,8 +119,8 @@ const urls = data.tests.map(v => {
 {
     console.log("Sorting results...");
 
-    const round = (num: number) => Math.round(num * 100) / 100; 
-    const average = (arr: number[]) => round(arr.reduce((a, b) => a + b) / arr.length); 
+    const round = (num: number) => Math.round(num * 100) / 100;
+    const average = (arr: number[]) => round(arr.reduce((a, b) => a + b) / arr.length);
     const sortResults = () => {
         const arr = [];
 
@@ -135,10 +140,10 @@ const urls = data.tests.map(v => {
     }
 
     // Prepare table headers
-    let str = 
-        "| Name | Average | " 
-        + urls.map(v => `${v[1]} \`${v[0]}\``).join(" | ") + " |\n| " 
-        + "--- | ".repeat(urls.length + 2) + "\n" 
+    let str =
+        "| Name | Average | "
+        + urls.map(v => `${v[1]} \`${v[0]}\``).join(" | ") + " |\n| "
+        + "--- | ".repeat(urls.length + 2) + "\n"
         + sortResults();
 
     await appendFile(desFile, str);
