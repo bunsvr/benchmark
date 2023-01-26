@@ -134,7 +134,7 @@ const urls = data.tests.map(v => {
 
         return arr
             .sort((a, b) => b.average - a.average)
-            .map(val => `| ${val.name} | ${val.average} | ${val.results.map(v => v.toFixed(2)).join(" | ")} |`)
+            .map(val => `| ${val.name} | ${val.average.toFixed(2)} | ${val.results.map(v => v.toFixed(2)).join(" | ")} |`)
             .join("\n");
     }
 
