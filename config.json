@@ -35,5 +35,8 @@
         "connections": 500,
         "duration": 10,
         "fasthttp": true
-    } 
+    },
+    "env": {
+        "NODE_ENV": "production"
+    }
 }

@@ -20,7 +20,5 @@ export default {
             if (path.indexOf("/") < 0)
                 return new Response(path);
         }
-
-        return new Response("", { status: 404 });
     }
 }

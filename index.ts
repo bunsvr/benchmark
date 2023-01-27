@@ -82,9 +82,7 @@ const urls = data.tests.map(v => {
         const server = Bun.spawn(args, {
             cwd: desDir,
             stdout: "inherit",
-            env: {
-                NODE_ENV: "production"
-            }
+            env: data.env
         });
         console.log("Booting", framework + "...");
         await sleep();

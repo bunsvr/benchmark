@@ -50,4 +50,9 @@ export interface Config {
         duration: number;
         fasthttp?: boolean;
     };
+
+    /**
+     * Additional environment variable
+     */
+    env?: Record<string, string>;
 }
