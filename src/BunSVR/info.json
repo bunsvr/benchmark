@@ -1,5 +1,6 @@
 {
     "dependencies": {
+        "@bunsvr/core": "^0.0.12",
         "@bunsvr/router": "^0.0.20"
     }
 }

@@ -1,24 +1,24 @@
 {
-    "name": "bench",
-    "module": "index.ts",
-    "type": "module",
-    "devDependencies": {
-        "bun-types": "^0.4.0"
-    },
-    "dependencies": {
-        "@kakengloh/bagel": "^0.2.2",
-        "baojs": "^0.2.1",
-        "@kapsonfire/bun-bakery": "^0.4.11",
-        "@bunsvr/core": "^0.0.10",
-        "@bunsvr/router": "^0.0.20",
-        "elysia": "^0.1.2",
-        "hono": "^2.7.5",
-        "hyperbun": "^0.4.6",
-        "@nbit/bun": "^0.7.0",
-        "@zarfjs/zarf": "^0.0.1-alpha.23",
-        "buchta": "^0.4.33"
-    },
-    "scripts": {
-        "bench": "bun index.ts"
-    }
+  "name": "bench",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "^0.4.0"
+  },
+  "dependencies": {
+    "@bunsvr/core": "^0.0.12",
+    "@bunsvr/router": "^0.0.20",
+    "@kakengloh/bagel": "^0.2.2",
+    "@kapsonfire/bun-bakery": "^0.4.11",
+    "@nbit/bun": "^0.7.0",
+    "@zarfjs/zarf": "^0.0.1-alpha.23",
+    "baojs": "^0.2.1",
+    "buchta": "^0.4.33",
+    "elysia": "^0.1.2",
+    "hono": "^2.7.5",
+    "hyperbun": "^0.4.6"
+  },
+  "scripts": {
+    "bench": "bun index.ts"
+  }
 }
