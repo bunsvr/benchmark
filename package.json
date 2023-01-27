@@ -8,15 +8,15 @@
     "dependencies": {
         "@kakengloh/bagel": "^0.2.2",
         "baojs": "^0.2.1",
-        "@kapsonfire/bun-bakery": "^0.4.4",
+        "@kapsonfire/bun-bakery": "^0.4.10",
         "@bunsvr/core": "^0.0.10",
-        "@bunsvr/router": "^0.0.17",
+        "@bunsvr/router": "^0.0.20",
         "elysia": "^0.1.2",
         "hono": "^2.7.5",
         "hyperbun": "^0.4.6",
         "@nbit/bun": "^0.7.0",
         "@zarfjs/zarf": "^0.0.1-alpha.23",
-        "buchta": "^0.4.25"
+        "buchta": "^0.4.33"
     },
     "scripts": {
         "bench": "bun index.ts"

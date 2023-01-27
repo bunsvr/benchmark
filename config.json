@@ -2,37 +2,29 @@
     "tests": [
         {
             "path": "/",
-            "method": "GET",
             "description": "Should return 'Hi'"
         },
         {
             "path": "/id/90",
-            "method": "GET",
             "description": "Should return the parameter value"
         },
         {
             "path": "/a/b",
-            "method": "GET",
             "description": "Should return a 404 error"
         },
         {
             "path": "/json",
             "method": "POST",
             "body": "body.json",
-            "headers": {
-                "Content-Type": "application/json"
-            },
             "description": "Should return the body"
         }
     ],
     "scripts": [
         {
-            "file": "install.ts",
-            "type": "bun"
+            "file": "install.ts"
         },
         {
-            "file": "time.ts",
-            "type": "bun"
+            "file": "time.ts"
         },
         {
             "file": "os.cjs",
