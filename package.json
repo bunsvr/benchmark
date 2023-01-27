@@ -8,7 +8,7 @@
     "dependencies": {
         "@kakengloh/bagel": "^0.2.2",
         "baojs": "^0.2.1",
-        "@kapsonfire/bun-bakery": "^0.4.10",
+        "@kapsonfire/bun-bakery": "^0.4.11",
         "@bunsvr/core": "^0.0.10",
         "@bunsvr/router": "^0.0.20",
         "elysia": "^0.1.2",
