@@ -3,6 +3,8 @@ Benchmarking Bun [frameworks](/src).
 
 You can see the latest benchmark results [here](/results.md).
 
+Tested on Github Codespace. I recommend testing this by yourself.
+
 ## Requirements
 - [Bun](https://bun.sh)
 - [Node](https://nodejs.org)
