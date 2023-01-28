@@ -45,12 +45,13 @@ const urls = data.tests.map(v => {
 
         console.log(args.join(" "));
         Bun.spawnSync(args, {
+            stdout: "inherit",
             env: { ROOT: rootDir }
         });
     }
 
     // Install dependencies
-    console.log("Install dependencies...");
+    console.log("Installing dependencies...");
     Bun.spawnSync(["bun", "install"]);
 }
 

@@ -1,4 +1,4 @@
-import { Router } from "@bunsvr/router";
+import { Router } from "@stricjs/router";
 
 new Router()
     .static("GET", "/", 

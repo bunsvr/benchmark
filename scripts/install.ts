@@ -1,19 +1,22 @@
 import { readdir } from "fs/promises";
 import Bun from "bun";
 import data from "../package.json";
+import { find } from "../lib/utils";
 
-const rootDir = Bun.env.ROOT || "/mnt/e/Programming/JS/Project/Packages/bunser/bench";
+const rootDir = Bun.env.ROOT || import.meta.dir.slice(0, -8);
 
 const frameworks = await readdir(`${rootDir}/src`).then(
     frmks => Promise.all(frmks
         .map(frmk => `${rootDir}/src/${frmk}/info.json`)
-        .map(frmk => import(frmk).then(v => v.default.dependencies))
+        .map(frmk => find(frmk).then(v => v.dependencies))
     )
 );
 
-console.log(frameworks)
+// @ts-ignore
+data.dependencies = {};
 
-for (const framework of frameworks)
-    Object.assign(data.dependencies, framework);
+for (const framework of frameworks) 
+    if (framework)
+        Object.assign(data.dependencies, framework);
 
 await Bun.write(`${rootDir}/package.json`, JSON.stringify(data, null, 4));
