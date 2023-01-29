@@ -2,7 +2,7 @@ import { appendFile, readdir } from "fs/promises";
 import Bun from "bun";
 import confData from "./config.json";
 import { Config } from "./lib/types";
-import { average, run, parseDefaultArgs, sleep, sortResults, find } from "./lib/utils";
+import { run, parseDefaultArgs, sleep, sortResults, find } from "./lib/utils";
 
 const data = confData as Config;
 

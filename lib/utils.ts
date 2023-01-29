@@ -37,7 +37,7 @@ export async function sleep() {
 }
 
 // Get average req/sec
-export function average(arr: number[]) {
+function average(arr: number[]) {
     return arr.reduce((a, b) => a + b) / arr.length;
 };
 
