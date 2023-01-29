@@ -1,6 +1,6 @@
 {
     "dependencies": {
         "@stricjs/core": "^1.0.1",
-        "@stricjs/router": "^1.0.1"
+        "@stricjs/router": "^1.0.2"
     }
 }
