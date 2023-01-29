@@ -36,23 +36,17 @@ const urls = data.tests.map(v => {
 });
 
 // Run scripts
-{
-    for (const script of data.scripts) {
-        const args = [
-            script.type || "bun",
-            `${rootDir}/scripts/${script.file}`
-        ] as [string, string];
+for (const script of data.scripts) {
+    const args = [
+        script.type || "bun",
+        `${rootDir}/scripts/${script.file}`
+    ] as [string, string];
 
-        console.log(args.join(" "));
-        Bun.spawnSync(args, {
-            stdout: "inherit",
-            env: { ROOT: rootDir }
-        });
-    }
-
-    // Install dependencies
-    console.log("Installing dependencies...");
-    Bun.spawnSync(["bun", "install"]);
+    console.log(args.join(" "));
+    Bun.spawnSync(args, {
+        stdout: "inherit",
+        env: { ROOT: rootDir }
+    });
 }
 
 // Run benchmark

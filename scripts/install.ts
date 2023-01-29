@@ -19,4 +19,10 @@ for (const framework of frameworks)
     if (framework)
         Object.assign(data.dependencies, framework);
 
+// Adding packages to package.json
+console.log("Searching for packages...");
 await Bun.write(`${rootDir}/package.json`, JSON.stringify(data, null, 4));
+
+// Install dependencies
+console.log("Installing dependencies...");
+Bun.spawnSync(["bun", "install"]);
