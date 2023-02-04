@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "@stricjs/router": "^1.0.4"
+        "@stricjs/router": "^1.0.6"
     }
 }

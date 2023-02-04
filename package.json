@@ -7,7 +7,7 @@
     },
     "dependencies": {
         "elysia": "^0.2.0",
-        "@stricjs/router": "^1.0.4",
+        "@stricjs/router": "^1.0.6",
         "hono": "^2.7.5",
         "buchta": "^0.4.33",
         "@kapsonfire/bun-bakery": "^0.4.11",
