@@ -21,9 +21,6 @@
     ],
     "scripts": [
         {
-            "file": "install.ts"
-        },
-        {
             "file": "time.ts"
         },
         {

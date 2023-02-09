@@ -18,6 +18,6 @@
         "@nbit/bun": "^0.7.0"
     },
     "scripts": {
-        "bench": "bun index.ts"
+        "bench": "bun scripts/install.ts && bun index.ts"
     }
 }
