@@ -1,5 +1,9 @@
+import { appendFile } from "fs/promises";
+import os from "os";
+import { env } from "bun";
+
 const list = ["B", "KB", "MB", "GB", "TB"];
-const formatByte = bytes => {
+const formatByte = (bytes: number) => {
     let i = 0;
     while (bytes >= 1000) {
         bytes = Math.round(bytes / 10) / 100;
@@ -7,7 +11,7 @@ const formatByte = bytes => {
     }
     return bytes + list[i];
 }
-const formatOS = str => {
+const formatOS = (str: string) => {
     switch (str) {
         case "Windows_NT":
             return "Windows";
@@ -18,21 +22,17 @@ const formatOS = str => {
     }
 }
 
-const { appendFileSync } = require("fs");
-const os = require("os");
-
-const desFile = `${process.env.ROOT}/results.md`;
+const desFile = `${env.ROOT}/results.md`;
 
 // Get OS details
 let str = "";
 str += "## OS Details\n";
 
 const cpus = os.cpus();
-str += "- CPU: " + cpus[0].model + "\n";
 str += "- Cores: " + cpus.length + "\n";
 str += "- OS: " + formatOS(os.type()) + "\n";
 str += "- System memory: " + formatByte(os.totalmem()) + "\n";
 str += "- Architecture: " + os.arch() + "\n";
 str += "\n## Results\n";
 
-appendFileSync(desFile, str);
+await appendFile(desFile, str);

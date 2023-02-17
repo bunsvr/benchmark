@@ -24,8 +24,7 @@
             "file": "time.ts"
         },
         {
-            "file": "os.cjs",
-            "type": "node"
+            "file": "os.ts"
         }
     ],
     "command": {

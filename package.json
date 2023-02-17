@@ -3,7 +3,7 @@
     "module": "index.ts",
     "type": "module",
     "devDependencies": {
-        "bun-types": "^0.4.0"
+        "bun-types": "latest"
     },
     "dependencies": {
         "elysia": "^0.2.0",
