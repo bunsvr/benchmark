@@ -15,8 +15,8 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "types": [
+      "@types/node",
       "bun-types" // add Bun global
     ]
-  },
-  "include": ["index.ts"]
+  }
 }

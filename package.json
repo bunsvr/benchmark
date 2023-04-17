@@ -3,19 +3,19 @@
     "module": "index.ts",
     "type": "module",
     "devDependencies": {
-        "bun-types": "latest"
+        "bun-types": "latest",
+        "@types/node": "latest"
     },
     "dependencies": {
-        "elysia": "^0.2.0",
-        "@stricjs/router": "^1.0.6",
-        "hono": "^2.7.5",
-        "buchta": "^0.4.33",
         "@kapsonfire/bun-bakery": "^0.4.11",
-        "hyperbun": "^0.4.6",
-        "@kakengloh/bagel": "^0.2.2",
         "baojs": "^0.2.1",
+        "@stricjs/router": "^1.0.6",
         "@zarfjs/zarf": "^0.0.1-alpha.23",
-        "@nbit/bun": "^0.7.0"
+        "elysia": "^0.2.0",
+        "@nbit/bun": "^0.7.0",
+        "buchta": "^0.4.33",
+        "hyperbun": "^0.4.6",
+        "hono": "^2.7.5"
     },
     "scripts": {
         "bench": "bun scripts/install.ts && bun index.ts"
