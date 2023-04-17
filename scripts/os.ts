@@ -1,6 +1,5 @@
 import { appendFile } from "fs/promises";
 import os from "os";
-import { env } from "bun";
 
 const list = ["B", "KB", "MB", "GB", "TB"];
 const formatByte = (bytes: number) => {
@@ -22,7 +21,7 @@ const formatOS = (str: string) => {
     }
 }
 
-const desFile = `${env.ROOT}/results.md`;
+const desFile = `${process.env.ROOT}/results.md`;
 
 // Get OS details
 let str = "";

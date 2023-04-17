@@ -3,7 +3,7 @@ import Bun from "bun";
 import data from "../package.json";
 import { find } from "../lib/utils";
 
-const rootDir = Bun.env.ROOT || import.meta.dir.slice(0, -8);
+const rootDir = process.env.ROOT || import.meta.dir.slice(0, -8);
 
 const frameworks = await readdir(`${rootDir}/src`).then(
     frmks => Promise.all(frmks
