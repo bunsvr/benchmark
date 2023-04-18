@@ -1,16 +1,17 @@
 import { appendFile, readdir } from "fs/promises";
 import Bun from "bun";
 import confData from "./config.json";
-import { Config } from "./lib/types";
-import { run, parseDefaultArgs, sleep, sortResults, find } from "./lib/utils";
+import { Config, Info } from "./lib/types";
+import { run, parseDefaultArgs, sortResults, find } from "./lib/utils";
 
+// @ts-ignore
 const data = confData as Config;
 
 // Root directory of the benchmark
 const rootDir = import.meta.dir;
 
 // Destination file
-const desFile = `${rootDir}/results.md`;
+const desFile = `${rootDir}/results/index.md`;
 
 // Prepare file
 await Bun.write(desFile, `Bun: ${Bun.version}\n`);
@@ -19,7 +20,11 @@ await Bun.write(desFile, `Bun: ${Bun.version}\n`);
 const results: number[] = [];
 
 // Framework and test URLs
-const frameworks = await readdir(`${rootDir}/src`);
+let frameworks = await readdir(`${rootDir}/src`);
+
+if (data.include)
+    frameworks = frameworks.filter(f => data.include.includes(f));
+
 const urls = data.tests.map(v => {
     const arr: any[] = [v.path, v.method || "GET"];
     if (v.body)
@@ -45,7 +50,10 @@ for (const script of data.scripts) {
     console.log(args.join(" "));
     Bun.spawnSync(args, {
         stdout: "inherit",
-        env: { ROOT: rootDir }
+        env: { 
+            ROOT: rootDir, 
+            DES: desFile 
+        }
     });
 }
 
@@ -66,9 +74,8 @@ for (const script of data.scripts) {
     });
 
     for (const framework of frameworks) {
-        Bun.gc(true);
         const desDir = `${rootDir}/src/${framework}`;
-        const info = await find(desDir + "/info.json");
+        const info = await find(desDir + "/info.json") as Info;
 
         // Start the server command args
         const args = info.run || ["bun", `${desDir}/index.ts`];
@@ -80,11 +87,11 @@ for (const script of data.scripts) {
             env: data.env
         });
         console.log("Booting", framework + "...");
-        await sleep();
+        Bun.sleepSync(data.boot || 5000);
 
         // Benchmark
         console.log("Benchmarking...");
-        results.push(...run(commands as any));
+        results.push(...await run(commands as any));
 
         // Clean up
         server.kill();

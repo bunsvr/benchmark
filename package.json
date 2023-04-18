@@ -7,17 +7,17 @@
         "@types/node": "latest"
     },
     "dependencies": {
-        "@kapsonfire/bun-bakery": "^0.4.11",
+        "@kapsonfire/bun-bakery": "^0.4.12",
         "baojs": "^0.2.1",
-        "@stricjs/router": "^1.0.6",
+        "@stricjs/router": "^1.0.10-alpha.2",
         "@zarfjs/zarf": "^0.0.1-alpha.23",
-        "elysia": "^0.2.0",
+        "elysia": "^0.4.6",
         "@nbit/bun": "^0.7.0",
-        "buchta": "^0.4.33",
+        "buchta": "^0.5.2",
         "hyperbun": "^0.4.6",
-        "hono": "^2.7.5"
+        "hono": "^3.1.6"
     },
     "scripts": {
-        "bench": "bun scripts/install.ts && bun index.ts"
+        "bench": "bun index.ts"
     }
 }

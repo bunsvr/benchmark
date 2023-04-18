@@ -21,7 +21,7 @@ const formatOS = (str: string) => {
     }
 }
 
-const desFile = `${process.env.ROOT}/results.md`;
+const desFile = process.env.DES;
 
 // Get OS details
 let str = "";

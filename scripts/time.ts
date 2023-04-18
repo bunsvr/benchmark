@@ -3,7 +3,7 @@ import { appendFile } from "fs/promises";
 const date = new Date();
 
 // Destination file
-const desFile = `${process.env.ROOT}/results.md`;
+const desFile = process.env.DES;
 
 // Format date
 const formatDate = (d: number) => {

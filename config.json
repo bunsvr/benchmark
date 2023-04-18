@@ -1,4 +1,5 @@
 {
+    "boot": 5000,
     "tests": [
         {
             "path": "/",
@@ -20,16 +21,13 @@
         }
     ],
     "scripts": [
-        {
-            "file": "time.ts"
-        },
-        {
-            "file": "os.ts"
-        }
+        { "file": "install.ts" },
+        { "file": "time.ts" },
+        { "file": "os.ts" }
     ],
     "command": {
         "connections": 500,
-        "duration": 10,
+        "duration": 20,
         "fasthttp": true
     },
     "env": {

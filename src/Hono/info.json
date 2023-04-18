@@ -1,5 +1,5 @@
 {
     "dependencies": {
-        "hono": "^2.7.5"
+        "hono": "^3.1.6"
     }
 }

@@ -1,5 +1,6 @@
 import { existsSync } from "fs";
 import { Config } from "./types";
+import path from "path";
 
 // Parse default args from config
 export function parseDefaultArgs(data: Config) {
@@ -17,7 +18,7 @@ export function parseDefaultArgs(data: Config) {
 };
 
 // Run benchmark
-export function run(commands: [string, ...string[]][]) {
+export async function run(commands: [string, ...string[]][]) {
     const resArr = [];
 
     for (const command of commands) {
@@ -29,11 +30,6 @@ export function run(commands: [string, ...string[]][]) {
     }
 
     return resArr;
-}
-
-// Wait for server to boot up
-export async function sleep() {
-    return new Promise(res => setTimeout(res, 2000));
 }
 
 // Get average req/sec

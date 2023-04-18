@@ -3,6 +3,14 @@
  */
 export interface Config {
     /**
+     * Boot up time in milliseconds
+     */
+    boot: number;
+    /**
+     * Frameworks to be included
+     */
+    include: string[];
+    /**
      * All test cases
      */
     tests: {
@@ -26,7 +34,6 @@ export interface Config {
          */
         headers?: Record<string, string>;
     }[];
-
     /**
      * All scripts to run before benchmark
      */
@@ -41,7 +48,6 @@ export interface Config {
          */
         file: string;
     }[];
-
     /**
      * Bombardier options
      */
@@ -50,9 +56,21 @@ export interface Config {
         duration: number;
         fasthttp?: boolean;
     };
-
     /**
      * Additional environment variable
      */
     env?: Record<string, string>;
+}
+/**
+ * Framework info
+ */
+export interface Info {
+    /**
+     * Required dependencies
+     */
+    dependencies: Record<string, string>;
+    /**
+     * Script to boot up args
+     */
+    run: [string, ...string[]];
 }
