@@ -1,7 +1,7 @@
 # Benchmark
 Benchmarking Bun [frameworks](/src).
 
-You can see the latest benchmark results [here](/results.md).
+You can see the latest benchmark results [here](/results/index.md).
 
 Tested on Github Codespace. I recommend testing this by yourself.
 
@@ -22,4 +22,4 @@ bun bench
 ```
 
 ## Configurations
-See the configuration file [here](/config.json). This file includes all tests, preparation scripts and benchmark command options.
+See [configuration file](/config.json) and the [type declarations](/lib/types.ts). 
