@@ -74,6 +74,8 @@ for (const script of data.scripts) {
     });
 
     for (const framework of frameworks) {
+        Bun.gc(true);
+
         const desDir = `${rootDir}/src/${framework}`;
         const info = await find(desDir + "/info.json") as Info;
 
