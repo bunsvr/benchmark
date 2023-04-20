@@ -80,7 +80,7 @@ for (const script of data.scripts) {
         const info = await find(desDir + "/info.json") as Info;
 
         // Start the server command args
-        const args = info.run || ["bun", `${desDir}/index.ts`];
+        const args = info.run || [info.runtime || "bun", `${desDir}/${info.entry || "index.ts"}`];
 
         // Boot up
         const server = Bun.spawn(args, {

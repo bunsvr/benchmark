@@ -73,4 +73,12 @@ export interface Info {
      * Script to boot up args
      */
     run: [string, ...string[]];
+    /**
+     * Entry point
+     */
+    entry: string;
+    /**
+     * Runtime for the framework
+     */
+    runtime: "bun" | "node" | "deno";
 }
