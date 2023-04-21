@@ -59,6 +59,8 @@ for (const script of data.scripts) {
 
 // Run benchmark
 {
+    data.boot ||= 5000;
+
     // Default arguments parsing
     const defaultArgs = parseDefaultArgs(data);
 
@@ -89,7 +91,7 @@ for (const script of data.scripts) {
             env: data.env
         });
         console.log("Booting", framework + "...");
-        Bun.sleepSync(data.boot || 5000);
+        Bun.sleepSync(data.boot);
 
         // Benchmark
         console.log("Benchmarking...");
@@ -97,6 +99,8 @@ for (const script of data.scripts) {
 
         // Clean up
         server.kill();
+        Bun.spawnSync(["fuser", "-k", "3000/tcp"]);
+        Bun.sleepSync(data.boot);
     }
 }
 
