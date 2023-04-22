@@ -17,6 +17,10 @@
     "types": [
       "@types/node",
       "bun-types" // add Bun global
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "body.json": ["assets/body.json"]
+    }
   }
 }

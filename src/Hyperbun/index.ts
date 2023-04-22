@@ -1,14 +1,10 @@
 import { createServer } from "hyperbun";
+import body from "body.json";
 
 const app = createServer();
 
 app.get("/", () => "Hi");
-app.post("/json", async req => {
-    const body = await req.json();
-    body.change = body.a;
-
-    return body;
-});
+app.post("/json", () => body);
 app.get("/id/:id", (_, ctx) => 
     ctx.params.id as string);
 

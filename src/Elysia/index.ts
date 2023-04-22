@@ -1,14 +1,8 @@
 import Elysia from "elysia";
+import body from "body.json";
 
 new Elysia()
     .get("/", () => "Hi")
     .get("/id/:id", c => c.params.id)
-    .post("/json", c => {
-        const body = c.body as any;
-        
-        return {
-            change: body.a,
-            a: body.a
-        };
-    })
+    .post("/json", () => body)
     .listen(3000);

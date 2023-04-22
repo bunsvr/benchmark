@@ -16,8 +16,7 @@
         {
             "path": "/json",
             "method": "POST",
-            "body": "body.json",
-            "description": "Should return the body and change the property 'change' to value of property 'a'"
+            "description": "Should return the body specified in assets/body.json"
         }
     ],
     "scripts": [
