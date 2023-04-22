@@ -25,4 +25,7 @@ await Bun.write(`${rootDir}/package.json`, JSON.stringify(data, null, 4));
 
 // Install dependencies
 console.log("Installing dependencies...");
-Bun.spawnSync(["bun", "install"], { stdout: "inherit" });
+Bun.spawnSync(["bun", "install"], { 
+    stdout: "inherit", 
+    cwd: rootDir
+});

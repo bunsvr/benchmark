@@ -12,6 +12,7 @@
         "@stricjs/router": "^1.0.10-alpha.7",
         "elysia": "^0.4.6",
         "@nbit/bun": "^0.7.0",
+        "uWebSockets.js": "uNetworking/uWebSockets.js#v20.23.0",
         "hyperbun": "^0.4.6",
         "hono": "^3.1.6"
     },
