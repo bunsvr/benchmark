@@ -1,5 +1,8 @@
 import { Context } from "@kapsonfire/bun-bakery";
 
 export async function POST(ctx: Context) {
-    ctx.json(await ctx.request.json());
+    const body = await ctx.request.json<any>();
+    body.change = body.a;
+
+    ctx.json(body);
 };

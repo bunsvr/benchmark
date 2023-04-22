@@ -5,5 +5,9 @@ export default new Hono()
         c.text("Hi"))
     .get("/id/:id", c => 
         c.text(c.req.param("id")))
-    .post("/json", async c =>
-        c.json(await c.req.json()));
+    .post("/json", async c => {
+        const body = await c.req.json();
+        body.change = body.a;
+
+        c.json(body);
+    });
