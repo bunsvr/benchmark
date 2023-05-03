@@ -1,11 +1,10 @@
 import { Router } from "@stricjs/router";
 import body from "body.json";
 
-new Router()
-    .static("GET", "/", 
+export default new Router()
+    .use("GET", "/", 
         () => new Response("Hi"))
-    .static("POST", "/json", () => 
+    .use("POST", "/json", () => 
         Response.json(body))
-    .dynamic("GET", "/id/:id", 
-        req => new Response(req.params[1]))
-    .serve();
+    .use("GET", "/id/:id", 
+        req => new Response(req.params.id));
