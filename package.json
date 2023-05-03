@@ -9,14 +9,18 @@
     "dependencies": {
         "@kapsonfire/bun-bakery": "^0.4.12",
         "baojs": "^0.2.1",
-        "@stricjs/router": "^2.0.0-alpha.2",
+        "@stricjs/router": "^2.0.1",
         "elysia": "^0.4.6",
         "@nbit/bun": "^0.7.0",
+        "koa": "^2.14.2",
+        "@koa/router": "^12.0.0",
+        "fastify": "^4.17.0",
         "uWebSockets.js": "uNetworking/uWebSockets.js#v20.23.0",
         "hyperbun": "^0.4.6",
         "hono": "^3.1.6"
     },
     "scripts": {
-        "bench": "bun index.ts"
+        "bench": "bun index.ts",
+        "ins": "bun scripts/install.ts"
     }
 }

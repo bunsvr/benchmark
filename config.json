@@ -31,5 +31,6 @@
     },
     "env": {
         "NODE_ENV": "production"
-    }
+    },
+    "exclude": ["UWS"]
 }

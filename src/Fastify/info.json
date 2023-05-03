@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "fastify": "^4.17.0"
+    },
+    "entry": "index.js",
+    "runtime": "node"
+}

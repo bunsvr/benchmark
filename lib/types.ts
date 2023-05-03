@@ -11,6 +11,10 @@ export interface Config {
      */
     include: string[];
     /**
+     * Frameworks to be excluded
+     */
+    exclude: string[];
+    /**
      * All test cases
      */
     tests: {
@@ -39,7 +43,7 @@ export interface Config {
      */
     scripts: {
         /**
-         * Use node or bun to run the script. Defaults to bun
+         * Use node, deno or bun or anything to run the script. Defaults to bun
          */
         type?: string;
 

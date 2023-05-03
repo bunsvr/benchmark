@@ -24,6 +24,8 @@ let frameworks = await readdir(`${rootDir}/src`);
 
 if (data.include)
     frameworks = frameworks.filter(f => data.include.includes(f));
+if (data.exclude)
+    frameworks = frameworks.filter(f => !data.exclude.includes(f));
 
 const urls = data.tests.map(v => {
     const arr: any[] = [v.path, v.method || "GET"];
