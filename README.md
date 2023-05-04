@@ -14,6 +14,9 @@ Tested on Github Codespace. I recommend testing this by yourself.
 ## Start
 Clone this reposity. Go to the root directory of the repo then run:
 ```bash
+# Install required dependencies
+bun ins
+
 # Run the benchmark
 bun bench
 ```

@@ -20,7 +20,6 @@
         }
     ],
     "scripts": [
-        { "file": "install.ts" },
         { "file": "time.ts" },
         { "file": "os.ts" }
     ],
@@ -31,6 +30,5 @@
     },
     "env": {
         "NODE_ENV": "production"
-    },
-    "exclude": ["UWS"]
+    }
 }

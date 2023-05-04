@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "uWebSockets.js": "uNetworking/uWebSockets.js#v20.23.0"
+        "uWebSockets.js": "uNetworking/uWebSockets.js#v20.24.0"
     },
     "runtime": "node",
     "entry": "index.js"
