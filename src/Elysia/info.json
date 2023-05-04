@@ -1,5 +1,6 @@
 {
     "dependencies": {
-        "elysia": "^0.4.6"
-    }
+        "elysia": "^0.4.15"
+    },
+    "version": "0.4.15"
 }

@@ -3,5 +3,6 @@
         "uWebSockets.js": "uNetworking/uWebSockets.js#v20.24.0"
     },
     "runtime": "node",
-    "entry": "index.js"
+    "entry": "index.js",
+    "version": "20.24.0"
 }

@@ -4,5 +4,6 @@
         "@koa/router": "^12.0.0"
     },
     "entry": "index.js",
-    "runtime": "node"
+    "runtime": "node",
+    "version": "2.14.2"
 }

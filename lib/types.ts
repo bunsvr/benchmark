@@ -85,4 +85,8 @@ export interface Info {
      * Runtime for the framework
      */
     runtime: "bun" | "node" | "deno";
+    /**
+     * The framework version
+     */
+    version: string;
 }

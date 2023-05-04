@@ -77,11 +77,14 @@ for (const script of data.scripts) {
         return arr;
     });
 
-    for (const framework of frameworks) {
+    for (let i = 0; i < frameworks.length; ++i) {
         Bun.gc(true);
 
-        const desDir = `${rootDir}/src/${framework}`;
+        const desDir = `${rootDir}/src/${frameworks[i]}`;
         const info = await find(desDir + "/info.json") as Info;
+
+        if (info.version)
+            frameworks[i] += " " + info.version;
 
         // Start the server command args
         const args = info.run || [info.runtime || "bun", `${desDir}/${info.entry || "index.ts"}`];
@@ -92,7 +95,7 @@ for (const script of data.scripts) {
             stdout: "inherit",
             env: data.env
         });
-        console.log("Booting", framework + "...");
+        console.log("Booting", frameworks[i] + "...");
         Bun.sleepSync(data.boot);
 
         // Benchmark
