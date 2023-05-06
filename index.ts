@@ -1,8 +1,8 @@
 import { appendFile, readdir } from "fs/promises";
 import Bun from "bun";
-import confData from "./config.json";
+import confData from "./config";
 import { Config, Info } from "./lib/types";
-import { run, parseDefaultArgs, sortResults, find } from "./lib/utils";
+import { run, parseDefaultArgs, sortResults, find, validate } from "./lib/utils";
 
 // @ts-ignore
 const data = confData as Config;
@@ -29,8 +29,6 @@ if (data.exclude)
 
 const urls = data.tests.map(v => {
     const arr: any[] = [v.path, v.method || "GET"];
-    if (v.body)
-        arr.push(v.body);
     if (v.headers) {
         const headerArr: string[] = []
         for (const key in v.headers)
@@ -58,6 +56,8 @@ for (const script of data.scripts) {
         }
     });
 }
+
+const failedFramework = [];
 
 // Run benchmark
 {
@@ -98,6 +98,16 @@ for (const script of data.scripts) {
         console.log("Booting", frameworks[i] + "...");
         Bun.sleepSync(data.boot);
 
+        // Validate
+        console.log("Validating...");
+        if (!await validate(data.tests)) {
+            console.log("The server does not pass the tests! Skip to the next one!");
+            failedFramework.push(frameworks[i]);
+            continue;
+        }
+        Bun.gc(true);
+        Bun.sleepSync(data.boot);
+
         // Benchmark
         console.log("Benchmarking...");
         results.push(...await run(commands as any));
@@ -111,6 +121,10 @@ for (const script of data.scripts) {
 
 // Sort results
 {
+    if (failedFramework.length > 0) {
+        console.log(`Frameworks that failed the test: ${failedFramework.join(", ")}.`);
+        console.log("These frameworks will not be included in the result!");
+    }
     console.log("Sorting results...");
     await appendFile(desFile,
         // Prepare table headers

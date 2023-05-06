@@ -1,5 +1,5 @@
 import { existsSync } from "fs";
-import { Config } from "./types";
+import { Config, Expect, Test } from "./types";
 import path from "path";
 
 // Parse default args from config
@@ -73,3 +73,31 @@ function getReqSec(v: string) {
 
     return Number(num[1]);
 };
+
+async function testURL(url: string, test: Test) {
+    const expect = test.expect;
+    const res = await fetch(url, {
+        method: test.method
+    });
+    
+    if (expect.body && await res.text() !== expect.body)
+        return false;
+    if (expect.statusCode && expect.statusCode !== res.status)
+        return false;
+
+    return true;
+}
+
+export async function validate(tests: Test[]) {
+    for (const test of tests) {
+        test.method ||= "GET";
+
+        if (!await testURL("http://localhost:3000" + test.path, test)) {
+            console.log(`Test ${test.method} ${test.path} failed!`);
+            return false;
+        } else 
+            console.log(`Test ${test.method} ${test.path} passed!`);
+    }
+
+    return true;
+}

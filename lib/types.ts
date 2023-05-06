@@ -1,3 +1,37 @@
+export interface Expect {
+    /**
+     * Response body
+     */
+    body?: string;
+
+    /**
+     * Status code
+     */
+    statusCode?: number;
+}
+
+export interface Test {
+    /**
+     * Test pathname
+     */
+    path: string;
+
+    /**
+     * Request method. Defaults to GET
+     */
+    method?: string;
+
+    /**
+     * Expect response
+     */
+    expect: Expect;
+
+    /**
+     * Header
+     */
+    headers?: Dict<string>;
+}
+
 /**
  * Config types
  */
@@ -17,27 +51,7 @@ export interface Config {
     /**
      * All test cases
      */
-    tests: {
-        /**
-         * Test pathname
-         */
-        path: string;
-
-        /**
-         * Request method. Defaults to GET
-         */
-        method?: string;
-
-        /**
-         * Request body
-         */
-        body?: string;
-
-        /**
-         * Request headers
-         */
-        headers?: Record<string, string>;
-    }[];
+    tests: Test[];
     /**
      * All scripts to run before benchmark
      */
