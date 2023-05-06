@@ -10,8 +10,5 @@ export default new Router()
         req => new Response(req.params.id))
     // Produce a detailed 404
     .use("/*", 
-        req => new Response(
-            `Cannot ${req.method} ${req.path}`, 
-            { status: 404 }
-        )
+        () => new Response("", { status: 404 })
     );
