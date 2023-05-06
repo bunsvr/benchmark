@@ -124,7 +124,8 @@ const failedFramework = [];
     if (failedFramework.length > 0) {
         console.log(`Frameworks that failed the test: ${failedFramework.join(", ")}.`);
         console.log("These frameworks will not be included in the result!");
-    }
+    } else 
+        console.log("All frameworks passed the boot-up test!");
     console.log("Sorting results...");
     await appendFile(desFile,
         // Prepare table headers

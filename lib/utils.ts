@@ -75,14 +75,13 @@ function getReqSec(v: string) {
 };
 
 async function testURL(url: string, test: Test) {
-    const expect = test.expect;
     const res = await fetch(url, {
         method: test.method
     });
     
-    if (expect.body && await res.text() !== expect.body)
+    if (test.expect.body && await res.text() !== test.expect.body)
         return false;
-    if (expect.statusCode && expect.statusCode !== res.status)
+    if (test.expect.statusCode !== res.status)
         return false;
 
     return true;
@@ -91,6 +90,7 @@ async function testURL(url: string, test: Test) {
 export async function validate(tests: Test[]) {
     for (const test of tests) {
         test.method ||= "GET";
+        test.expect.statusCode ||= 200;
 
         if (!await testURL("http://localhost:3000" + test.path, test)) {
             console.log(`Test ${test.method} ${test.path} failed!`);
