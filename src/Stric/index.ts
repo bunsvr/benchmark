@@ -7,4 +7,11 @@ export default new Router()
     .use("POST", "/json", () => 
         Response.json(body))
     .use("GET", "/id/:id", 
-        req => new Response(req.params.id));
+        req => new Response(req.params.id))
+    // Produce a detailed 404
+    .use("/*", 
+        req => new Response(
+            `Cannot ${req.method} ${req.path}`, 
+            { status: 404 }
+        )
+    );
