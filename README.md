@@ -22,4 +22,4 @@ bun bench
 ```
 
 ## Configurations
-See [configuration file](/config.json) and the [type declarations](/lib/types.ts). 
+See [configuration file](/config.ts) and the [type declarations](/lib/types.ts). 
