@@ -1,5 +1,5 @@
 # Benchmark
-Benchmarking Bun [frameworks](/src).
+Benchmarking Bun and Node [frameworks](/src) requests per second.
 
 You can see the latest benchmark results [here](/results/index.md).
 
