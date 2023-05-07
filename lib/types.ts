@@ -8,6 +8,11 @@ export interface Expect {
      * Status code
      */
     statusCode?: number;
+
+    /**
+     * 
+     */
+    headers?: Dict<string | string[]>;
 }
 
 export interface Test {
@@ -29,7 +34,12 @@ export interface Test {
     /**
      * Header
      */
-    headers?: Dict<string>;
+    headers?: Record<string, string>;
+
+    /**
+     * The body file
+     */
+    bodyFile?: string;
 }
 
 /**
@@ -39,15 +49,15 @@ export interface Config {
     /**
      * Boot up time in milliseconds
      */
-    boot: number;
+    boot?: number;
     /**
      * Frameworks to be included
      */
-    include: string[];
+    include?: string[];
     /**
      * Frameworks to be excluded
      */
-    exclude: string[];
+    exclude?: string[];
     /**
      * All test cases
      */

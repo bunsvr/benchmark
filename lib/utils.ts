@@ -1,6 +1,6 @@
 import { existsSync } from "fs";
-import { Config, Expect, Test } from "./types";
-import path from "path";
+import { readFile } from "fs/promises";
+import { Config, Test } from "./types";
 
 // Parse default args from config
 export function parseDefaultArgs(data: Config) {
@@ -75,13 +75,34 @@ function getReqSec(v: string) {
 };
 
 async function testURL(url: string, test: Test) {
+    const expect = test.expect;
     const res = await fetch(url, {
-        method: test.method
+        method: test.method, 
+        body: test.bodyFile && await readFile(test.bodyFile, "utf8"),
+        headers: test.headers
     });
     
-    if (test.expect.body && await res.text() !== test.expect.body)
+    if (expect.body && await res.text() !== expect.body)
         return false;
-    if (test.expect.statusCode !== res.status)
+
+    if (expect.headers) {
+        if (!res.headers)
+            return false;
+        for (const header in expect.headers) {
+            if (!Array.isArray(expect.headers[header]))
+                // @ts-ignore
+                expect.headers[header] = [expect.headers[header]];
+
+            // @ts-ignore
+            if (!expect.headers[header].includes(res.headers.get(header))) {
+                // @ts-ignore
+                console.log(`Expected header ${header}: ${expect.headers[header].join(", ")}`);
+                console.log(`Instead got ${res.headers.get(header)}`);
+                return false;
+            }
+        }
+    }
+    if (expect.statusCode !== res.status)
         return false;
 
     return true;

@@ -1,4 +1,8 @@
 import body from "body.json";
+import { Config } from "lib/types";
+
+// Root directory of the benchmark
+export const rootDir = import.meta.dir;
 
 export default {
     boot: 3000,
@@ -24,8 +28,22 @@ export default {
         {
             path: "/json",
             method: "POST",
+            bodyFile: `${rootDir}/assets/body.json`,
+            headers: {
+                "Content-Type": "application/json"
+            },
             expect: { 
-                body: JSON.stringify(body) 
+                body: JSON.stringify(body),
+                headers: {
+                    // Works for all the framework that tried to put a freaking space between ; and charset
+                    "Content-Type": [
+                        "application/json", 
+                        "application/json;charset=utf-8", 
+                        "application/json;charset=UTF-8", 
+                        "application/json; charset=utf-8", 
+                        "application/json; charset=UTF-8"
+                    ]
+                }
             }
         }
     ],
@@ -41,4 +59,4 @@ export default {
     env: {
         NODE_ENV: "production"
     }
-}
+} as Config;

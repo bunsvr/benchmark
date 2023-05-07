@@ -1,14 +1,8 @@
 import { appendFile, readdir } from "fs/promises";
 import Bun from "bun";
-import confData from "./config";
-import { Config, Info } from "./lib/types";
+import data, { rootDir } from "./config";
+import { Info } from "./lib/types";
 import { run, parseDefaultArgs, sortResults, find, validate } from "./lib/utils";
-
-// @ts-ignore
-const data = confData as Config;
-
-// Root directory of the benchmark
-const rootDir = import.meta.dir;
 
 // Destination file
 const desFile = `${rootDir}/results/index.md`;
@@ -23,12 +17,16 @@ const results: number[] = [];
 let frameworks = await readdir(`${rootDir}/src`);
 
 if (data.include)
+    // @ts-ignore
     frameworks = frameworks.filter(f => data.include.includes(f));
 if (data.exclude)
+    // @ts-ignore
     frameworks = frameworks.filter(f => !data.exclude.includes(f));
 
 const urls = data.tests.map(v => {
     const arr: any[] = [v.path, v.method || "GET"];
+    if (v.bodyFile)
+        arr.push(v.bodyFile);
     if (v.headers) {
         const headerArr: string[] = []
         for (const key in v.headers)
@@ -57,7 +55,14 @@ for (const script of data.scripts) {
     });
 }
 
-const failedFramework = [];
+const failedFramework: string[] = [];
+function cleanup(server: Bun.Subprocess) {
+    // Clean up
+    server.kill();
+    Bun.spawnSync(["fuser", "-k", "3000/tcp"]);
+    // @ts-ignore
+    Bun.sleepSync(data.boot);
+}
 
 // Run benchmark
 {
@@ -68,9 +73,9 @@ const failedFramework = [];
 
     // Run commands
     const commands = urls.map(v => {
-        const arr = ["bombardier", ...defaultArgs, "http://localhost:3000" + v[0], "-m", v[1]];
+        const arr = ["bombardier", ...defaultArgs, "http://localhost:3000" + v[0], "--method", v[1]];
         if (v[2])
-            arr.push("-f", `${rootDir}/assets/${v[2]}`);
+            arr.push("--body-file", v[2]);
         if (v[3])
             arr.push(...v[3]);
 
@@ -103,6 +108,7 @@ const failedFramework = [];
         if (!await validate(data.tests)) {
             console.log("The server does not pass the tests! Skip to the next one!");
             failedFramework.push(frameworks[i]);
+            cleanup(server);
             continue;
         }
         Bun.gc(true);
@@ -113,9 +119,7 @@ const failedFramework = [];
         results.push(...await run(commands as any));
 
         // Clean up
-        server.kill();
-        Bun.spawnSync(["fuser", "-k", "3000/tcp"]);
-        Bun.sleepSync(data.boot);
+        cleanup(server);
     }
 }
 
@@ -124,6 +128,7 @@ const failedFramework = [];
     if (failedFramework.length > 0) {
         console.log(`Frameworks that failed the test: ${failedFramework.join(", ")}.`);
         console.log("These frameworks will not be included in the result!");
+        frameworks = frameworks.filter(v => !failedFramework.includes(v));
     } else 
         console.log("All frameworks passed the boot-up test!");
     console.log("Sorting results...");
