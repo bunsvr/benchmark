@@ -5,6 +5,7 @@ import { Config } from "lib/types";
 export const rootDir = import.meta.dir;
 
 export default {
+    include: ["Stric", "Elysia"],
     boot: 3000,
     tests: [
         {
