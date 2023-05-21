@@ -1,9 +1,12 @@
 import Elysia from "elysia";
 
-new Elysia()
+const elysia = new Elysia()
     .get("/", () => "Hi")
     .get('/id/:id', (c) => c.params.id)
     .post('/json', (c) => c.body, {
         type: 'json'
-    })
-    .listen(3000);
+    });
+
+elysia.fetch(new Request("http://localhost:3000/"))
+
+console.log(elysia.fetch.toString());
