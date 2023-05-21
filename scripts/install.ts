@@ -1,6 +1,7 @@
 import { readdir } from "fs/promises";
 import Bun from "bun";
 import data from "../package.json";
+import config from "../config";
 import { find } from "../lib/utils";
 
 const rootDir = process.env.ROOT || import.meta.dir.slice(0, -8);
@@ -25,7 +26,7 @@ await Bun.write(`${rootDir}/package.json`, JSON.stringify(data, null, 4));
 
 // Install dependencies
 console.log("Installing dependencies...");
-Bun.spawnSync(["bun", "install"], { 
+Bun.spawnSync([config.pkg || "bun", "install"], { 
     stdout: "inherit", 
     cwd: rootDir
 });

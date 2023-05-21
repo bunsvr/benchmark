@@ -111,6 +111,10 @@ async function testURL(url: string, test: Test) {
 export async function validate(tests: Test[]) {
     for (const test of tests) {
         test.method ||= "GET";
+
+        // Skip testing if there are no expectations :)
+        if (!test.expect)
+            continue;
         test.expect.statusCode ||= 200;
 
         if (!await testURL("http://localhost:3000" + test.path, test)) {

@@ -19,6 +19,9 @@ bun ins
 
 # Run the benchmark
 bun bench
+
+# Or do both
+bun start
 ```
 
 ## Configurations

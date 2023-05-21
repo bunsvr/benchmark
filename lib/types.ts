@@ -88,6 +88,11 @@ export interface Config {
      * Additional environment variable
      */
     env?: Record<string, string>;
+
+    /**
+     * Explicitly set the package manager for installations
+     */
+    pkg?: "npm" | "yarn" | "pnpm" | "bun";
 }
 /**
  * Framework info

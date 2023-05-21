@@ -6,7 +6,7 @@ export const rootDir = import.meta.dir;
 
 export default {
     include: ["Stric", "Elysia"],
-    boot: 3000,
+    boot: 5000,
     tests: [
         {
             path: "/",
@@ -59,5 +59,6 @@ export default {
     },
     env: {
         NODE_ENV: "production"
-    }
+    },
+    pkg: "yarn"
 } as Config;
