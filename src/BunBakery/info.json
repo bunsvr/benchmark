@@ -1,6 +1,0 @@
-{
-    "dependencies": {
-        "@kapsonfire/bun-bakery": "^0.4.12"
-    },
-    "version": "0.4.12"
-}

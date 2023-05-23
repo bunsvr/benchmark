@@ -5,7 +5,6 @@ import { Config } from "lib/types";
 export const rootDir = import.meta.dir;
 
 export default {
-    include: ["Stric", "Elysia"],
     boot: 5000,
     tests: [
         {
@@ -54,7 +53,7 @@ export default {
     ],
     command: {
         connections: 500,
-        duration: 10,
+        duration: 40,
         fasthttp: true
     },
     env: {

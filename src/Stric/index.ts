@@ -9,5 +9,4 @@ export default new Router()
         req => new Response(req.params.id))
     // Produce a detailed 404
     .use("/*", 
-        () => new Response("", { status: 404 }))
-    .boot();
+        () => new Response("", { status: 404 }));
