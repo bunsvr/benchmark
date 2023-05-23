@@ -11,19 +11,22 @@ export default {
             path: "/",
             expect: {
                 body: "Hi"
-            }
+            },
+            description: "Should return `Hi` as a response."
         },
         {
             path: "/id/90",
             expect: {
                 body: "90"
-            }
+            },
+            description: "Should return the `id` parameter value." 
         },
         {
             path: "/a/b",
             expect: {
                 statusCode: 404
-            }
+            },
+            description: "Should return a response with `404` status code."
         },
         {
             path: "/json",
@@ -44,16 +47,17 @@ export default {
                         "application/json; charset=UTF-8"
                     ]
                 }
-            }
+            },
+            description: "Return the request body with `Content-Type` set to `application/json`."
         }
     ],
     scripts: [
         { file: "time.ts" },
-        { file: "os.ts" }
+        { file: "detail.ts" }
     ],
     command: {
         connections: 500,
-        duration: 40,
+        duration: 60,
         fasthttp: true
     },
     env: {

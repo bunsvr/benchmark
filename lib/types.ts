@@ -40,6 +40,11 @@ export interface Test {
      * The body file
      */
     bodyFile?: string;
+
+    /**
+     * Test description
+     */
+    description: string;
 }
 
 /**
