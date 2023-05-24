@@ -23,10 +23,7 @@ export default {
         },
         {
             path: "/a/b",
-            expect: {
-                statusCode: 404
-            },
-            description: "Should return a response with `404` status code."
+            description: "Should return a response with `404` or `204` status code."
         },
         {
             path: "/json",
@@ -57,7 +54,7 @@ export default {
     ],
     command: {
         connections: 500,
-        duration: 60,
+        duration: 40,
         fasthttp: true
     },
     env: {

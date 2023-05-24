@@ -4,6 +4,10 @@ import data, { rootDir } from "./config";
 import { Info } from "./lib/types";
 import { run, parseDefaultArgs, sortResults, find, validate } from "./lib/utils";
 
+// Benchmark CLI
+data.cli ||= "bombardier";
+const tool = rootDir + "/bin/" + data.cli;
+
 // Destination file
 const desFile = `${rootDir}/results/index.md`;
 
@@ -73,7 +77,7 @@ function cleanup(server: Bun.Subprocess) {
 
     // Run commands
     const commands = urls.map(v => {
-        const arr = ["bombardier", ...defaultArgs, "http://localhost:3000" + v[0], "--method", v[1]];
+        const arr = [tool, ...defaultArgs, "http://localhost:3000" + v[0], "--method", v[1]];
         if (v[2])
             arr.push("--body-file", v[2]);
         if (v[3])

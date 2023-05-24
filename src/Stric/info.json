@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "@stricjs/router": "^2.0.6-beta.1"
+        "@stricjs/router": "^2.0.6-beta.5"
     },
     "version": "2.0.6"
 }

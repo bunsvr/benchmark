@@ -8,8 +8,6 @@ Tested on Github Codespace. I recommend testing this by yourself.
 ## Requirements
 - [Bun](https://bun.sh)
 - [Node](https://nodejs.org)
-- [Go](https://go.dev/dl)
-- [Bombardier](https://github.com/codesenberg/bombardier)
 
 ## Start
 Clone this reposity. Go to the root directory of the repo then run:

@@ -98,6 +98,10 @@ export interface Config {
      * Explicitly set the package manager for installations
      */
     pkg?: "npm" | "yarn" | "pnpm" | "bun";
+    /**
+     * The tool to test the benchmark. Defaults to `bombardier`
+     */
+    cli?: string;
 }
 /**
  * Framework info

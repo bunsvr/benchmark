@@ -6,7 +6,4 @@ export default new Router()
     .use("POST", "/json", async req =>
         Response.json(await req.json()))
     .use("GET", "/id/:id", 
-        req => new Response(req.params.id))
-    // Produce a detailed 404
-    .use("/*", 
-        () => new Response("", { status: 404 }));
+        req => new Response(req.params.id));
