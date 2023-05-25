@@ -54,7 +54,7 @@ export default {
     ],
     command: {
         connections: 500,
-        duration: 40,
+        duration: 10,
         fasthttp: true
     },
     env: {
