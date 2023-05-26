@@ -1,6 +1,6 @@
 Bun: 0.6.3
 
-Tested at: 22:50, May 25th, 2023
+Tested at: 22:08, May 26th, 2023
 
 ## OS Details
 - Cores: 4
@@ -18,13 +18,13 @@ Should return a response with `404` or `204` status code.
 ### POST `/json`
 Return the request body with `Content-Type` set to `application/json`.
 ### Info
-- Connections: 500
-- Duration: 10
+- Connections: 100
+- Duration: 60
 - Using `fasthttp`: `true`
 
 ## Results
 | Name | Average | GET `/` | GET `/id/90` | GET `/a/b` | POST `/json` |
 | --- | --- | --- | --- | --- | --- | 
-| Stric 2.0.6 | 30802.85 | 34410.75 | 29636.51 | 35492.03 | 23672.12 |
-| Elysia 0.5.3 | 27937.21 | 30915.54 | 28884.47 | 29171.48 | 22777.33 |
-| Hono 3.2.1 | 23638.99 | 28131.81 | 24911.14 | 21306.66 | 20206.33 |
+| Stric 2.0.6 | 31715.76 | 34992.34 | 29263.45 | 35435.84 | 27171.40 |
+| Elysia 0.5.3 | 29437.53 | 33900.27 | 28430.55 | 29030.51 | 26388.78 |
+| Hono 3.2.1 | 23552.32 | 28992.14 | 22783.99 | 19705.54 | 22727.61 |

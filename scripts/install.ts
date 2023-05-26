@@ -8,7 +8,7 @@ const rootDir = process.env.ROOT || import.meta.dir.slice(0, -8);
 
 const frameworks = await readdir(`${rootDir}/src`).then(
     frmks => Promise.all(frmks
-        .map(frmk => `${rootDir}/src/${frmk}/info.json`)
+        .map(frmk => `${rootDir}/src/${frmk}/package.json`)
         .map(frmk => find(frmk).then(v => v.dependencies))
     )
 );

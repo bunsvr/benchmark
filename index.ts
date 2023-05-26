@@ -89,7 +89,7 @@ function cleanup(server: Bun.Subprocess) {
         Bun.gc(true);
 
         const desDir = `${rootDir}/src/${frameworks[i]}`;
-        const info = await find(desDir + "/info.json") as Info;
+        const info = await find(desDir + "/package.json") as Info;
 
         if (info.version)
             frameworks[i] += " " + info.version;
