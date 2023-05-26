@@ -5,8 +5,7 @@ import { Info } from "./lib/types";
 import { run, parseDefaultArgs, sortResults, find, validate } from "./lib/utils";
 
 // Benchmark CLI
-data.cli ||= "bombardier";
-const tool = rootDir + "/bin/" + data.cli;
+const tool = data.cli ||= "bombardier";
 
 // Destination file
 const desFile = `${rootDir}/results/index.md`;
