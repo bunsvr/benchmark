@@ -56,8 +56,8 @@ export default {
         { file: "detail.ts" }
     ],
     command: {
-        connections: 100,
-        duration: 60,
+        connections: 500,
+        duration: 30,
         fasthttp: true
     },
     env: {
