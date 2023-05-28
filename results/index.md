@@ -1,6 +1,6 @@
 Bun: 0.6.3
 
-Tested at: 22:08, May 26th, 2023
+Tested at: 23:11, May 27th, 2023
 
 ## OS Details
 - Cores: 4
@@ -14,7 +14,7 @@ Should return `Hi` as a response.
 ### GET `/id/90`
 Should return the `id` parameter value.
 ### GET `/a/b`
-Should return a response with `404` or `204` status code.
+Should return a response with `404` status code.
 ### POST `/json`
 Return the request body with `Content-Type` set to `application/json`.
 ### Info
@@ -25,6 +25,6 @@ Return the request body with `Content-Type` set to `application/json`.
 ## Results
 | Name | Average | GET `/` | GET `/id/90` | GET `/a/b` | POST `/json` |
 | --- | --- | --- | --- | --- | --- | 
-| Stric 2.0.6 | 31715.76 | 34992.34 | 29263.45 | 35435.84 | 27171.40 |
-| Elysia 0.5.3 | 29437.53 | 33900.27 | 28430.55 | 29030.51 | 26388.78 |
-| Hono 3.2.1 | 23552.32 | 28992.14 | 22783.99 | 19705.54 | 22727.61 |
+| Stric 2.1.0 | 28439.82 | 33745.66 | 28227.12 | 30306.23 | 21480.27 |
+| Elysia 0.5.8 | 27225.98 | 32690.27 | 27857.14 | 27929.67 | 20426.83 |
+| Hono 3.2.1 | 21521.35 | 27680.42 | 21530.88 | 17914.20 | 18959.89 |

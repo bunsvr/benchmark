@@ -23,7 +23,10 @@ export default {
         },
         {
             path: "/a/b",
-            description: "Should return a response with `404` or `204` status code."
+            expect: {
+                statusCode: 404
+            },
+            description: "Should return a response with `404` status code."
         },
         {
             path: "/json",

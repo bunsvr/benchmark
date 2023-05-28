@@ -1,9 +1,13 @@
 import { Router } from "@stricjs/router";
 
+const opts = {
+    headers: { "Content-Type": "application/json" }
+};
+
 export default new Router() 
-    .use("GET", "/", 
-        () => new Response("Hi"))
-    .use("POST", "/json", async req =>
-        Response.json(await req.json()))
-    .use("GET", "/id/:id", 
-        req => new Response(req.params.id));
+    .get("/", () => new Response("Hi"))
+    .post("/json", async req => new Response(
+        JSON.stringify(await req.json()), opts
+    ))
+    .get("/id/:id", req => new Response(req.params.id))
+    .use(404);
