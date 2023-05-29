@@ -5,7 +5,7 @@ import { Config } from "lib/types";
 export const rootDir = import.meta.dir;
 
 export default {
-    boot: 5000,
+    boot: 1000,
     tests: [
         {
             path: "/",

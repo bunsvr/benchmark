@@ -1,7 +1,7 @@
 import { Router } from "@stricjs/router";
 
 const opts = {
-    headers: { "Content-Type": "application/json" }
+    headers: { 'content-type': 'application/json' }
 };
 
 export default new Router() 
