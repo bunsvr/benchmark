@@ -1,5 +1,6 @@
 # Main build
 FROM oven/bun
+WORKDIR /app
 COPY . .    
 
 # Install required dependencies
