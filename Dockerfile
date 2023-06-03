@@ -1,32 +1,23 @@
 # Bombardier
-FROM alpine
+FROM golang as go
 
-ARG VERSION
-ENV UPSTREAM github.com/codesenberg/bombardier
-
-ENV GOROOT /usr/lib/go
-ENV GOPATH /gopath
-ENV GOBIN /gopath/bin
+ENV GOROOT .
+ENV GOPATH /go
+ENV GOBIN /go/bin
 ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin
 
-# Install dependencies for building httpdiff 
-RUN apk --no-cache update && apk --no-cache upgrade && \
- apk --no-cache add ca-certificates && \
- apk --no-cache add --virtual build-dependencies curl git go musl-dev && \
- # Install bombardier client
- echo "Starting installing bombardier $VERSION." && \
- go get -d $UPSTREAM && \
- cd $GOPATH/src/$UPSTREAM/ && git checkout $VERSION && \
- go install $UPSTREAM && \
- apk del build-dependencies
+RUN go clean -modcache
+RUN go install -mod=mod github.com/codesenberg/bombardier@latest
 
 # Main build
 FROM oven/bun
 WORKDIR /app
-COPY . .    
 
-# Add bombardier
-COPY --from=go /usr/lib/go/bin/bombardier ./bin/bombardier
+# Add bombardier binary
+COPY --from=go ./bin/bombardier ./bin/bombardier
+
+# Copy all other stuff
+COPY . .    
 
 # Debug
 RUN bombardier --help
