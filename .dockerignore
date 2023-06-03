@@ -3,6 +3,7 @@
 README.md
 results/index.md
 results/watch.ts
+bin
 
 # Dependencies
 node_modules

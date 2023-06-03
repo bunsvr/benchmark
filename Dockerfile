@@ -1,3 +1,10 @@
+# Copy bombardier
+FROM alpine/bombardier
+COPY /usr/local/go/bin/bombardier ./bin/bombardier
+
+# Debug
+RUN bombardier --help
+
 # Main build
 FROM oven/bun
 WORKDIR /app
