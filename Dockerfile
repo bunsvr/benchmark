@@ -1,26 +1,21 @@
 # Bombardier
-FROM golang as go
-
-ENV GOROOT .
-ENV GOPATH /go
-ENV GOBIN /go/bin
-ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin
-
-RUN go clean -modcache
-RUN go install -mod=mod github.com/codesenberg/bombardier@latest
+FROM alpine/bombardier AS bombardier
+RUN ls /gopath/bin
 
 # Main build
 FROM oven/bun
 WORKDIR /app
 
 # Add bombardier binary
-COPY --from=go ./bin/bombardier ./bin/bombardier
+RUN mkdir ./bin
+COPY --from=bombardier /gopath/bin ./bin
 
 # Copy all other stuff
 COPY . .    
 
 # Debug
-RUN bombardier --help
+RUN ls ./bin
+RUN ./bin/bombardier --help
 
 # Install required dependencies
 RUN bun ins
