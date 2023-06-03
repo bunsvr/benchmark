@@ -7,8 +7,7 @@ Tested on Github Codespace. I recommend testing this by yourself.
 
 ## Requirements
 - [Bun](https://bun.sh)
-- [Node](https://nodejs.org)
-- Bombardier
+- Bombardier (Copy the binary to `bin` or change the CLI option in the configuration [file](/config.ts)).
 
 ## Start
 Clone this reposity. Go to the root directory of the repo then run:
@@ -21,6 +20,20 @@ bun bench
 
 # Or do both
 bun start
+```
+
+# Docker
+Use with docker.
+
+```bash
+# Build
+bun docker:build
+
+# Start
+bun docker:start
+
+# Watch for results
+bun docker:watch
 ```
 
 ## Configurations

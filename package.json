@@ -9,11 +9,18 @@
     "dependencies": {
         "elysia": "^0.5.11",
         "hono": "^3.2.1",
-        "@stricjs/router": "2.1.6-alpha.4"
+        "@stricjs/router": "^2.1.6"
     },
     "scripts": {
         "bench": "bun index.ts",
         "ins": "bun scripts/install.ts",
-        "start": "bun scripts/install.ts && bun index.ts && cat results/index.md"
+        "start": "bun scripts/install.ts && bun index.ts && cat results/index.md",
+
+        "docker:build": "docker build -t benchmark .",
+        "docker:start": "docker run -d -p 3000:3000 benchmark",
+        "docker:watch": "bun results/watch.ts",
+
+        "docker:task": "bun bench && bun results/serve.ts",
+        "docker:all": "bun docker:build && bun docker:start && bun docker:watch"
     }
 }

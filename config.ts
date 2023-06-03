@@ -63,5 +63,5 @@ export default {
     env: {
         NODE_ENV: "production"
     },
-    pkg: "yarn"
+    cli: "./bin/bombardier"
 } as Config;

@@ -1,0 +1,10 @@
+# Not needed for benchmarking inside containers
+.gitignore
+README.md
+results/index.md
+results/watch.ts
+
+# Dependencies
+node_modules
+yarn.lock
+package-lock.json

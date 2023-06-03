@@ -62,7 +62,6 @@ const failedFramework: string[] = [];
 function cleanup(server: Bun.Subprocess) {
     // Clean up
     server.kill();
-    Bun.spawnSync(["fuser", "-k", "3000/tcp"]);
     // @ts-ignore
     Bun.sleepSync(data.boot);
 }

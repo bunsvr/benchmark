@@ -43,8 +43,9 @@ for (const test of config.tests)
 // Benchmark command info
 str += `### Info\n`;
 str += "- Connections: " + config.command.connections + "\n";
-str += "- Duration: " + config.command.duration + "\n"; 
+str += "- Duration: " + config.command.duration + " seconds\n"; 
 str += "- Using `fasthttp`: `" + !!config.command.fasthttp + "`\n";
+str += "- Results are measured in requests per second.\n";
 
 // Start benchmark
 str += "\n## Results\n";
