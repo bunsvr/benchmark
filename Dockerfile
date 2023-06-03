@@ -1,14 +1,19 @@
-# Copy bombardier
-FROM alpine/bombardier
-COPY /usr/local/go/bin/bombardier ./bin/bombardier
+# Bombardier
+FROM golang as go
 
-# Debug
-RUN bombardier --help
+FROM alpine/bombardier as bombardier
+COPY --from=go /usr/lib/go /usr/lib/go
 
 # Main build
 FROM oven/bun
 WORKDIR /app
 COPY . .    
+
+# Add bombardier
+COPY --from=bombardier /usr/lib/go/bin/bombardier ./bin/bombardier
+
+# Debug
+RUN bombardier --help
 
 # Install required dependencies
 RUN bun ins
