@@ -86,7 +86,7 @@ export interface Config {
      */
     command: {
         connections: number;
-        duration: number;
+        requests: number;
         fasthttp?: boolean;
     };
     /**
@@ -97,7 +97,7 @@ export interface Config {
     /**
      * Explicitly set the package manager for installations
      */
-    pkg?: "npm" | "yarn" | "pnpm" | "bun";
+    pkg?: 'npm' | 'yarn' | 'pnpm' | 'bun';
     /**
      * The tool to test the benchmark. Defaults to `bombardier`
      */
@@ -118,11 +118,11 @@ export interface Info {
     /**
      * Entry point
      */
-    entry: string;
+    main: string;
     /**
      * Runtime for the framework
      */
-    runtime: "bun" | "node" | "deno";
+    runtime: 'bun' | 'node' | 'deno';
     /**
      * The framework version
      */

@@ -1,4 +1,4 @@
-import { Router } from "@stricjs/router";
+import { Router } from '@stricjs/router';
 
 const opts = {
     headers: { 'content-type': 'application/json' }

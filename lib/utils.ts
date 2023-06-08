@@ -1,6 +1,6 @@
-import { existsSync } from "fs";
-import { readFile } from "fs/promises";
-import { Config, Test } from "./types";
+import { existsSync } from 'fs';
+import { readFile } from 'fs/promises';
+import { Config, Test } from './types';
 
 // Parse default args from config
 export function parseDefaultArgs(data: Config) {
@@ -8,11 +8,11 @@ export function parseDefaultArgs(data: Config) {
     const args: string[] = [];
 
     if (cmds.fasthttp)
-        args.push("--fasthttp");
+        args.push('--fasthttp');
     if (cmds.connections)
-        args.push("-c", String(cmds.connections));
-    if (cmds.duration)
-        args.push("-d", cmds.duration + "s");
+        args.push('-c', String(cmds.connections));
+    if (cmds.requests)
+        args.push('-n', String(cmds.requests));
 
     return args;
 };
@@ -22,7 +22,7 @@ export async function run(commands: [string, ...string[]][]) {
     const resArr = [];
 
     for (const command of commands) {
-        const out = Bun.spawnSync(command).stdout?.toString() || "-1";
+        const out = Bun.spawnSync(command).stdout?.toString() || '-1';
         const res = getReqSec(out);
 
         resArr.push(res);
@@ -51,8 +51,8 @@ export function sortResults(frameworks: string[], testsCnt: number, results: num
 
     return arr
         .sort((a, b) => b.average - a.average)
-        .map(val => `| ${val.name} | ${val.average.toFixed(2)} | ${val.results.map(v => v.toFixed(2)).join(" | ")} |`)
-        .join("\n");
+        .map(val => `| ${val.name} | ${val.average.toFixed(2)} | ${val.results.map(v => v.toFixed(2)).join(' | ')} |`)
+        .join('\n');
 }
 
 export async function find(absPath: string) {
@@ -78,7 +78,7 @@ async function testURL(url: string, test: Test) {
     const expect = test.expect;
     const res = await fetch(url, {
         method: test.method, 
-        body: test.bodyFile && await readFile(test.bodyFile, "utf8"),
+        body: test.bodyFile && await readFile(test.bodyFile, 'utf8'),
         headers: test.headers
     });
     
@@ -96,7 +96,7 @@ async function testURL(url: string, test: Test) {
             // @ts-ignore
             if (!expect.headers[header].includes(res.headers.get(header))) {
                 // @ts-ignore
-                console.log(`Expected header ${header}: ${expect.headers[header].join(", ")}`);
+                console.log(`Expected header ${header}: ${expect.headers[header].join(', ')}`);
                 console.log(`Instead got ${res.headers.get(header)}`);
                 return false;
             }
@@ -110,14 +110,14 @@ async function testURL(url: string, test: Test) {
 
 export async function validate(tests: Test[]) {
     for (const test of tests) {
-        test.method ||= "GET";
+        test.method ||= 'GET';
 
         // Skip testing if there are no expectations :)
         if (!test.expect)
             continue;
         test.expect.statusCode ||= 200;
 
-        if (!await testURL("http://localhost:3000" + test.path, test)) {
+        if (!await testURL('http://localhost:3000' + test.path, test)) {
             console.log(`Test ${test.method} ${test.path} failed!`);
             return false;
         } else 

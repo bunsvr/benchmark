@@ -1,7 +1,7 @@
-import Elysia from "elysia";
+import Elysia from 'elysia';
 
 new Elysia()
-    .get("/", () => "Hi")
+    .get('/', () => 'Hi')
     .get('/id/:id', (c) => c.params.id)
     .post('/json', (c) => c.body, {
         type: 'json'

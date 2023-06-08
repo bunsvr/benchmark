@@ -7,16 +7,12 @@
         "@types/node": "latest"
     },
     "dependencies": {
-        "elysia": "^0.5.11",
-        "hono": "^3.2.1",
-        "@stricjs/router": "^2.1.6"
+        "elysia": "^0.5.17",
+        "@stricjs/router": "^3.0.0"
     },
     "scripts": {
         "bench": "bun index.ts",
         "ins": "bun scripts/install.ts",
-        "start": "bun scripts/install.ts && bun index.ts && cat results/index.md",
-
-        "docker:build": "docker build -t bunsvr/benchmark . --progress=plain &> build.log",
-        "docker:task": "./bun ins && ./bun bench && ./bun results/serve.ts"
+        "start": "bun scripts/install.ts && bun index.ts && cat results/index.md"
     }
 }
