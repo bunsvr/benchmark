@@ -63,5 +63,5 @@ export default {
     env: {
         NODE_ENV: "production"
     },
-    cli: "./bin/bombardier"
+    cli: "./bombardier"
 } as Config;

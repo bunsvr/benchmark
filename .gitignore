@@ -1,7 +1,9 @@
 # Dependencies
 bun.lockb
 node_modules
-bin
+
+# Docker
+build.log
 
 # For someone who has a broken WSL that cannot install and dependencies with Bun in both /mnt and ~/Public
 yarn.lock

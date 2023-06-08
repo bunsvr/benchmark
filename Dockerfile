@@ -1,25 +1,33 @@
-# Bombardier
-FROM alpine/bombardier AS bombardier
-RUN ls /gopath/bin
-
-# Main build
-FROM oven/bun
+FROM debian:11.6-slim as builder
 WORKDIR /app
 
-# Add bombardier binary
-RUN mkdir ./bin
-COPY --from=bombardier /gopath/bin ./bin
+# Install Bun
+RUN apt update
+RUN apt install curl unzip -y
+RUN curl https://bun.sh/install | bash
 
-# Copy all other stuff
-COPY . .    
+# Install Go
+ENV VERSION="1.18.1"
+ENV ARCH="amd64" 
+RUN curl -O -L "https://go.dev/dl/go${VERSION}.linux-${ARCH}.tar.gz"
+RUN tar -xf "go${VERSION}.linux-${ARCH}.tar.gz"
+RUN chown -R root:root ./go
 
-# Debug
-RUN ls ./bin
-RUN ./bin/bombardier --help
+# Add Go binaries to PATH
+ENV PATH="/app/go/bin:${PATH}"
 
-# Install required dependencies
-RUN bun ins
+RUN go install -mod=mod github.com/codesenberg/bombardier@latest
 
-# Serve the results
+# Main
+FROM gcr.io/distroless/base
+WORKDIR /app
+
+COPY --from=builder /root/.bun/bin/bun bun
+COPY --from=builder /root/go/bin/bombardier bombardier
+
+COPY . .
+
+ENV NODE_ENV production
+CMD ["./bun", "docker:task"]
+
 EXPOSE 3000
-ENTRYPOINT ["bun", "docker:task"]

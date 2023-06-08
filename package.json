@@ -16,11 +16,7 @@
         "ins": "bun scripts/install.ts",
         "start": "bun scripts/install.ts && bun index.ts && cat results/index.md",
 
-        "docker:build": "docker build -t benchmark .",
-        "docker:start": "docker run -d -p 3000:3000 benchmark",
-        "docker:watch": "bun results/watch.ts",
-
-        "docker:task": "bun bench && bun results/serve.ts",
-        "docker:all": "bun docker:build && bun docker:start && bun docker:watch"
+        "docker:build": "docker build -t bunsvr/benchmark . --progress=plain &> build.log",
+        "docker:task": "./bun ins && ./bun bench && ./bun results/serve.ts"
     }
 }

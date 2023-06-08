@@ -1,11 +1,7 @@
-# Not needed for benchmarking inside containers
-.gitignore
-README.md
-results/index.md
-results/watch.ts
-bin
-
-# Dependencies
-node_modules
 yarn.lock
+bun.lockb
 package-lock.json
+node_modules
+
+README.md
+.gitignore
