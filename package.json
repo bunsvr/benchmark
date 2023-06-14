@@ -7,8 +7,8 @@
         "@types/node": "latest"
     },
     "dependencies": {
-        "elysia": "^0.5.17",
-        "@stricjs/router": "^3.0.0"
+        "elysia": "^0.5.18",
+        "@stricjs/router": "^3.0.5"
     },
     "scripts": {
         "bench": "bun index.ts",

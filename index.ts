@@ -95,7 +95,7 @@ function cleanup(server: Bun.Subprocess) {
 
         // Start the server command args
         const args = info.run || [info.runtime || 'bun', `${desDir}/${info.main || 'index.ts'}`];
-        console.log(args)
+        console.log(args.join(' '));
 
         // Boot up
         const server = Bun.spawn(args, {
