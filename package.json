@@ -1,0 +1,16 @@
+{
+    "name": "bench",
+    "module": "index.ts",
+    "type": "module",
+    "devDependencies": {
+        "bun-types": "latest",
+        "@types/node": "latest"
+    },
+    "scripts": {
+        "bench": "bun index.ts",
+        "ins": "bun scripts/install.ts",
+        "start": "bun scripts/install.ts && bun index.ts && cat results/index.md",
+        "test-bench": "bun scripts/install.ts && bun index.ts test"
+    },
+    "dependencies": {}
+}
