@@ -1,12 +1,10 @@
 import { IncomingMessage, ServerResponse, createServer } from 'http';
 
-createServer((req, res) => {
-    setImmediate(handle, req, res);
-}).listen(3000);
+createServer(handle).listen(3000);
 
 const jsonHeaders = { 'Content-Type': 'application/json' };
-
 const dynamicPath = '/id/', dynamicPathLen = dynamicPath.length;
+
 function handle(req: IncomingMessage, res: ServerResponse) {
     const { url, method } = req, 
         queryIndex = url!.indexOf('?', 1),
