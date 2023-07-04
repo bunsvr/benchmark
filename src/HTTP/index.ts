@@ -1,14 +1,16 @@
-require('http').createServer((req, res) => {
+import { IncomingMessage, ServerResponse, createServer } from 'http';
+
+createServer((req, res) => {
     setImmediate(handle, req, res);
 }).listen(3000);
 
 const jsonHeaders = { 'Content-Type': 'application/json' };
 
 const dynamicPath = '/id/', dynamicPathLen = dynamicPath.length;
-function handle(req, res) {
+function handle(req: IncomingMessage, res: ServerResponse) {
     const { url, method } = req, 
-        queryIndex = url.indexOf('?', 1),
-        path = queryIndex === -1 ? url : url.slice(0, queryIndex);
+        queryIndex = url!.indexOf('?', 1),
+        path = queryIndex === -1 ? url! : url!.slice(0, queryIndex);
 
     switch (path) {
         case '/': 
@@ -31,7 +33,7 @@ function handle(req, res) {
                 return res.end(
                    path.slice(dynamicPathLen) + ' ' + 
                    new URLSearchParams(
-                       url.slice(queryIndex + 1)
+                       url!.slice(queryIndex + 1)
                    ).get('name')
                 );
             break;
