@@ -1,9 +1,7 @@
 import { Router } from '@stricjs/router';
 import { query as parse } from '@stricjs/utils';
 
-const jsonHeaders = { headers: { 'Content-Type': 'application/json' } }, 
-    stringify = JSON.stringify,
-    toRes = (json: any) => new Response(stringify(json), jsonHeaders);
+const toRes = Response.json;
 
 export default new Router()
     .get('/', () => new Response('Hi'))
