@@ -7,9 +7,9 @@
         "@types/node": "latest"
     },
     "scripts": {
-        "bench": "bun index.ts",
+        "bench": "bun index.ts && cat results/index.md",
         "ins": "bun scripts/install.ts",
-        "start": "bun scripts/install.ts && bun index.ts && cat results/index.md",
+        "start": "bun ins && bun bench",
         "test-bench": "bun scripts/install.ts && bun index.ts test"
     },
     "dependencies": {}
