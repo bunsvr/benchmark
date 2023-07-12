@@ -3,7 +3,7 @@ import { query as parse } from '@stricjs/utils';
 
 const toRes = Response.json;
 
-const app = new Router()
+export default new Router({ base: 'http://localhost:3000' })
     .get('/', () => new Response('Hi'))
     .post('/json', req => req.json().then(toRes))
     .get('/id/:id', ({
@@ -14,6 +14,3 @@ const app = new Router()
         ).name
     ))
     .use(404);
-
-app.exactHost = 'http://localhost:3000';
-export default app;
