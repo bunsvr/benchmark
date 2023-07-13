@@ -1,4 +1,4 @@
-const notFoundOpts = { status: 404 }, idPathStart = '/id/', pathLen = idPathStart.length, res = Response.json;
+const notFoundOpts = { status: 404 }, idPathStart = '/id/', pathLen = '/id/'.length, res = Response.json;
 
 Bun.serve({
     fetch(req): Response | Promise<Response> {

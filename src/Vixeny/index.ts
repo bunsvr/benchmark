@@ -10,11 +10,10 @@ export default {
             },
             {
                 path: '/id/:id',
-                headers: { 'x-powered-by': 'benchmark' },
                 query: {
                     only: ['name']
                 },
-                f: ({ param: { id }, query: { name } }) => id + ' ' + name
+                f: req => req.param.id + ' ' + req.query.name
             },
             {
                 path: '/json',

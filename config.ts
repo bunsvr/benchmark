@@ -1,5 +1,6 @@
 import body from 'body.json';
 import { Config } from 'lib/types';
+import { randomString, randomNum } from 'lib/utils/config';
 
 /** Root directory of the benchmark (no trailing slash) */
 export const rootDir = import.meta.dir;
@@ -15,9 +16,9 @@ export default {
             description: 'Should return `Hi` as a response.'
         },
         {
-            path: '/id/90?name=bun',
+            path: `/id/${randomNum}?name=${randomString}`,
             expect: {
-                body: '90 bun'
+                body: `${randomNum} ${randomString}`
             },
             description: 'Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.' 
         },
@@ -57,7 +58,7 @@ export default {
     ],
     command: {
         connections: 5000,
-        requests: 1600000,
+        requests: 2000000,
         fasthttp: true,
         timeout: '10s'
     },
