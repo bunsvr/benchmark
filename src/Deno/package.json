@@ -1,3 +1,4 @@
 {
-    "runtime": "deno"
+    "runtime": "deno",
+    "version": "runtime"
 }

@@ -99,13 +99,33 @@ const inTestMode = process.argv[2] === 'test';
 
             const desDir = `${rootDir}/src/${frameworks[i]}`;
             const info = await find(desDir + '/package.json') as Info;
+            info.runtime ||= 'bun';
 
-            if (info.version)
+            if (info.version) {
+                if (info.version === 'runtime')
+                    switch (info.runtime) {
+                        case 'bun': 
+                            info.version = Bun.version; 
+                            break;
+                        case 'node': 
+                            info.version = Bun.spawnSync(
+                                ['node', '--version']
+                            ).stdout.toString()
+                                .substring(1)
+                                .replace('\n', '');
+                            break;
+                        case 'deno': 
+                            let versionMsg = Bun.spawnSync(
+                                ['deno', '--version']
+                            ).stdout.toString().substring(5);
+                            info.version = versionMsg.substring(0, versionMsg.indexOf(' '));
+                            break;
+                    }
                 frameworks[i] += ' ' + info.version;
+            }
 
             // Start the server command args
             info.main ||= 'index.ts';
-            info.runtime ||= 'bun';
             const args = info.run || (info.runtime === 'deno' 
                 ? ['deno', 'run', '--allow-net', '--unstable', info.main] 
                 : [info.runtime, `${desDir}/${info.main}`]

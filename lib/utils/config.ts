@@ -10,5 +10,5 @@ function randomID(length: number) {
     return result;
 }
 
-export const randomString = randomID(32);
-export const randomNum = Math.round(Math.random() * 10000000);
+export const randomString = randomID(10);
+export const randomNum = Math.round(Math.random() * 1000000);

@@ -2,25 +2,24 @@ const notFoundOpts = { status: 404 }, idPathStart = '/id/', pathLen = '/id/'.len
 
 Bun.serve({
     fetch(req): Response | Promise<Response> {
-        const { url, method } = req, 
-            pathIndex = url.indexOf('/', 12),
-            queryIndex = url.indexOf('?', pathIndex + 1),
+        const pathIndex = req.url.indexOf('/', 12),
+            queryIndex = req.url.indexOf('?', pathIndex + 1),
             path = queryIndex === -1 
-                ? url.substring(pathIndex)
-                : url.substring(pathIndex, queryIndex);
+                ? req.url.substring(pathIndex)
+                : req.url.substring(pathIndex, queryIndex);
 
         switch (path) {
             case '/':
-                if (method === 'GET') return new Response('Hi');
+                if (req.method === 'GET') return new Response('Hi');
                 break;
             case '/json':
-                if (method === 'POST') return req.json().then(res);
+                if (req.method === 'POST') return req.json().then(res);
                 break;
             default:
                 if (path.startsWith(idPathStart)) 
                     return new Response(
                         path.substring(pathLen) + ' ' + new URLSearchParams(
-                            url.substring(queryIndex + 1)
+                            req.url.substring(queryIndex + 1)
                         ).get('name')
                     );
                 break;
