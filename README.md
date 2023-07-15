@@ -1,15 +1,15 @@
 # Benchmark
-Benchmarking Bun and Node [frameworks](/src) requests per second.
+Benchmarking Bun, Node and Deno [frameworks](/src) performance, in requests per second.
 
 You can see the latest benchmark results [here](/results/index.md).
 
 Tested on Github Codespace. I recommend testing this by yourself.
 
 ## Requirements
-All requirements to set up and run the benchmark
+All tool required to set up and run the benchmark.
 
 ### Bun
-Benchmark scripts use Bun APIs. See [bun.sh](https://bun.sh).
+Bun is required to run the Bun server, Bun frameworks and benchmark scripts. See [bun.sh](https://bun.sh).
 
 ### Node
 Node is required to run the Node server. See [nodejs.dev](https://nodejs.dev).
@@ -30,7 +30,7 @@ bombardier --version
 You need to manually set `GO_PATH` to your extracted `go` directory, `GO_BIN` to `$GO_PATH/bin` and add `GO_BIN` to `PATH` if `bombardier --version` fails.
 
 ## Start
-Clone this reposity. Go to the root directory of the repo then run:
+Clone this reposity. Go to the root directory and run:
 ```bash
 # Install required dependencies
 bun ins
