@@ -1,9 +1,9 @@
 # Benchmark
 Benchmarking Bun, Node and Deno [frameworks](/src) performance, in requests per second.
 
-You can see the latest benchmark results [here](/results/index.md).
+You can see the latest benchmark results [here](/results/index.md). 
 
-Tested on Github Codespace. I recommend testing this by yourself.
+I recommend testing this by yourself as performance may varies on different machine.
 
 ## Requirements
 All tool required to set up and run the benchmark.
