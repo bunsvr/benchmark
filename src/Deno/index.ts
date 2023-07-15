@@ -4,31 +4,29 @@ function toResponse(json: any) {
     return new Response(JSON.stringify(json), jsonHeaders);
 }
 
-// @ts-nocheck
 const dynamicPath = '/id/', dynamicPathLen = dynamicPath.length;
+// @ts-ignore
 Deno.serve({ port: 3000 }, req => {
-    const url = req.url, 
-        pathIndex = url.indexOf('/', 12),
-        queryIndex = url.indexOf('?', pathIndex + 1),
+    const pathIndex = req.url.indexOf('/', 12),
+        queryIndex = req.url.indexOf('?', pathIndex + 1),
         path = queryIndex === -1 
-            ? url.substring(pathIndex)
-            : url.substring(pathIndex, queryIndex),
-        method = req.method;
+            ? req.url.substring(pathIndex)
+            : req.url.substring(pathIndex, queryIndex);
 
     switch (path) {
         case '/':
-            if (method === 'GET') 
+            if (req.method === 'GET') 
                 return new Response('Hi');
             break;
         case '/json':
-            if (method === 'POST')
+            if (req.method === 'POST')
                 return req.json().then(toResponse);
             break;
         default:
             if (path.startsWith(dynamicPath)) 
                 return new Response(
                     path.substring(dynamicPathLen) + ' ' + new URLSearchParams(
-                        url.substring(queryIndex + 1)
+                        req.url.substring(queryIndex + 1)
                     ).get('name')
                 );
             break;

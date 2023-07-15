@@ -1,22 +1,22 @@
+// @ts-check
 require('http').createServer((req, res) => {
     setImmediate(handle, req, res);
 }).listen(3000);
 
 const jsonHeaders = { 'Content-Type': 'application/json' };
-
 const dynamicPath = '/id/', dynamicPathLen = dynamicPath.length;
+
 function handle(req, res) {
-    const { url, method } = req, 
-        queryIndex = url.indexOf('?', 1),
-        path = queryIndex === -1 ? url : url.slice(0, queryIndex);
+    const queryIndex = req.url.indexOf('?', 1),
+        path = queryIndex === -1 ? req.url : req.url.slice(0, queryIndex);
 
     switch (path) {
         case '/': 
-            if (method === 'GET') 
+            if (req.method === 'GET') 
                 return res.end('Hi');
             break;
         case '/json':
-            if (method === 'POST') {
+            if (req.method === 'POST') {
                 let body = '';
                 req.on('data', d => { body += d; });
                 return req.on('end', () => 
@@ -31,7 +31,7 @@ function handle(req, res) {
                 return res.end(
                    path.slice(dynamicPathLen) + ' ' + 
                    new URLSearchParams(
-                       url.slice(queryIndex + 1)
+                       req.url.slice(queryIndex + 1)
                    ).get('name')
                 );
             break;
