@@ -1,6 +1,6 @@
-Bun: 0.6.14
+Bun: 0.7.0
 
-Tested at: 07:05, July 15th, 2023
+Tested at: 16:11, July 22nd, 2023
 
 ## OS Details
 - Cores: 8
@@ -11,7 +11,7 @@ Tested at: 07:05, July 15th, 2023
 ## Tests
 ### GET `/`
 Should return `Hi` as a response.
-### GET `/id/481518?name=TkYBtIcOeU`
+### GET `/id/82?name=Szp`
 Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.
 ### GET `/a/b`
 Should return a response with `404` status code.
@@ -24,12 +24,12 @@ Return the request body with `Content-Type` set to `application/json`.
 - Results are measured in requests per second.
 
 ## Results
-| Name | Average | GET `/` | GET `/id/661323?name=VwuASTahHv` | GET `/a/b` | POST `/json` |
+| Name | Average | GET `/` | GET `/id/50?name=KxT` | GET `/a/b` | POST `/json` |
 | --- | --- | --- | --- | --- | --- | 
-| Stric 3.2.7 | 56246.40 | 62561.82 | 52302.58 | 57721.60 | 52399.61 |
-| Vixeny 0.0.6 | 55459.42 | 61892.49 | 53839.14 | 55468.27 | 50637.76 |
-| Bun 0.6.14 | 55331.86 | 60983.89 | 49013.11 | 59497.44 | 51832.98 |
-| Elysia 0.5.20 | 53931.35 | 59131.92 | 51337.22 | 54082.52 | 51173.75 |
-| Hono 3.2.7 | 50975.07 | 56760.58 | 49389.90 | 48651.52 | 49098.26 |
-| Deno 1.35.1 | 30386.24 | 32336.72 | 29768.44 | 34575.18 | 24864.63 |
-| Node 20.0.0 | 26395.68 | 28128.48 | 26030.21 | 30771.79 | 20652.23 |
+| Stric 3.2.7 | 55617.28 | 60582.25 | 53655.09 | 55920.09 | 52311.70 |
+| Bun 0.7.0 | 55514.61 | 60914.71 | 50615.33 | 58905.32 | 51623.06 |
+| Vixeny 0.0.6 | 54765.57 | 60180.34 | 53283.58 | 55184.69 | 50413.67 |
+| Elysia 0.5.23 | 54457.56 | 59530.45 | 52114.08 | 54560.42 | 51625.27 |
+| Hono 3.3.2 | 50516.03 | 57430.90 | 48095.95 | 47791.28 | 48745.98 |
+| Deno 1.35.1 | 30400.58 | 32269.96 | 30230.26 | 34398.58 | 24703.50 |
+| Node 20.0.0 | 26786.02 | 28393.50 | 26936.55 | 30989.96 | 20824.06 |
