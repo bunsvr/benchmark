@@ -10,8 +10,8 @@ Deno.serve({ port: 3000 }, req => {
     const pathIndex = req.url.indexOf('/', 12),
         queryIndex = req.url.indexOf('?', pathIndex + 1),
         path = queryIndex === -1 
-            ? req.url.substring(pathIndex)
-            : req.url.substring(pathIndex, queryIndex);
+            ? req.url.slice(pathIndex)
+            : req.url.slice(pathIndex, queryIndex);
 
     switch (path) {
         case '/':
@@ -25,8 +25,8 @@ Deno.serve({ port: 3000 }, req => {
         default:
             if (path.startsWith(dynamicPath)) 
                 return new Response(
-                    path.substring(dynamicPathLen) + ' ' + new URLSearchParams(
-                        req.url.substring(queryIndex + 1)
+                    path.slice(dynamicPathLen) + ' ' + new URLSearchParams(
+                        req.url.slice(queryIndex + 1)
                     ).get('name')
                 );
             break;

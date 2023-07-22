@@ -12,7 +12,9 @@ const tool = data.cli ||= 'bombardier';
 const allResultsDir = `${rootDir}/results`;
 if (!existsSync(allResultsDir))
     mkdirSync(allResultsDir);
-const desFile = `${allResultsDir}/index.md`;
+const desFile = `${allResultsDir}/index.md`, 
+    readmeFile = `${rootDir}/README.md`, 
+    templateFile = `${rootDir}/README.template.md`;
 
 // Prepare file
 await Bun.write(desFile, `Bun: ${Bun.version}\n`);
@@ -190,16 +192,21 @@ if (inTestMode)
         console.log(`Frameworks that failed the test: ${failedFramework.join(', ')}.`);
         console.log('These frameworks will not be included in the result!');
         frameworks = frameworks.filter(v => !failedFramework.includes(v));
-    } else
-        console.log('All frameworks passed the boot-up test!');
+    } else console.log('All frameworks passed the boot-up test!');
+
     console.log('Sorting results...');
-    await appendFile(desFile,
-        // Prepare table headers
+
+    const resultTable = // Prepare table headers
         '| Name | Average | '
         + urls.map(v => `${v[1]} \`${v[0]}\``).join(' | ') + ' |\n| '
         // Split headers and results
         + '--- | '.repeat(urls.length + 2) + '\n'
         // All results
-        + sortResults(frameworks, urls.length, results)
+        + sortResults(frameworks, urls.length, results);
+
+    await appendFile(desFile, resultTable);
+    await Bun.write(readmeFile, 
+        await Bun.file(templateFile).text()
+        + '\n' + resultTable
     );
 }
