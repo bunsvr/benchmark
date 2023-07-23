@@ -1,7 +1,7 @@
 import { Router } from '@stricjs/router';
 import { qs } from '@stricjs/utils';
 
-const toRes = Response.json, parse = qs.createKey('name');
+const toRes = Response.json, parse = qs.trackKey('name');
 
 export default new Router({ base: 'http://localhost:3000' })
     .get('/', () => new Response('Hi'))
