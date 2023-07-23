@@ -1,6 +1,6 @@
 Bun: 0.7.0
 
-Tested at: 13:04, July 23rd, 2023
+Tested at: 14:41, July 23rd, 2023
 
 ## OS Details
 - Cores: 8
@@ -11,25 +11,25 @@ Tested at: 13:04, July 23rd, 2023
 ## Tests
 ### GET `/`
 Should return `Hi` as a response.
-### GET `/id/16?name=k5V`
+### GET `/id/32?name=HgR`
 Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.
 ### GET `/a/b`
 Should return a response with `404` status code.
 ### POST `/json`
 Return the request body with `Content-Type` set to `application/json`.
 ### Info
-- Connections: 5000
-- Requests: 2000000
+- Connections: 1500
+- Duration: 30s
 - Using `fasthttp`: `true`
 - Results are measured in requests per second.
 
 ## Results
-| Name | Average | GET `/` | GET `/id/10?name=zRK` | GET `/a/b` | POST `/json` |
+| Name | Average | GET `/` | GET `/id/4?name=B2o` | GET `/a/b` | POST `/json` |
 | --- | --- | --- | --- | --- | --- | 
-| Stric 3.2.7 | 55800.55 | 60298.94 | 54245.92 | 56995.42 | 51661.92 |
-| Bun 0.7.0 | 55765.90 | 61113.76 | 50898.36 | 59247.63 | 51803.85 |
-| Vixeny 0.0.6 | 55388.56 | 61263.27 | 53297.06 | 56093.40 | 50900.53 |
-| Elysia 0.5.23 | 54185.44 | 59007.80 | 51725.14 | 54744.65 | 51264.16 |
-| Hono 3.3.2 | 50742.52 | 56666.84 | 49192.60 | 47920.38 | 49190.26 |
-| Deno 1.35.1 | 30641.40 | 32621.77 | 30464.02 | 34757.41 | 24722.38 |
-| Node 20.0.0 | 26466.40 | 28158.58 | 26468.98 | 30725.41 | 20512.64 |
+| [Stric 3.2.7](./results/Stric 3.2.7) | 54820.68 | 58586.58 | 54164.24 | 55828.44 | 50703.44 |
+| [Bun 0.7.0](./results/Bun 0.7.0) | 54539.74 | 59058.86 | 51336.51 | 56912.38 | 50851.19 |
+| [Vixeny 0.0.6](./results/Vixeny 0.0.6) | 54357.48 | 59185.87 | 53983.98 | 55078.50 | 49181.56 |
+| [Elysia 0.5.23](./results/Elysia 0.5.23) | 53785.97 | 58375.59 | 53221.74 | 53759.92 | 49786.64 |
+| [Hono 3.3.2](./results/Hono 3.3.2) | 50300.88 | 56846.56 | 50921.01 | 48006.60 | 45429.35 |
+| [Deno 1.35.1](./results/Deno 1.35.1) | 30779.10 | 32877.46 | 30669.47 | 35711.95 | 23857.50 |
+| [Node 20.0.0](./results/Node 20.0.0) | 28158.26 | 29107.31 | 27897.12 | 33124.95 | 22503.67 |

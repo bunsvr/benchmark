@@ -46,3 +46,4 @@ bun start
 See [configuration file](/config.ts) and the [type declarations](/lib/types.ts). 
 
 ## Results
+Here are the results of the latest benchmark:
