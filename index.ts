@@ -3,7 +3,7 @@ import Bun from 'bun';
 import data, { rootDir } from './config';
 import { Info } from './lib/types';
 import { run, parseDefaultArgs, sortResults, find, validate } from './lib/utils';
-import { existsSync, mkdirSync } from 'fs';
+import { existsSync, mkdirSync, rmSync } from 'fs';
 
 // Benchmark CLI
 const tool = data.cli ||= 'bombardier';
@@ -14,10 +14,13 @@ if (!existsSync(allResultsDir))
     mkdirSync(allResultsDir);
 const desFile = `${allResultsDir}/index.md`, 
     readmeFile = `${rootDir}/README.md`, 
-    templateFile = `${rootDir}/README.template.md`;
+    templateFile = `${rootDir}/README.template.md`,
+    debugFile = `${rootDir}/debug.log`;
 
-// Prepare file
+// Prepare files
 await Bun.write(desFile, `Bun: ${Bun.version}\n`);
+if (existsSync(debugFile))
+    rmSync(debugFile);
 
 // Benchmark results
 const results: number[] = [];
@@ -170,7 +173,7 @@ const inTestMode = process.argv[2] === 'test';
             console.log(frameworks[i], 'Crashed!');
             failedFramework.push(frameworks[i]);
 
-            await appendFile(rootDir + '/debug.log', frameworks[i] + ':\n' + String(e) + '\n\n');
+            await appendFile(debugFile, frameworks[i] + ':\n' + String(e) + '\n\n');
         }
 }
 

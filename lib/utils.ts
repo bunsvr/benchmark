@@ -1,7 +1,6 @@
 import { existsSync } from 'fs';
 import { readFile } from 'fs/promises';
 import { Config, Test } from './types';
-import { format } from 'util';
 
 // Parse default args from config
 export function parseDefaultArgs(data: Config) {
@@ -22,6 +21,11 @@ export function parseDefaultArgs(data: Config) {
     return args;
 };
 
+function formatOutput(o: any) {
+    const str = Bun.inspect(o);
+    return str.substring(str.indexOf('Done!') + 6);
+}
+
 // Run benchmark
 export async function run(commands: [string, ...string[]][], desDir: string) {
     const resArr = [];
@@ -34,7 +38,7 @@ export async function run(commands: [string, ...string[]][], desDir: string) {
         resArr.push(res);
         console.log(out);
         
-        await Bun.write(desDir + '/' + i + '.txt', format(out));
+        await Bun.write(desDir + '/' + i + '.txt', formatOutput(out));
         ++i;
         // Run the garbage collector after every test
         Bun.gc(true);
