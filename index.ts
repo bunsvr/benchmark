@@ -203,7 +203,7 @@ if (inTestMode)
         '| Name | Average | '
         + urls.map(v => `${v[1]} \`${v[0]}\``).join(' | ') + ' |\n| '
         // Split headers and results
-        + '--- | '.repeat(urls.length + 2) + '\n'
+        + ' :---: |'.repeat(urls.length + 2) + '\n'
         // All results
         + sortResults(frameworks, urls.length, results);
 
