@@ -78,7 +78,7 @@ export function sortResults(frameworks: string[], testsCnt: number, results: num
             }) | ${val.average.toFixed(2)} | ${val.results.map(v => v.toFixed(2)).join(' | ')} |`)
             .join('\n'),
         compact: compact
-            .map(f => '- ' + frameworks[f.i] + ': ' + f.avg + ' req/sec\n')
+            .map(f => '- ' + frameworks[f.i] + ': ' + f.avg.toFixed(2) + ' req/sec\n')
             .join('')
             + '\nFastest is ' + fastestFramework.substring(0, fastestFramework.indexOf(' '))
     }

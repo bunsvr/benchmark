@@ -1,9 +1,9 @@
-- Stric 3.2.7: 56383.4775 req/sec
-- Bun 0.7.0: 56262.4625 req/sec
-- Vixeny 0.0.6: 55133.034999999996 req/sec
+- Stric 3.2.7: 56383.48 req/sec
+- Bun 0.7.0: 56262.46 req/sec
+- Vixeny 0.0.6: 55133.03 req/sec
 - Elysia 0.5.23: 54464.33 req/sec
-- Hono 3.3.2: 50466.2325 req/sec
-- Deno 1.35.1: 30510.312500000004 req/sec
-- Node 20.0.0: 26633.015000000003 req/sec
+- Hono 3.3.2: 50466.23 req/sec
+- Deno 1.35.1: 30510.31 req/sec
+- Node 20.0.0: 26633.02 req/sec
 
 Fastest is Stric
