@@ -1,0 +1,7 @@
+Hono 3.3.2: 50877.83 req/sec
+Vixeny 0.0.6: 55558.92 req/sec
+Stric 3.2.7: 55997.38 req/sec
+Deno 1.35.1: 30430.0825 req/sec
+Elysia 0.5.23: 54527.63 req/sec
+Node 20.0.0: 26510.9725 req/sec
+Bun 0.7.0: 55915.665 req/sec

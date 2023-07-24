@@ -54,20 +54,28 @@ function average(arr: number[]) {
 
 export function sortResults(frameworks: string[], testsCnt: number, results: number[]) {
     const arr = [];
+    let compact = '';
 
     for (let i = 0; i < frameworks.length; ++i) {
-        const allCategoryRes = results.slice(i * testsCnt, (i + 1) * testsCnt);
+        const allCategoryRes = results.slice(i * testsCnt, (i + 1) * testsCnt), 
+            avg = average(allCategoryRes);
         arr.push({
             name: frameworks[i],
             results: allCategoryRes,
-            average: average(allCategoryRes)
+            average: avg
         });
+        compact += frameworks[i] + ': ' + avg + ' req/sec\n';
     }
 
-    return arr
-        .sort((a, b) => b.average - a.average)
-        .map(val => `| [${val.name}](/results/${val.name.substring(0, val.name.indexOf(' '))}) | ${val.average.toFixed(2)} | ${val.results.map(v => v.toFixed(2)).join(' | ')} |`)
-        .join('\n');
+    return {
+        full: arr
+            .sort((a, b) => b.average - a.average)
+            .map(val => `| [${val.name}](/results/${
+                val.name.substring(0, val.name.indexOf(' '))
+            }) | ${val.average.toFixed(2)} | ${val.results.map(v => v.toFixed(2)).join(' | ')} |`)
+            .join('\n'),
+        compact
+    }
 }
 
 export async function find(absPath: string) {

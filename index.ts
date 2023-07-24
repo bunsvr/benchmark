@@ -13,6 +13,7 @@ const allResultsDir = `${rootDir}/results`;
 if (!existsSync(allResultsDir))
     mkdirSync(allResultsDir);
 const desFile = `${allResultsDir}/index.md`, 
+    compactResultFile = `${allResultsDir}/compact.txt`,
     readmeFile = `${rootDir}/README.md`, 
     templateFile = `${rootDir}/README.template.md`,
     debugFile = `${rootDir}/debug.log`;
@@ -199,17 +200,19 @@ if (inTestMode)
 
     console.log('Sorting results...');
 
-    const resultTable = // Prepare table headers
-        '| Name | Average | '
-        + urls.map(v => `${v[1]} \`${v[0]}\``).join(' | ') + ' |\n| '
-        // Split headers and results
-        + ' :---: |'.repeat(urls.length + 2) + '\n'
-        // All results
-        + sortResults(frameworks, urls.length, results);
+    const tableResultString = sortResults(frameworks, urls.length, results),
+        resultTable = // Prepare table headers
+            '| Name | Average | '
+            + urls.map(v => `${v[1]} \`${v[0]}\``).join(' | ') + ' |\n| '
+            // Split headers and results
+            + ' :---: |'.repeat(urls.length + 2) + '\n'
+            // All results
+            + tableResultString.full;
 
-    await appendFile(desFile, resultTable);
-    await Bun.write(readmeFile, 
+    appendFile(desFile, resultTable);
+    Bun.write(readmeFile, 
         await Bun.file(templateFile).text()
         + '\n' + resultTable
     );
+    Bun.write(compactResultFile, tableResultString.compact);
 }
