@@ -54,7 +54,7 @@ function average(arr: number[]) {
 
 export function sortResults(frameworks: string[], testsCnt: number, results: number[]) {
     const arr = [];
-    let compact = '';
+    let compact = [];
 
     for (let i = 0; i < frameworks.length; ++i) {
         const allCategoryRes = results.slice(i * testsCnt, (i + 1) * testsCnt), 
@@ -64,8 +64,11 @@ export function sortResults(frameworks: string[], testsCnt: number, results: num
             results: allCategoryRes,
             average: avg
         });
-        compact += frameworks[i] + ': ' + avg + ' req/sec\n';
+        compact[i] = { avg, i };
     }
+
+    compact = compact.sort((a, b) => b.avg - a.avg);
+    const fastestFramework = frameworks[compact[0].i];
 
     return {
         full: arr
@@ -74,7 +77,10 @@ export function sortResults(frameworks: string[], testsCnt: number, results: num
                 val.name.substring(0, val.name.indexOf(' '))
             }) | ${val.average.toFixed(2)} | ${val.results.map(v => v.toFixed(2)).join(' | ')} |`)
             .join('\n'),
-        compact
+        compact: compact
+            .map(f => '- ' + frameworks[f.i] + ': ' + f.avg + ' req/sec\n')
+            .join('')
+            + '\nFastest is ' + fastestFramework.substring(0, fastestFramework.indexOf(' '))
     }
 }
 
