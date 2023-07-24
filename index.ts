@@ -9,11 +9,11 @@ import { existsSync, mkdirSync, rmSync } from 'fs';
 const tool = data.cli ||= 'bombardier';
 
 // Destination file
-const allResultsDir = `${rootDir}/results`;
-if (!existsSync(allResultsDir))
-    mkdirSync(allResultsDir);
+const allResultsDir = `${rootDir}/results`, 
+    subResultDir = `${allResultsDir}/main`;
+
 const desFile = `${allResultsDir}/index.md`, 
-    compactResultFile = `${allResultsDir}/compact.txt`,
+    compactResultFile = `${allResultsDir}/compact/compact.txt`,
     readmeFile = `${rootDir}/README.md`, 
     templateFile = `${rootDir}/README.template.md`,
     debugFile = `${rootDir}/debug.log`;
@@ -97,7 +97,7 @@ const inTestMode = process.argv[2] === 'test';
 
     for (let i = 0; i < frameworks.length; ++i)
         try {
-            const resultDir = `${allResultsDir}/${frameworks[i]}`;
+            const resultDir = `${subResultDir}/${frameworks[i]}`;
             if (!existsSync(resultDir)) 
                 mkdirSync(resultDir);
 
