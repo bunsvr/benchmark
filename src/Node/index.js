@@ -1,4 +1,3 @@
-// @ts-check
 require('http').createServer((req, res) => {
     setImmediate(handle, req, res);
 }).listen(3000);
@@ -6,6 +5,10 @@ require('http').createServer((req, res) => {
 const jsonHeaders = { 'Content-Type': 'application/json' };
 const dynamicPath = '/id/', dynamicPathLen = dynamicPath.length;
 
+/**
+ * @param {import('http').IncomingMessage} req
+ * @param {import('http').ServerResponse} res 
+ */
 function handle(req, res) {
     const queryIndex = req.url.indexOf('?', 1),
         path = queryIndex === -1 ? req.url : req.url.slice(0, queryIndex);

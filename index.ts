@@ -7,6 +7,7 @@ import { existsSync, mkdirSync, rmSync } from 'fs';
 
 // Benchmark CLI
 const tool = data.cli ||= 'bombardier';
+const inTestMode = process.argv[2] === 'test';
 
 // Destination file
 const allResultsDir = `${rootDir}/results`, 
@@ -19,9 +20,10 @@ const desFile = `${allResultsDir}/index.md`,
     debugFile = `${rootDir}/debug.log`;
 
 // Prepare files
-await Bun.write(desFile, `Bun: ${Bun.version}\n`);
-if (existsSync(debugFile))
-    rmSync(debugFile);
+if (!inTestMode) { 
+    await Bun.write(desFile, `Bun: ${Bun.version}\n`);
+    if (existsSync(debugFile)) rmSync(debugFile);
+}
 
 // Benchmark results
 const results: number[] = [];
@@ -52,7 +54,7 @@ const urls = data.tests.map(v => {
 });
 
 // Run scripts
-for (const script of data.scripts) {
+if (!inTestMode) for (const script of data.scripts) {
     const args = [
         script.type || 'bun',
         `${rootDir}/scripts/${script.file}`
@@ -76,7 +78,6 @@ function cleanup(server: Bun.Subprocess) {
     Bun.sleepSync(data.boot);
 }
 
-const inTestMode = process.argv[2] === 'test';
 // Run benchmark
 {
     data.boot ||= 5000;
@@ -178,6 +179,9 @@ const inTestMode = process.argv[2] === 'test';
         }
 }
 
+if (inTestMode)
+    process.exit(0);
+
 // Remove package.json dependencies field
 {
     const pkgPath = rootDir + '/package.json',
@@ -186,9 +190,6 @@ const inTestMode = process.argv[2] === 'test';
     pkg.dependencies = {};
     Bun.write(pkgPath, JSON.stringify(pkg, null, 4));
 }
-
-if (inTestMode)
-    process.exit(0);
 
 // Sort results
 {
