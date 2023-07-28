@@ -1,5 +1,7 @@
 import fun from 'vixeny/fun';
 
+const { stringify } = JSON;
+
 export default {
     fetch: fun({ hasName: 'http://localhost:3000/' })(
         [
@@ -19,7 +21,7 @@ export default {
                 path: '/json',
                 method: 'POST',
                 headers: '.json',
-                f: async ({ req }) => JSON.stringify(await req.json())
+                f: async ctx => stringify(await ctx.req.json())
             }
         ]
     )
