@@ -9,6 +9,6 @@ export default new Router({
     .get('/', macro(() => new Response('Hi')))
     .post('/json', req => req.json().then(toRes))
     .get('/id/:id', req => new Response(
-        req.params.id + ' ' + parse(req.url, req.query + 1)
+        req.params.id + ' ' + parse(req)
     ))
     .use(404);
