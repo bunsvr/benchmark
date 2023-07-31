@@ -58,8 +58,8 @@ export default {
         { file: 'detail.ts' }
     ],
     command: {
-        connections: 5000,
-        requests: 2000000,
+        connections: 500,
+        duration: '25s',
         fasthttp: true,
         timeout: '10s'
     },

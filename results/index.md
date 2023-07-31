@@ -1,6 +1,6 @@
 Bun: 0.7.1
 
-Tested at: 20:37, July 30th, 2023
+Tested at: 09:58, July 31st, 2023
 
 ## OS Details
 - Cores: 8
@@ -11,25 +11,25 @@ Tested at: 20:37, July 30th, 2023
 ## Tests
 ### GET `/`
 Should return `Hi` as a response.
-### GET `/id/99?name=Ytp`
+### GET `/id/57?name=GWg`
 Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.
 ### GET `/a/b`
 Should return a response with `404` status code.
 ### POST `/json`
 Return the request body with `Content-Type` set to `application/json`.
 ### Info
-- Connections: 5000
-- Requests: 2000000
+- Connections: 500
+- Duration: 25s
 - Using `fasthttp`: `true`
 - Results are measured in requests per second.
 
 ## Results
-| Name | Average | GET `/` | GET `/id/57?name=ChD` | GET `/a/b` | POST `/json` |
+| Name | Average | GET `/` | GET `/id/2?name=Lfc` | GET `/a/b` | POST `/json` |
 |  :---: | :---: | :---: | :---: | :---: | :---: |
-| [Bun 0.7.1](/results/Bun) | 55375.79 | 61017.06 | 49767.45 | 59607.47 | 51111.19 |
-| [Stric 3.3.4](/results/Stric) | 55008.06 | 60638.58 | 52975.46 | 55467.36 | 50950.83 |
-| [Elysia 0.5.23](/results/Elysia) | 53789.23 | 58365.22 | 51816.66 | 54552.72 | 50422.33 |
-| [Vixeny 0.0.6](/results/Vixeny) | 53546.00 | 58265.11 | 52710.46 | 54208.91 | 48999.52 |
-| [Hono 3.3.2](/results/Hono) | 49829.79 | 55753.80 | 48184.61 | 47397.21 | 47983.54 |
-| [Deno 1.35.3](/results/Deno) | 30147.11 | 32008.16 | 30072.98 | 33814.10 | 24693.20 |
-| [Node 20.0.0](/results/Node) | 26764.61 | 28123.50 | 26822.10 | 31267.52 | 20845.32 |
+| [Stric 3.3.4](/results/Stric) | 52533.42 | 57185.92 | 52488.94 | 53207.62 | 47251.21 |
+| [Bun 0.7.1](/results/Bun) | 52287.53 | 56201.91 | 51314.27 | 55031.21 | 46602.75 |
+| [Vixeny 0.0.6](/results/Vixeny) | 51509.89 | 56683.99 | 51696.39 | 52913.81 | 44745.35 |
+| [Elysia 0.5.25](/results/Elysia) | 51457.01 | 55470.10 | 51700.32 | 53050.38 | 45607.24 |
+| [Hono 3.3.2](/results/Hono) | 47937.31 | 55074.66 | 48757.69 | 45348.51 | 42568.38 |
+| [Deno 1.35.3](/results/Deno) | 34576.44 | 36677.68 | 34591.03 | 39710.25 | 27326.81 |
+| [Node 20.0.0](/results/Node) | 28531.75 | 30523.95 | 28954.78 | 33019.63 | 21628.65 |
