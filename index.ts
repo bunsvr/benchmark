@@ -131,6 +131,15 @@ function cleanup(server: Bun.Subprocess) {
                 frameworks[i] += ' ' + info.version;
             }
 
+            const spawnOpts = {
+                cwd: desDir,
+                stdout: 'inherit',
+                env: data.env 
+            } as any;
+        
+            // Build if a build script exists 
+            if (info.build) Bun.spawnSync(info.build, spawnOpts);
+
             // Start the server command args
             info.main ||= 'index.ts';
             const args = info.run || (info.runtime === 'deno' 
@@ -140,11 +149,7 @@ function cleanup(server: Bun.Subprocess) {
             console.log(args.join(' '));
 
             // Boot up
-            const server = Bun.spawn(args, {
-                cwd: desDir,
-                stdout: 'inherit',
-                env: data.env
-            });
+            const server = Bun.spawn(args, spawnOpts);
             console.log('Booting', frameworks[i] + '...');
             Bun.sleepSync(data.boot);
 

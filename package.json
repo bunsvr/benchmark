@@ -10,7 +10,7 @@
         "bench": "bun index.ts && cat results/index.md",
         "ins": "bun scripts/install.ts",
         "start": "bun ins && bun bench",
-        "test-bench": "bun scripts/install.ts && bun index.ts test"
+        "test-bench": "bun index.ts test"
     },
     "dependencies": {}
 }

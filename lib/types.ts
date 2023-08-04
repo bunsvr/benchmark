@@ -118,6 +118,10 @@ export interface Info {
      */
     run: [string, ...string[]];
     /**
+     * A build script
+     */
+    build: [string, ...string[]];
+    /**
      * Entry point
      */
     main: string;
