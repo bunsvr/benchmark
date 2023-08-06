@@ -1,6 +1,7 @@
 const app = require("fastify")()
     .get("/", () => "Hi")
-    .post("/json", {
+    .get("/api/hi", () => "Welcome")
+    .post("/api/json", {
         schema: {
             response: {
                 200: {

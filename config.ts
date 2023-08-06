@@ -17,6 +17,13 @@ export default {
             description: 'Should return `Hi` as a response.'
         },
         {
+            path: '/api/hi',
+            expect: {
+                body: 'Welcome'
+            },
+            description: 'Should return `Welcome` as a response.'
+        },
+        {
             path: `/id/${randomNum}?name=${randomString}`,
             expect: {
                 body: `${randomNum} ${randomString}`
@@ -31,7 +38,7 @@ export default {
             description: 'Should return a response with `404` status code.'
         },
         {
-            path: '/json',
+            path: '/api/json',
             method: 'POST',
             bodyFile: `${rootDir}/assets/body.json`,
             headers: {

@@ -12,7 +12,10 @@ Bun.serve({
             case '':
                 if (req.method === 'GET') return new Response('Hi');
                 break;
-            case 'json':
+            case 'api/hi': 
+                if (req.method === 'GET') return new Response('Welcome');
+                break;
+            case 'api/json':
                 if (req.method === 'POST') return req.json().then(res);
                 break;
             default:

@@ -11,6 +11,11 @@ export default {
                 r: () => new Response('Hi')
             },
             {
+                path: '/api/hi',
+                type: 'response',
+                r: () => new Response('Welcome')
+            },
+            {
                 path: '/id/:id',
                 query: {
                     only: ['name']
@@ -18,7 +23,7 @@ export default {
                 f: req => req.param.id + ' ' + req.query.name
             },
             {
-                path: '/json',
+                path: '/api/json',
                 method: 'POST',
                 headers: '.json',
                 f: async ctx => stringify(await ctx.req.json())
