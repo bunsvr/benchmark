@@ -3,7 +3,7 @@ import { qs } from '@stricjs/utils';
 
 const toRes = Response.json, parse = qs.searchKey('name');
 
-const app = new Router({ base: 'http://localhost:3000' })
+const app = new Router({ base: 'http://localhost:3000', parsePath: false })
     .get('/', macro('Hi'))
     .get('/api/hi', macro('Welcome'))
     .post('/api/json', req => req.json().then(toRes))
