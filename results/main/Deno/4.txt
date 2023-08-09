@@ -1,7 +1,7 @@
 Statistics        Avg      Stdev        Max
-  Reqs/sec     39126.84    1878.20   51292.87
-  Latency       12.79ms     1.60ms   122.30ms
+  Reqs/sec     35357.18    2109.44   59142.93
+  Latency       42.42ms    20.94ms      1.44s
   HTTP codes:
-    1xx - 0, 2xx - 0, 3xx - 0, 4xx - 975641, 5xx - 0
+    1xx - 0, 2xx - 0, 3xx - 0, 4xx - 1058470, 5xx - 0
     others - 0
-  Throughput:     5.47MB/s
+  Throughput:     4.94MB/s
