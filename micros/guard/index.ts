@@ -1,6 +1,7 @@
 import { run, bench, group } from 'mitata';
 import { guard } from '@stricjs/utils';
 import { Type } from '@sinclair/typebox';
+import { TypeCompiler } from '@sinclair/typebox/compiler';
 import { Value } from '@sinclair/typebox/value';
 
 group('Nested', () => {
@@ -26,7 +27,7 @@ group('Nested', () => {
                 weight: Type.Number()
             })
         })
-    });
+    }), compiled = TypeCompiler.Compile(typebox);
 
     const o = { 
         name: 'John', age: 50, 
@@ -39,6 +40,10 @@ group('Nested', () => {
             }
         } 
     };
+
+    bench('Typebox compiled', () => {
+        compiled.Check(o);   
+    })
 
     bench('Typebox', () => {
         Value.Check(typebox, o);
