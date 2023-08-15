@@ -32,7 +32,7 @@ group('Nested', () => {
     // Test object
     const o = { 
         name: 'John', age: 50, 
-        hobbies: {
+        hobby: {
             name: 'badminton',
             since: 15,
             more: {
