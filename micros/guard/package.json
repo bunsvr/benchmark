@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@sinclair/typebox": "^0.31.1",
-    "@stricjs/utils": "^1.3.9",
+    "@stricjs/utils": "^1.4.0",
     "mitata": "^0.1.6"
   }
 }
