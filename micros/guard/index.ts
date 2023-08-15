@@ -2,7 +2,10 @@ import { run, bench, group } from 'mitata';
 import { guard } from '@stricjs/utils';
 import { Type } from '@sinclair/typebox';
 import { TypeCompiler } from '@sinclair/typebox/compiler';
-import { Value } from '@sinclair/typebox/value';
+import { TypeSystemPolicy } from '@sinclair/typebox/system'
+
+TypeSystemPolicy.AllowArrayObject = true
+TypeSystemPolicy.AllowNaN = true
 
 group('Nested', () => {
     const stric = guard.create({
@@ -42,21 +45,18 @@ group('Nested', () => {
         } 
     };
 
-    // Try to get the JIT to run
-    Bun.sleepSync(9000);
-
     // All tests here
     bench('Typebox compiled', () => {
         compiled.Check(o);   
-    })
-
-    bench('Typebox', () => {
-        Value.Check(typebox, o);
     });
 
     bench('Stric guard', () => {
         stric(o);
-    }); 
+    });
 });
+
+console.log('Waiting for the JIT to optimize');
+// Try to get the JIT to run
+Bun.sleepSync(9000);
 
 run();
