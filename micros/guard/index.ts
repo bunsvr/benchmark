@@ -29,6 +29,7 @@ group('Nested', () => {
         })
     }), compiled = TypeCompiler.Compile(typebox);
 
+    // Test object
     const o = { 
         name: 'John', age: 50, 
         hobbies: {
@@ -41,6 +42,10 @@ group('Nested', () => {
         } 
     };
 
+    // Try to get the JIT to run
+    Bun.sleepSync(9000);
+
+    // All tests here
     bench('Typebox compiled', () => {
         compiled.Check(o);   
     })
