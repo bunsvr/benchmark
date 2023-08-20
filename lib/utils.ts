@@ -75,7 +75,7 @@ export function sortResults(frameworks: string[], testsCnt: number, results: num
         json: arr,
         full: arr
             .sort((a, b) => b.average - a.average)
-            .map(val => `| [${val.name}](/results/${val.name.substring(0, val.name.indexOf(' '))
+            .map(val => `| [${val.name}](/results/main/${val.name.substring(0, val.name.indexOf(' '))
                 }) | ${val.average.toFixed(2)} | ${val.results.map(v => v.toFixed(2)).join(' | ')} |`)
             .join('\n'),
         compact: compact
