@@ -4,13 +4,18 @@
     "type": "module",
     "devDependencies": {
         "bun-types": "latest",
-        "@types/node": "latest"
+        "@types/node": "latest",
+        "quickchart-js": "latest"
     },
     "scripts": {
         "bench": "bun index.ts && cat results/index.md",
         "ins": "bun scripts/install.ts",
-        "start": "bun ins && bun bench",
-        "test-bench": "bun index.ts test"
+        "start": "bun ins && bun bench && bun chart",
+        "test-bench": "bun index.ts test",
+        "chart": "bun scripts/chart.ts"
     },
+    "trustedDependencies": [
+        "chartjs-node-canvas"
+    ],
     "dependencies": {}
 }

@@ -37,7 +37,7 @@ export async function run(commands: [string, ...string[]][], desDir: string) {
 
         resArr.push(res);
         console.log(out);
-        
+
         await Bun.write(desDir + '/' + i + '.txt', formatOutput(out));
         ++i;
         // Run the garbage collector after every test
@@ -53,11 +53,10 @@ function average(arr: number[]) {
 };
 
 export function sortResults(frameworks: string[], testsCnt: number, results: number[]) {
-    const arr = [];
-    let compact = [];
+    let arr = [], compact = [];
 
     for (let i = 0; i < frameworks.length; ++i) {
-        const allCategoryRes = results.slice(i * testsCnt, (i + 1) * testsCnt), 
+        const allCategoryRes = results.slice(i * testsCnt, (i + 1) * testsCnt),
             avg = average(allCategoryRes);
         arr.push({
             name: frameworks[i],
@@ -70,18 +69,20 @@ export function sortResults(frameworks: string[], testsCnt: number, results: num
     compact = compact.sort((a, b) => b.avg - a.avg);
     const fastestFramework = frameworks[compact[0].i];
 
+    arr = arr.sort((a, b) => b.average - a.average);
+
     return {
+        json: arr,
         full: arr
             .sort((a, b) => b.average - a.average)
-            .map(val => `| [${val.name}](/results/${
-                val.name.substring(0, val.name.indexOf(' '))
-            }) | ${val.average.toFixed(2)} | ${val.results.map(v => v.toFixed(2)).join(' | ')} |`)
+            .map(val => `| [${val.name}](/results/${val.name.substring(0, val.name.indexOf(' '))
+                }) | ${val.average.toFixed(2)} | ${val.results.map(v => v.toFixed(2)).join(' | ')} |`)
             .join('\n'),
         compact: compact
             .map
-                (f => frameworks[f.i].substring(
-                    0, frameworks[f.i].lastIndexOf(' ')
-                ) + ' x ' + Math.round(f.avg) + ' req/sec\n'
+            (f => frameworks[f.i].substring(
+                0, frameworks[f.i].lastIndexOf(' ')
+            ) + ' x ' + Math.round(f.avg) + ' req/sec\n'
             ).join('')
             + '\nFastest is ' + fastestFramework.substring(0, fastestFramework.lastIndexOf(' ')) + '.'
     }
@@ -109,11 +110,11 @@ function getReqSec(v: string) {
 async function testURL(url: string, test: Test) {
     const expect = test.expect;
     const res = await fetch(url, {
-        method: test.method, 
+        method: test.method,
         body: test.bodyFile && await readFile(test.bodyFile, 'utf8'),
         headers: test.headers
     });
-    
+
     if (expect.body && await res.text() !== expect.body)
         return false;
 
@@ -152,7 +153,7 @@ export async function validate(tests: Test[]) {
         if (!await testURL('http://localhost:3000' + test.path, test)) {
             console.log(`Test ${test.method} ${test.path} failed!`);
             return false;
-        } else 
+        } else
             console.log(`Test ${test.method} ${test.path} passed!`);
     }
 

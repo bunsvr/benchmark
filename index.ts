@@ -4,23 +4,25 @@ import data, { rootDir } from './config';
 import { Info } from './lib/types';
 import { run, parseDefaultArgs, sortResults, find, validate } from './lib/utils';
 import { existsSync, mkdirSync, rmSync } from 'fs';
+import { render } from 'lib/utils/chart';
 
 // Benchmark CLI
 const tool = data.cli ||= 'bombardier';
 const inTestMode = process.argv[2] === 'test';
 
 // Destination file
-const allResultsDir = `${rootDir}/results`, 
+const allResultsDir = `${rootDir}/results`,
     subResultDir = `${allResultsDir}/main`;
 
-const desFile = `${allResultsDir}/index.md`, 
+const desFile = `${allResultsDir}/index.md`,
+    jsonResultFile = `${allResultsDir}/data.json`,
     compactResultFile = `${allResultsDir}/compact/compact.txt`,
-    readmeFile = `${rootDir}/README.md`, 
+    readmeFile = `${rootDir}/README.md`,
     templateFile = `${rootDir}/README.template.md`,
     debugFile = `${rootDir}/debug.log`;
 
 // Prepare files
-if (!inTestMode) { 
+if (!inTestMode) {
     await Bun.write(desFile, `Bun: ${Bun.version}\n`);
     if (existsSync(debugFile)) rmSync(debugFile);
 }
@@ -96,63 +98,57 @@ function cleanup(server: Bun.Subprocess) {
         return arr;
     });
 
-    for (let i = 0; i < frameworks.length; ++i)
+    for (let i = 0; i < frameworks.length; ++i) {
+        const resultDir = `${subResultDir}/${frameworks[i]}`;
+        if (!existsSync(resultDir))
+            mkdirSync(resultDir);
+
+        Bun.gc(true);
+
+        const desDir = `${rootDir}/src/${frameworks[i]}`,
+            info = await find(desDir + '/package.json') as Info;
+        info.runtime ||= 'bun';
+
+        if (info.version) {
+            if (info.version === 'runtime')
+                switch (info.runtime) {
+                    case 'bun':
+                        info.version = Bun.version;
+                        break;
+                    case 'node':
+                        info.version = Bun.spawnSync(['node', '--version']).stdout.toString().substring(1).replace('\n', '');
+                        break;
+                    case 'deno':
+                        let versionMsg = Bun.spawnSync(['deno', '--version']).stdout.toString().substring(5);
+                        info.version = versionMsg.substring(0, versionMsg.indexOf(' '));
+                        break;
+                }
+            frameworks[i] += ' ' + info.version;
+        }
+
+        const spawnOpts = {
+            cwd: desDir,
+            stdout: 'inherit',
+            env: data.env
+        } as any;
+
+        // Build if a build script exists 
+        if (info.build) Bun.spawnSync(info.build, spawnOpts);
+
+        // Start the server command args
+        info.main ||= 'index.ts';
+        const args = info.run || (info.runtime === 'deno'
+            ? ['deno', 'run', '--allow-net', '--unstable', info.main]
+            : [info.runtime, `${desDir}/${info.main}`]
+        );
+        console.log(args.join(' '));
+
+        // Boot up
+        const server = Bun.spawn(args, spawnOpts);
+        console.log('Booting', frameworks[i] + '...');
+        Bun.sleepSync(data.boot);
+
         try {
-            const resultDir = `${subResultDir}/${frameworks[i]}`;
-            if (!existsSync(resultDir)) 
-                mkdirSync(resultDir);
-
-            Bun.gc(true);
-
-            const desDir = `${rootDir}/src/${frameworks[i]}`;
-            const info = await find(desDir + '/package.json') as Info;
-            info.runtime ||= 'bun';
-
-            if (info.version) {
-                if (info.version === 'runtime')
-                    switch (info.runtime) {
-                        case 'bun': 
-                            info.version = Bun.version; 
-                            break;
-                        case 'node': 
-                            info.version = Bun.spawnSync(
-                                ['node', '--version']
-                            ).stdout.toString()
-                                .substring(1)
-                                .replace('\n', '');
-                            break;
-                        case 'deno': 
-                            let versionMsg = Bun.spawnSync(
-                                ['deno', '--version']
-                            ).stdout.toString().substring(5);
-                            info.version = versionMsg.substring(0, versionMsg.indexOf(' '));
-                            break;
-                    }
-                frameworks[i] += ' ' + info.version;
-            }
-
-            const spawnOpts = {
-                cwd: desDir,
-                stdout: 'inherit',
-                env: data.env 
-            } as any;
-        
-            // Build if a build script exists 
-            if (info.build) Bun.spawnSync(info.build, spawnOpts);
-
-            // Start the server command args
-            info.main ||= 'index.ts';
-            const args = info.run || (info.runtime === 'deno' 
-                ? ['deno', 'run', '--allow-net', '--unstable', info.main] 
-                : [info.runtime, `${desDir}/${info.main}`]
-            );
-            console.log(args.join(' '));
-
-            // Boot up
-            const server = Bun.spawn(args, spawnOpts);
-            console.log('Booting', frameworks[i] + '...');
-            Bun.sleepSync(data.boot);
-
             // Validate
             console.log('Validating...');
             if (!await validate(data.tests)) {
@@ -165,23 +161,23 @@ function cleanup(server: Bun.Subprocess) {
             Bun.sleepSync(data.boot);
 
             // Only benchmark if not in test mode
-            if (inTestMode) { 
+            if (inTestMode) {
                 cleanup(server);
-                continue; 
+                continue;
             }
- 
+
             // Benchmark
             console.log('Benchmarking...');
             results.push(...await run(commands as any, resultDir));
-
-            // Clean up
-            cleanup(server);
         } catch (e) {
             console.log(frameworks[i], 'Crashed!');
             failedFramework.push(frameworks[i]);
 
             await appendFile(debugFile, frameworks[i] + ':\n' + String(e) + '\n\n');
+        } finally {
+            if (!server.killed) cleanup(server);
         }
+    }
 }
 
 if (inTestMode)
@@ -216,9 +212,10 @@ if (inTestMode)
             + tableResultString.full;
 
     appendFile(desFile, resultTable);
-    Bun.write(readmeFile, 
-        await Bun.file(templateFile).text()
-        + '\n' + resultTable
-    );
+
+    Bun.write(readmeFile, await Bun.file(templateFile).text() + '\n' + resultTable);
     Bun.write(compactResultFile, tableResultString.compact);
+    Bun.write(jsonResultFile, JSON.stringify(tableResultString.json));
+
+    render(`${allResultsDir}/chart.png`, tableResultString.json);
 }
