@@ -48,7 +48,7 @@ See [configuration file](/config.ts) and the [type declarations](/lib/types.ts).
 ## Results
 
 ### Chart
-[!](/results/chart.png)
+![Chart](/results/chart.png)
 
 ### Table
 | Name | Average | GET `/` | GET `/api/hi` | GET `/id/18?name=J3h` | GET `/a/b` | POST `/api/json` |

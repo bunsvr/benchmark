@@ -14,7 +14,7 @@ export function render(output: string, result: typeof import('../../results/data
         data: {
             labels: result.map(v => v.name),
             datasets: [{
-                label: 'Average req/sec',
+                label: 'Average',
                 data: result.map(v => v.average)
             }]
         }
