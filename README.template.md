@@ -48,7 +48,7 @@ See [configuration file](/config.ts) and the [type declarations](/lib/types.ts).
 ## Results
 
 ### Chart
-[!](/results/chart.png)
+![Chart](/results/chart.png)
 
 ### Table 
 
