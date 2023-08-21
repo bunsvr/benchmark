@@ -7,7 +7,7 @@ export const rootDir = import.meta.dir;
 
 export default {
     // For JSC optimizations
-    boot: 5000,
+    boot: 2000,
     tests: [
         {
             path: '/',
@@ -28,7 +28,7 @@ export default {
             expect: {
                 body: `${randomNum} ${randomString}`
             },
-            description: 'Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.' 
+            description: 'Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.'
         },
         {
             path: '/a/b',
@@ -44,15 +44,15 @@ export default {
             headers: {
                 'Content-Type': 'application/json'
             },
-            expect: { 
+            expect: {
                 body: JSON.stringify(body),
                 headers: {
                     // Works for all the framework that tried to put a freaking space between ; and charset
                     'Content-Type': [
-                        'application/json', 
-                        'application/json;charset=utf-8', 
-                        'application/json;charset=UTF-8', 
-                        'application/json; charset=utf-8', 
+                        'application/json',
+                        'application/json;charset=utf-8',
+                        'application/json;charset=UTF-8',
+                        'application/json; charset=utf-8',
                         'application/json; charset=UTF-8'
                     ]
                 }
@@ -65,8 +65,8 @@ export default {
         { file: 'detail.ts' }
     ],
     command: {
-        connections: 1500,
-        duration: '30s',
+        connections: 1000,
+        duration: '25s',
         fasthttp: true,
         timeout: '10s'
     },
