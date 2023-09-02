@@ -3,12 +3,11 @@ import { qs } from '@stricjs/utils';
 
 const toRes = Response.json, parse = qs.searchKey('name');
 
-const app = new Router({ base: 'http://localhost:3000', parsePath: false })
+const app = new Router({ base: 'http://localhost:3000' })
     .get('/', macro('Hi'))
     .get('/api/hi', macro('Welcome'))
-    .post('/api/json', req => req.json().then(toRes))
-    .get('/id/:id', req => new Response(req.params.id + ' ' + parse(req)))
+    .post('/api/json', c => c.json().then(toRes))
+    .get('/id/:id', c => new Response(c.params.id + ' ' + parse(c)))
     .use(404);
 
-console.log(app.fetch.toString());
 export default app;
