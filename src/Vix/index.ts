@@ -25,7 +25,9 @@ export default {
             {
                 path: '/api/json',
                 method: 'POST',
-                headers: '.json',
+                headings: {
+                    headers: '.json'
+                },
                 f: async ctx => stringify(await ctx.req.json())
             }
         ]

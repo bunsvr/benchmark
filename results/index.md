@@ -1,6 +1,6 @@
 Bun: 1.0.0
 
-Tested at: 05:48, September 9th, 2023
+Tested at: 23:12, September 10th, 2023
 
 ## OS Details
 - Cores: 8
@@ -13,7 +13,7 @@ Tested at: 05:48, September 9th, 2023
 Should return `Hi` as a response.
 ### GET `/api/hi`
 Should return `Welcome` as a response.
-### GET `/id/43?name=0t5`
+### GET `/id/45?name=9bQ`
 Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.
 ### GET `/a/b`
 Should return a response with `404` status code.
@@ -26,10 +26,10 @@ Return the request body with `Content-Type` set to `application/json`.
 - Results are measured in requests per second.
 
 ## Results
-| Name | Average | GET `/` | GET `/api/hi` | GET `/id/61?name=O1Y` | GET `/a/b` | POST `/api/json` |
+| Name | Average | GET `/` | GET `/api/hi` | GET `/id/94?name=0GG` | GET `/a/b` | POST `/api/json` |
 |  :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [Stric 4.1.7](/results/main/Stric) | 45816.17 | 48502.32 | 47160.20 | 46817.86 | 47520.27 | 39080.20 |
-| [Elysia 0.6.19](/results/main/Elysia) | 44939.80 | 48071.32 | 47055.21 | 43989.98 | 47166.10 | 38416.40 |
-| [Vixeny 0.0.7](/results/main/Vixeny) | 44906.08 | 48091.01 | 46649.50 | 45449.04 | 46819.57 | 37521.28 |
-| [Fastify 4.21.0](/results/main/Fastify) | 23578.85 | 25971.88 | 25854.67 | 24831.27 | 22669.00 | 18567.42 |
-| [Express 4.18.2](/results/main/Express) | 7970.02 | 9073.43 | 8981.43 | 8382.89 | 7167.82 | 6244.55 |
+| [Stric 4.1.7](/results/main/Stric) | 45274.20 | 48304.88 | 46584.18 | 47282.34 | 47043.62 | 37155.97 |
+| [Elysia 0.6.19](/results/main/Elysia) | 44034.95 | 47858.70 | 46292.78 | 43773.53 | 45753.73 | 36496.00 |
+| [Vix 0.0.7](/results/main/Vix) | 43922.58 | 47126.71 | 45930.29 | 44497.73 | 45816.05 | 36242.10 |
+| [Fastify 4.21.0](/results/main/Fastify) | 23185.19 | 25335.32 | 25131.62 | 24554.11 | 22369.81 | 18535.11 |
+| [Express 4.18.2](/results/main/Express) | 7891.01 | 8990.01 | 8904.15 | 8451.44 | 7042.01 | 6067.44 |
