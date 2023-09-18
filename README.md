@@ -53,10 +53,10 @@ See [configuration file](/config.ts) and the [type declarations](/lib/types.ts).
 ### Table 
 
 
-| Name | Average | GET `/` | GET `/api/hi` | GET `/id/5?name=5LL` | GET `/a/b` | POST `/api/json` |
+| Name | Average | GET `/` | GET `/api/hi` | GET `/id/82?name=lZK` | GET `/a/b` | POST `/api/json` |
 |  :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [Stric 4.2.0](/results/main/Stric) | 44392.80 | 47273.90 | 45636.78 | 45935.71 | 46353.87 | 36763.73 |
-| [Vix 0.0.7](/results/main/Vix) | 44152.41 | 47435.09 | 46321.78 | 44864.77 | 45394.43 | 36745.97 |
-| [Elysia 0.6.19](/results/main/Elysia) | 43375.07 | 46955.33 | 45911.14 | 42214.50 | 45682.32 | 36112.05 |
-| [Fastify 4.21.0](/results/main/Fastify) | 23192.94 | 25350.92 | 25067.08 | 24330.84 | 22641.32 | 18574.56 |
-| [Express 4.18.2](/results/main/Express) | 7905.69 | 9020.99 | 8887.13 | 8289.49 | 7164.58 | 6166.25 |
+| [Stric 4.2.2](/results/main/Stric) | 45162.67 | 48266.48 | 47264.72 | 46231.74 | 47103.01 | 36947.41 |
+| [Vix 0.0.7](/results/main/Vix) | 44919.01 | 47522.12 | 46566.05 | 46163.88 | 46751.82 | 37591.18 |
+| [Elysia 0.6.24](/results/main/Elysia) | 44399.27 | 48551.60 | 47207.03 | 41960.58 | 46687.72 | 37589.41 |
+| [Fastify 4.21.0](/results/main/Fastify) | 19738.03 | 21202.43 | 21734.39 | 20092.79 | 19366.39 | 16294.15 |
+| [Express 4.18.2](/results/main/Express) | 7906.07 | 9132.33 | 8922.92 | 8370.37 | 7074.27 | 6030.47 |
