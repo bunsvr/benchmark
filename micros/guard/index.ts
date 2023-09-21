@@ -2,10 +2,23 @@ import { run, bench, group } from 'mitata';
 import { guard } from '@stricjs/utils';
 import { Type } from '@sinclair/typebox';
 import { TypeCompiler } from '@sinclair/typebox/compiler';
-import { TypeSystemPolicy } from '@sinclair/typebox/system'
+import { TypeSystemPolicy } from '@sinclair/typebox/system';
 
-TypeSystemPolicy.AllowArrayObject = true
-TypeSystemPolicy.AllowNaN = true
+TypeSystemPolicy.AllowArrayObject = true;
+TypeSystemPolicy.AllowNaN = true;
+
+bench('noop', () => { });
+bench('noop', () => { });
+bench('noop', () => { });
+bench('noop', () => { });
+bench('noop', () => { });
+bench('noop', () => { });
+bench('noop', () => { });
+bench('noop', () => { });
+bench('noop', () => { });
+bench('noop', () => { });
+bench('noop', () => { });
+bench('noop', () => { });
 
 group('Nested', () => {
     const stric = guard.create({
@@ -30,24 +43,26 @@ group('Nested', () => {
                 weight: Type.Number()
             })
         })
-    }), compiled = TypeCompiler.Compile(typebox);
+    });
+    let compiled = TypeCompiler.Compile(typebox);
+    const check = compiled.Check.bind(compiled);
 
     // Test object
-    const o = { 
-        name: 'John', age: 50, 
+    const o = {
+        name: 'John', age: 50,
         hobby: {
             name: 'badminton',
             since: 15,
             more: {
                 avgScore: 90,
-                weight: 67
+                weight: '67'
             }
-        } 
+        }
     };
 
     // All tests here
     bench('Typebox compiled', () => {
-        compiled.Check(o);   
+        check(o);
     });
 
     bench('Stric guard', () => {

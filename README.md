@@ -9,13 +9,7 @@ I recommend testing this by yourself as performance may varies on different mach
 All tool required to set up and run the benchmark.
 
 ### Bun
-Bun is required to run the Bun server, Bun frameworks and benchmark scripts. See [bun.sh](https://bun.sh).
-
-### Node
-Node is required to run the Node server. See [nodejs.dev](https://nodejs.dev).
-
-### Deno
-Deno is required to run the Deno server. See [deno.land](https://deno.land).
+Bun is required to run Bun frameworks and benchmark scripts. See [bun.sh](https://bun.sh).
 
 ### Bombardier
 Go is required to install the `bombardier` CLI. See [go.dev](https://go.dev).
@@ -53,10 +47,8 @@ See [configuration file](/config.ts) and the [type declarations](/lib/types.ts).
 ### Table 
 
 
-| Name | Average | GET `/` | GET `/api/hi` | GET `/id/82?name=lZK` | GET `/a/b` | POST `/api/json` |
+| Name | Average | GET `/` | GET `/api/hi` | GET `/id/72?name=0yD` | GET `/a/b` | POST `/api/json` |
 |  :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [Stric 4.2.2](/results/main/Stric) | 45162.67 | 48266.48 | 47264.72 | 46231.74 | 47103.01 | 36947.41 |
-| [Vix 0.0.7](/results/main/Vix) | 44919.01 | 47522.12 | 46566.05 | 46163.88 | 46751.82 | 37591.18 |
-| [Elysia 0.6.24](/results/main/Elysia) | 44399.27 | 48551.60 | 47207.03 | 41960.58 | 46687.72 | 37589.41 |
-| [Fastify 4.21.0](/results/main/Fastify) | 19738.03 | 21202.43 | 21734.39 | 20092.79 | 19366.39 | 16294.15 |
-| [Express 4.18.2](/results/main/Express) | 7906.07 | 9132.33 | 8922.92 | 8370.37 | 7074.27 | 6030.47 |
+| [Stric 4.2.2](/results/main/Stric) | 45317.71 | 47772.25 | 47557.05 | 45735.83 | 47674.42 | 37849.00 |
+| [Vix 0.0.7](/results/main/Vix) | 44660.08 | 47802.95 | 47229.62 | 44694.05 | 46648.31 | 36925.45 |
+| [Elysia 0.7.1](/results/main/Elysia) | 43806.02 | 47475.29 | 46114.62 | 42732.38 | 45698.38 | 37009.42 |

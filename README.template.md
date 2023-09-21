@@ -9,13 +9,7 @@ I recommend testing this by yourself as performance may varies on different mach
 All tool required to set up and run the benchmark.
 
 ### Bun
-Bun is required to run the Bun server, Bun frameworks and benchmark scripts. See [bun.sh](https://bun.sh).
-
-### Node
-Node is required to run the Node server. See [nodejs.dev](https://nodejs.dev).
-
-### Deno
-Deno is required to run the Deno server. See [deno.land](https://deno.land).
+Bun is required to run Bun frameworks and benchmark scripts. See [bun.sh](https://bun.sh).
 
 ### Bombardier
 Go is required to install the `bombardier` CLI. See [go.dev](https://go.dev).
