@@ -47,8 +47,8 @@ See [configuration file](/config.ts) and the [type declarations](/lib/types.ts).
 ### Table 
 
 
-| Name | Average | GET `/` | GET `/api/hi` | GET `/id/20?name=a6v` | GET `/a/b` | POST `/api/json` |
+| Name | Average | GET `/` | GET `/api/hi` | GET `/id/12?name=i11` | GET `/a/b` | POST `/api/json` |
 |  :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [Stric 4.2.2](/results/main/Stric) | 45596.59 | 48446.86 | 48076.48 | 46159.56 | 47538.69 | 37761.35 |
-| [Vix 0.0.7](/results/main/Vix) | 44834.60 | 48215.89 | 47004.49 | 45372.81 | 46844.74 | 36735.09 |
-| [Elysia 0.7.1](/results/main/Elysia) | 43753.16 | 47319.76 | 46241.75 | 42018.25 | 46282.17 | 36903.87 |
+| [Vix 0.0.7](/results/main/Vix) | 87468.79 | 93309.21 | 93228.93 | 87697.68 | 89015.30 | 74092.81 |
+| [Elysia 0.7.1](/results/main/Elysia) | 86047.81 | 92632.47 | 92649.13 | 84108.08 | 97737.67 | 63111.71 |
+| [Grace 0.3.9](/results/main/Grace) | 68691.71 | 74563.31 | 74699.99 | 62883.21 | 71703.24 | 59608.81 |
