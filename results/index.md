@@ -1,6 +1,6 @@
-Bun: 1.0.2
+Bun: 1.0.3
 
-Tested at: 10:07, September 22nd, 2023
+Tested at: 21:17, September 24th, 2023
 
 ## OS Details
 - Cores: 8
@@ -13,7 +13,7 @@ Tested at: 10:07, September 22nd, 2023
 Should return `Hi` as a response.
 ### GET `/api/hi`
 Should return `Welcome` as a response.
-### GET `/id/98?name=Y6p`
+### GET `/id/65?name=eUt`
 Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.
 ### GET `/a/b`
 Should return a response with `404` status code.
@@ -26,8 +26,9 @@ Return the request body with `Content-Type` set to `application/json`.
 - Results are measured in requests per second.
 
 ## Results
-| Name | Average | GET `/` | GET `/api/hi` | GET `/id/20?name=a6v` | GET `/a/b` | POST `/api/json` |
+| Name | Average | GET `/` | GET `/api/hi` | GET `/id/29?name=DYq` | GET `/a/b` | POST `/api/json` |
 |  :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [Stric 4.2.2](/results/main/Stric) | 45596.59 | 48446.86 | 48076.48 | 46159.56 | 47538.69 | 37761.35 |
-| [Vix 0.0.7](/results/main/Vix) | 44834.60 | 48215.89 | 47004.49 | 45372.81 | 46844.74 | 36735.09 |
-| [Elysia 0.7.1](/results/main/Elysia) | 43753.16 | 47319.76 | 46241.75 | 42018.25 | 46282.17 | 36903.87 |
+| [Stric 4.2.2](/results/main/Stric) | 44827.69 | 48017.12 | 46694.40 | 45884.78 | 47391.68 | 36150.48 |
+| [Vix 0.0.7](/results/main/Vix) | 44608.92 | 47530.22 | 46279.28 | 45643.34 | 45941.37 | 37650.39 |
+| [Elysia 0.7.2](/results/main/Elysia) | 43734.72 | 47221.99 | 45889.44 | 42781.14 | 45746.15 | 37034.89 |
+| [Grace 0.3.9](/results/main/Grace) | 31344.80 | 35806.93 | 33806.24 | 27593.63 | 32789.40 | 26727.79 |
