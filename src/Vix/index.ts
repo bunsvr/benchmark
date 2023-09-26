@@ -3,7 +3,7 @@ import fun from 'vixeny/fun';
 const { stringify } = JSON;
 
 export default {
-    fetch: fun({ hasName: 'http://localhost:3000/' })(
+    fetch: fun()(
         [
             {
                 path: '/',

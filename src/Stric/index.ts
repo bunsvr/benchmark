@@ -3,7 +3,7 @@ import { qs } from '@stricjs/utils';
 
 const parse = qs.searchKey('name');
 
-export default new Stric({ base: 'http://localhost:3000' })
+export default new Stric()
     .get('/', macro('Hi'))
     .get('/api/hi', macro('Welcome'))
     .post('/api/json', c => c.json().then(wrap.json))
