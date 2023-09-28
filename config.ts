@@ -66,7 +66,7 @@ export default {
     ],
     command: {
         connections: 500,
-        duration: '20s',
+        duration: '30s',
         fasthttp: true,
         timeout: '10s'
     },
