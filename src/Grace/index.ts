@@ -38,21 +38,6 @@ createGrace()
         },
     }))
     .registerRoute(createRoute({
-        method: 'GET',
-        path: '/api/hi',
-        schema: {
-            response: {
-                200: t.String()
-            }
-        },
-        handler: async () => {
-            return {
-                code: 200,
-                body: 'Welcome'
-            }
-        },
-    }))
-    .registerRoute(createRoute({
         method: 'POST',
         path: '/api/json',
         schema: {
@@ -64,21 +49,6 @@ createGrace()
             return {
                 code: 200,
                 body: c.body
-            }
-        },
-    }))
-    .registerRoute(createRoute({
-        method: 'GET',
-        path: '/a/b',
-        schema: {
-            response: {
-                404: t.String()
-            }
-        },
-        handler: async () => {
-            return {
-                code: 404,
-                body: 'Not Found'
             }
         },
     }))

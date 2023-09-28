@@ -11,11 +11,6 @@ export default {
                 r: () => new Response('Hi')
             },
             {
-                path: '/api/hi',
-                type: 'response',
-                r: () => new Response('Welcome')
-            },
-            {
                 path: '/id/:id',
                 query: {
                     only: ['name']

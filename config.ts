@@ -17,13 +17,6 @@ export default {
             description: 'Should return `Hi` as a response.'
         },
         {
-            path: '/api/hi',
-            expect: {
-                body: 'Welcome'
-            },
-            description: 'Should return `Welcome` as a response.'
-        },
-        {
             path: `/id/${randomNum}?name=${randomString}`,
             expect: {
                 body: `${randomNum} ${randomString}`
@@ -31,7 +24,7 @@ export default {
             description: 'Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.'
         },
         {
-            path: '/a/b',
+            path: '/api/js',
             expect: {
                 statusCode: 404
             },

@@ -1,6 +1,6 @@
 Bun: 1.0.3
 
-Tested at: 09:31, September 28th, 2023
+Tested at: 21:21, September 28th, 2023
 
 ## OS Details
 - Cores: 8
@@ -11,11 +11,9 @@ Tested at: 09:31, September 28th, 2023
 ## Tests
 ### GET `/`
 Should return `Hi` as a response.
-### GET `/api/hi`
-Should return `Welcome` as a response.
-### GET `/id/65?name=fvN`
+### GET `/id/60?name=EHb`
 Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.
-### GET `/a/b`
+### GET `/api/js`
 Should return a response with `404` status code.
 ### POST `/api/json`
 Return the request body with `Content-Type` set to `application/json`.
@@ -26,10 +24,10 @@ Return the request body with `Content-Type` set to `application/json`.
 - Results are measured in requests per second.
 
 ## Results
-| Name | Average | GET `/` | GET `/api/hi` | GET `/id/81?name=weD` | GET `/a/b` | POST `/api/json` |
-|  :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [Stric 4.2.5](/results/main/Stric) | 45084.81 | 48332.75 | 46623.88 | 46072.62 | 47038.54 | 37356.26 |
-| [Vix 0.0.7](/results/main/Vix) | 44269.08 | 47618.59 | 45978.74 | 45058.74 | 45608.76 | 37080.58 |
-| [Elysia 0.7.2](/results/main/Elysia) | 44108.86 | 48103.29 | 46272.13 | 43246.88 | 46058.33 | 36863.69 |
-| [Hono 3.7.2](/results/main/Hono) | 42564.88 | 48204.41 | 46573.03 | 40967.01 | 41434.29 | 35645.65 |
-| [Grace 0.3.9](/results/main/Grace) | 31179.96 | 34796.91 | 33720.99 | 28131.19 | 33694.72 | 25555.97 |
+| Name | Average | GET `/` | GET `/id/89?name=mUS` | GET `/api/js` | POST `/api/json` |
+|  :---: | :---: | :---: | :---: | :---: | :---: |
+| [Stric 4.2.5](/results/main/Stric) | 44251.33 | 47859.33 | 45572.01 | 46682.76 | 36891.21 |
+| [Vix 0.0.7](/results/main/Vix) | 43879.45 | 47919.28 | 45519.21 | 45370.24 | 36709.08 |
+| [Elysia 0.7.2](/results/main/Elysia) | 43181.56 | 47263.61 | 42269.48 | 46189.10 | 37004.05 |
+| [Hono 3.7.2](/results/main/Hono) | 41409.74 | 47411.68 | 42644.72 | 41321.01 | 34261.54 |
+| [Grace 0.3.9](/results/main/Grace) | 29618.76 | 34362.32 | 27524.12 | 31053.27 | 25535.35 |
