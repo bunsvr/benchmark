@@ -59,7 +59,7 @@ export default {
     ],
     command: {
         connections: 500,
-        duration: '30s',
+        duration: '15s',
         fasthttp: true,
         timeout: '10s'
     },
