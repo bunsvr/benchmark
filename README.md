@@ -47,10 +47,10 @@ See [configuration file](/config.ts) and the [type declarations](/lib/types.ts).
 ### Table 
 
 
-| Name | Average | GET `/` | GET `/id/45?name=Awc` | GET `/api/js` | POST `/api/json` |
+| Name | Average | GET `/` | GET `/id/89?name=Kmh` | GET `/api/js` | POST `/api/json` |
 |  :---: | :---: | :---: | :---: | :---: | :---: |
-| [Stric 4.2.9](/results/main/Stric) | 44749.45 | 48127.01 | 46628.53 | 47398.83 | 36843.44 |
-| [Vix 0.0.7](/results/main/Vix) | 44254.54 | 47995.11 | 45888.63 | 45856.79 | 37277.65 |
-| [Elysia 0.7.15](/results/main/Elysia) | 42670.84 | 47398.57 | 42463.94 | 43552.35 | 37268.51 |
-| [Hono 3.7.2](/results/main/Hono) | 41706.46 | 48525.78 | 41255.83 | 41363.50 | 35680.72 |
-| [Grace 0.3.9](/results/main/Grace) | 32312.10 | 37025.80 | 31429.79 | 33319.42 | 27473.41 |
+| [Stric 4.3.0](/results/main/Stric) | 45167.80 | 48667.84 | 47044.80 | 47401.51 | 37557.05 |
+| [Vix 0.0.7](/results/main/Vix) | 44709.07 | 48264.15 | 46491.24 | 46995.34 | 37085.54 |
+| [Elysia 0.7.15](/results/main/Elysia) | 43409.06 | 47710.95 | 43632.90 | 44304.31 | 37988.08 |
+| [Hono 3.7.2](/results/main/Hono) | 42032.14 | 48463.41 | 43375.18 | 41626.86 | 34663.12 |
+| [Grace 0.3.9](/results/main/Grace) | 32807.06 | 37838.13 | 32355.63 | 33495.38 | 27539.11 |
