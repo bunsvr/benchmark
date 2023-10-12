@@ -27,13 +27,9 @@ export function render(output: string, result: typeof import('../../results/data
                     data: result.map(v => v.results[1])
                 },
                 {
-                    label: '404',
-                    data: result.map(v => v.results[2])
-                },
-                {
                     label: 'JSON',
-                    data: result.map(v => v.results[3])
-                },
+                    data: result.map(v => v.results[2])
+                }
             ]
         }
     });
