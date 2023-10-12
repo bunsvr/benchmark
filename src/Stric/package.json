@@ -1,7 +1,7 @@
 {
     "dependencies": {
-        "@stricjs/router": "^5.0.0-alpha.9",
-        "@stricjs/utils": "^1.5.5"
+        "@stricjs/router": "^5.0.2",
+        "@stricjs/utils": "^1.5.6"
     },
-    "version": "5.0.0"
+    "version": "5.0.2"
 }

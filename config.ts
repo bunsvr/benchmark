@@ -7,7 +7,7 @@ export const rootDir = import.meta.dir;
 
 export default {
     // For JSC optimizations
-    boot: 5000,
+    boot: 7000,
     tests: [
         {
             path: '/',
