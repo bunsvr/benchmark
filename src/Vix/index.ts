@@ -22,7 +22,7 @@ export default {
             headings: {
                 headers: '.json'
             },
-            f: async ctx => stringify(await ctx.req.json())
+            f: async ctx => stringify((await ctx.req.json()).nested)
         }
     ])
 }

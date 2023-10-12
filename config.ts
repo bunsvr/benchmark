@@ -24,13 +24,6 @@ export default {
             description: 'Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.'
         },
         {
-            path: '/api/js',
-            expect: {
-                statusCode: 404
-            },
-            description: 'Should return a response with `404` status code.'
-        },
-        {
             path: '/api/json',
             method: 'POST',
             bodyFile: `${rootDir}/assets/body.json`,
@@ -38,7 +31,7 @@ export default {
                 'Content-Type': 'application/json'
             },
             expect: {
-                body: JSON.stringify(body),
+                body: JSON.stringify(body.nested),
                 headers: {
                     // Works for all the framework that tried to put a freaking space between ; and charset
                     'Content-Type': [

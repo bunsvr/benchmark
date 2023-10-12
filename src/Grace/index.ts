@@ -48,7 +48,8 @@ createGrace()
         handler: async c => {
             return {
                 code: 200,
-                body: c.body
+                // @ts-ignore
+                body: c.body.nested
             }
         },
     }))

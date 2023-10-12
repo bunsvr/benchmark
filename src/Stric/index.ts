@@ -1,12 +1,9 @@
-import { router, macro, wrap } from '@stricjs/router';
+import { router, macro } from '@stricjs/router';
 import { qs } from '@stricjs/utils';
 
-const parse = qs.searchKey('name'), json = wrap.json;
+const parse = qs.searchKey('name');
 
 export default router()
-    // Routes
     .get('/', macro('Hi'))
-    .post('/api/json', c => c.json().then(json))
-    .get('/id/:id', c => new Response(c.params.id + ' ' + parse(c)))
-    // Others
-    .use(404);
+    .post('/api/json', c => c.data.nested, { body: 'json', wrap: 'json' })
+    .get('/id/:id', c => c.params.id + ' ' + parse(c), { wrap: true });
