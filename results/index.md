@@ -1,6 +1,6 @@
-Bun: 1.0.6
+Bun: 1.0.7
 
-Tested at: 09:43, October 24th, 2023
+Tested at: 21:48, October 29th, 2023
 
 ## OS Details
 - Cores: 8
@@ -11,7 +11,7 @@ Tested at: 09:43, October 24th, 2023
 ## Tests
 ### GET `/`
 Should return `Hi` as a response.
-### GET `/id/71?name=L9w`
+### GET `/id/17?name=cMl`
 Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.
 ### POST `/api/json`
 Return the request body with `Content-Type` set to `application/json`.
@@ -22,10 +22,10 @@ Return the request body with `Content-Type` set to `application/json`.
 - Results are measured in requests per second.
 
 ## Results
-| Name | Average | GET `/` | GET `/id/5?name=Ne4` | POST `/api/json` |
+| Name | Average | GET `/` | GET `/id/34?name=THW` | POST `/api/json` |
 |  :---: | :---: | :---: | :---: | :---: |
-| [Stric 5.0.4](/results/main/Stric) | 45471.03 | 49129.95 | 48973.15 | 38310.00 |
-| [Vix 0.0.7](/results/main/Vix) | 44311.63 | 48189.07 | 46717.18 | 38028.65 |
-| [Elysia 0.7.17](/results/main/Elysia) | 43851.77 | 48109.24 | 45342.47 | 38103.61 |
-| [Hono 3.8.3](/results/main/Hono) | 42387.21 | 48686.79 | 42617.33 | 35857.50 |
-| [Grace 0.3.15](/results/main/Grace) | 31972.53 | 37408.14 | 31088.64 | 27420.82 |
+| [Stric 6.0.0](/results/main/Stric) | 45017.48 | 48421.68 | 48318.50 | 38312.25 |
+| [Vix 0.0.7](/results/main/Vix) | 43335.95 | 47801.58 | 45309.27 | 36897.01 |
+| [Elysia 0.7.17](/results/main/Elysia) | 43154.77 | 48467.49 | 43295.76 | 37701.07 |
+| [Hono 3.8.3](/results/main/Hono) | 41759.32 | 48425.31 | 41516.73 | 35335.91 |
+| [Grace 0.3.15](/results/main/Grace) | 31584.57 | 36649.23 | 31391.94 | 26712.54 |
