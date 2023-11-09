@@ -115,8 +115,15 @@ async function testURL(url: string, test: Test) {
         headers: test.headers
     });
 
-    if (expect.body && await res.text() !== expect.body)
-        return false;
+    if (expect.body && await res.text() !== expect.body) {
+        const recieved = await res.text();
+
+        if (recieved !== expect.body) {
+            console.log(`Expected body: ${expect.body}`);
+            console.log(`Instead got ${recieved}`);
+            return false;
+        }
+    }
 
     if (expect.headers) {
         if (!res.headers)

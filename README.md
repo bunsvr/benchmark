@@ -47,10 +47,10 @@ See [configuration file](/config.ts) and the [type declarations](/lib/types.ts).
 ### Table 
 
 
-| Name | Average | GET `/` | GET `/id/34?name=THW` | POST `/api/json` |
+| Name | Average | GET `/` | GET `/id/27?name=3Hn` | POST `/api/json` |
 |  :---: | :---: | :---: | :---: | :---: |
-| [Stric 6.0.0](/results/main/Stric) | 45017.48 | 48421.68 | 48318.50 | 38312.25 |
-| [Vix 0.0.7](/results/main/Vix) | 43335.95 | 47801.58 | 45309.27 | 36897.01 |
-| [Elysia 0.7.17](/results/main/Elysia) | 43154.77 | 48467.49 | 43295.76 | 37701.07 |
-| [Hono 3.8.3](/results/main/Hono) | 41759.32 | 48425.31 | 41516.73 | 35335.91 |
-| [Grace 0.3.15](/results/main/Grace) | 31584.57 | 36649.23 | 31391.94 | 26712.54 |
+| [Stric 1.0.0](/results/main/Stric) | 44851.87 | 48384.02 | 48336.19 | 37835.39 |
+| [Vix 0.0.7](/results/main/Vix) | 44547.26 | 48786.64 | 47792.93 | 37062.22 |
+| [Elysia 0.7.17](/results/main/Elysia) | 43801.35 | 48656.82 | 45758.09 | 36989.13 |
+| [Hono 3.8.3](/results/main/Hono) | 42814.69 | 48968.52 | 43695.23 | 35780.32 |
+| [Grace 0.3.15](/results/main/Grace) | 31702.62 | 37106.17 | 30703.83 | 27297.85 |

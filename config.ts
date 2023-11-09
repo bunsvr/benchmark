@@ -31,7 +31,7 @@ export default {
                 'Content-Type': 'application/json'
             },
             expect: {
-                body: JSON.stringify(body.nested),
+                body: JSON.stringify(body),
                 headers: {
                     // Works for all the framework that tried to put a freaking space between ; and charset
                     'Content-Type': [

@@ -49,7 +49,7 @@ createGrace()
             return {
                 code: 200,
                 // @ts-ignore
-                body: c.body.nested
+                body: c.body
             }
         },
     }))
