@@ -133,4 +133,12 @@ export interface Info {
      * The framework version
      */
     version: string;
+    /**
+     * Display homepage
+     */
+    homepage: string;
+    /**
+     * Display description
+     */
+    description: string;
 }

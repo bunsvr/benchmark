@@ -2,5 +2,7 @@
     "dependencies": {
         "hono": "^3.8.3"
     },
-    "version": "3.8.3"
+    "version": "3.8.3",
+    "homepage": "https://hono.dev",
+    "description": "Ultrafast framework for the Edge"
 }

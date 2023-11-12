@@ -17,7 +17,14 @@ export default {
             description: 'Should return `Hi` as a response.'
         },
         {
-            path: `/id/${randomNum}?name=${randomString}`,
+            path: '/a/b',
+            expect: {
+                statusCode: 404
+            },
+            description: 'Should return a response with status code 404.'
+        },
+        {
+            path: `/api/id/${randomNum}?name=${randomString}`,
             expect: {
                 body: `${randomNum} ${randomString}`
             },
@@ -52,7 +59,7 @@ export default {
     ],
     command: {
         connections: 500,
-        duration: '20s',
+        duration: '30s',
         fasthttp: true,
         timeout: '10s'
     },

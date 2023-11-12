@@ -5,6 +5,7 @@ import { Info } from './lib/types';
 import { run, parseDefaultArgs, sortResults, find, validate } from './lib/utils';
 import { existsSync, mkdirSync, rmSync } from 'fs';
 import { render } from 'lib/utils/chart';
+import { descript } from 'lib/description';
 
 // Benchmark CLI
 const tool = data.cli ||= 'bombardier';
@@ -40,6 +41,7 @@ if (data.exclude)
     // @ts-ignore
     frameworks = frameworks.filter(f => !data.exclude.includes(f));
 
+// URLs to test and benchmark
 const urls = data.tests.map(v => {
     const arr: any[] = [v.path, v.method || 'GET'];
     if (v.bodyFile)
@@ -80,6 +82,8 @@ function cleanup(server: Bun.Subprocess) {
     Bun.sleepSync(data.boot);
 }
 
+let frameworksDescription = '## Frameworks\n';
+
 // Run benchmark
 {
     data.boot ||= 5000;
@@ -98,6 +102,7 @@ function cleanup(server: Bun.Subprocess) {
         return arr;
     });
 
+    // Search each framework
     for (let i = 0; i < frameworks.length; ++i) {
         const resultDir = `${subResultDir}/${frameworks[i]}`;
         if (!existsSync(resultDir))
@@ -107,8 +112,14 @@ function cleanup(server: Bun.Subprocess) {
 
         const desDir = `${rootDir}/src/${frameworks[i]}`,
             info = await find(desDir + '/package.json') as Info;
+
+        // Push to description
+        frameworksDescription += descript(frameworks[i], info);
+
+        // Check JS runtime
         info.runtime ||= 'bun';
 
+        // Check framework version
         if (info.version) {
             if (info.version === 'runtime')
                 switch (info.runtime) {
@@ -126,6 +137,7 @@ function cleanup(server: Bun.Subprocess) {
             frameworks[i] += ' ' + info.version;
         }
 
+        // Spawn process options
         const spawnOpts = {
             cwd: desDir,
             stdout: 'inherit',
@@ -180,8 +192,10 @@ function cleanup(server: Bun.Subprocess) {
     }
 }
 
-if (inTestMode)
+if (inTestMode) {
+    console.log(frameworksDescription);
     process.exit(0);
+}
 
 // Remove package.json dependencies field
 {
@@ -211,11 +225,14 @@ if (inTestMode)
             // All results
             + tableResultString.full;
 
+    // Main result file
     appendFile(desFile, resultTable);
 
-    Bun.write(readmeFile, await Bun.file(templateFile).text() + '\n' + resultTable);
+    // Write asynchronously
+    Bun.write(readmeFile, await Bun.file(templateFile).text() + '\n' + resultTable + '\n' + frameworksDescription);
     Bun.write(compactResultFile, tableResultString.compact);
     Bun.write(jsonResultFile, JSON.stringify(tableResultString.json));
 
+    // Render the result chart
     render(`${allResultsDir}/chart.png`, tableResultString.json);
 }

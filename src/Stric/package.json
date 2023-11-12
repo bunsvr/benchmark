@@ -1,7 +1,9 @@
 {
     "dependencies": {
-        "@stricjs/app": "^1.0.0-alpha.1",
+        "@stricjs/app": "^1.0.0-alpha.2",
         "@stricjs/utils": "^2.0.0-alpha"
     },
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "homepage": "https://stricjs.netlify.app",
+    "description": "A web framework for building high-performance, scalable web applications"
 }

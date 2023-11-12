@@ -10,7 +10,7 @@ export default {
             r: () => new Response('Hi')
         },
         {
-            path: '/id/:id',
+            path: '/api/id/:id',
             query: {
                 only: ['name']
             },

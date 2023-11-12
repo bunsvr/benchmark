@@ -2,5 +2,7 @@
     "version": "0.0.7",
     "dependencies": {
         "vixeny": "^0.0.74"
-    }
+    },
+    "homepage": "https://vixeny.dev",
+    "description": "Harness the Power of Pure Functionality"
 }

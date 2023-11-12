@@ -2,5 +2,7 @@
     "dependencies": {
         "elysia": "^0.7.17"
     },
-    "version": "0.7.17"
+    "version": "0.7.17",
+    "homepage": "https://elysiajs.com",
+    "description": "Ergonomic Framework for Humans"
 }
