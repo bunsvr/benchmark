@@ -7,18 +7,8 @@ import { TypeSystemPolicy } from '@sinclair/typebox/system';
 TypeSystemPolicy.AllowArrayObject = true;
 TypeSystemPolicy.AllowNaN = true;
 
-bench('noop', () => { });
-bench('noop', () => { });
-bench('noop', () => { });
-bench('noop', () => { });
-bench('noop', () => { });
-bench('noop', () => { });
-bench('noop', () => { });
-bench('noop', () => { });
-bench('noop', () => { });
-bench('noop', () => { });
-bench('noop', () => { });
-bench('noop', () => { });
+for (var i = 0; i < 50; ++i)
+    bench('noop', () => { });
 
 group('Nested', () => {
     const stric = guard.create({
@@ -68,10 +58,8 @@ group('Nested', () => {
     bench('Stric guard', () => {
         stric(o);
     });
-});
 
-console.log('Waiting for the JIT to optimize');
-// Try to get the JIT to run
-Bun.sleepSync(9000);
+    console.log(stric.toString());
+});
 
 run();
