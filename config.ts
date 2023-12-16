@@ -6,8 +6,7 @@ import { randomString, randomNum } from 'lib/utils/config';
 export const rootDir = import.meta.dir;
 
 export default {
-    // For JSC optimizations
-    boot: 7000,
+    boot: 8000,
     tests: [
         {
             path: '/',

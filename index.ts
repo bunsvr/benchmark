@@ -17,7 +17,6 @@ const allResultsDir = `${rootDir}/results`,
 
 const desFile = `${allResultsDir}/index.md`,
     jsonResultFile = `${allResultsDir}/data.json`,
-    compactResultFile = `${allResultsDir}/compact/compact.txt`,
     readmeFile = `${rootDir}/README.md`,
     templateFile = `${rootDir}/README.template.md`,
     debugFile = `${rootDir}/debug.log`;
@@ -230,7 +229,6 @@ if (inTestMode) {
 
     // Write asynchronously
     Bun.write(readmeFile, await Bun.file(templateFile).text() + '\n' + resultTable + '\n' + frameworksDescription);
-    Bun.write(compactResultFile, tableResultString.compact);
     Bun.write(jsonResultFile, JSON.stringify(tableResultString.json));
 
     // Render the result chart

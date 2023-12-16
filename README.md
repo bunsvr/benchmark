@@ -47,13 +47,13 @@ See [configuration file](/config.ts) and the [type declarations](/lib/types.ts).
 ### Table 
 
 
-| Name | Average | GET `/` | GET `/a/b` | GET `/api/id/39?name=WJV` | POST `/api/json` |
+| Name | Average | GET `/` | GET `/a/b` | GET `/api/id/54?name=Mnc` | POST `/api/json` |
 |  :---: | :---: | :---: | :---: | :---: | :---: |
-| [Stric 1.0](/results/main/Stric) | 44824.97 | 50243.86 | 47856.05 | 46171.21 | 35028.77 |
-| [Vix 0.0.7](/results/main/Vix) | 44518.03 | 50170.34 | 47038.98 | 45601.67 | 35261.14 |
-| [Elysia 0.7](/results/main/Elysia) | 43930.82 | 49081.65 | 45801.75 | 45033.77 | 35806.12 |
-| [Bunicorn 0.0](/results/main/Bunicorn) | 38702.99 | 45410.04 | 39124.18 | 38354.77 | 31922.96 |
-| [Hono 3.11](/results/main/Hono) | 38484.59 | 45197.44 | 36049.63 | 40103.74 | 32587.55 |
+| [Stric 1.0](/results/main/Stric) | 45614.83 | 48888.21 | 48215.30 | 47596.22 | 37759.60 |
+| [Vix 0.0](/results/main/Vix) | 44735.14 | 48683.02 | 46457.72 | 46782.85 | 37016.97 |
+| [Elysia 0.7](/results/main/Elysia) | 44000.16 | 48344.62 | 45376.74 | 44610.41 | 37668.86 |
+| [Bunicorn 0.0](/results/main/Bunicorn) | 39244.29 | 44345.44 | 41245.78 | 38508.39 | 32877.54 |
+| [Hono 3.11](/results/main/Hono) | 39170.99 | 45561.52 | 37040.89 | 41190.25 | 32891.31 |
 ## Frameworks
 - [Hono](https://hono.dev): Ultrafast framework for the Edge.
 - [Stric](https://stricjs.netlify.app): A web framework for building high-performance, scalable web applications.
