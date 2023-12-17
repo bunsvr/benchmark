@@ -116,7 +116,7 @@ let frameworksDescription = '## Frameworks\n';
         frameworksDescription += descript(frameworks[i], info);
 
         // Check JS runtime
-        info.runtime ||= 'bun';
+        info.runtime ||= process.execPath;
 
         // Check framework version
         if (info.version) {
