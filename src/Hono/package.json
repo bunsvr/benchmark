@@ -1,8 +1,0 @@
-{
-    "dependencies": {
-        "hono": "^3.11.11"
-    },
-    "version": "3.11",
-    "homepage": "https://hono.dev",
-    "description": "Ultrafast framework for the Edge"
-}

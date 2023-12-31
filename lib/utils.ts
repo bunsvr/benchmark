@@ -1,5 +1,4 @@
 import { existsSync } from 'fs';
-import { readFile } from 'fs/promises';
 import { Config, Test } from './types';
 
 // Parse default args from config
@@ -98,14 +97,18 @@ function getReqSec(v: string) {
 };
 
 async function testURL(url: string, test: Test) {
-    const expect = test.expect;
-    const res = await fetch(url, {
-        method: test.method,
-        body: test.bodyFile && await readFile(test.bodyFile, 'utf8'),
-        headers: test.headers
-    });
+    const expect = test.expect, reqInit: RequestInit = {
+        method: test.method
+    };
 
-    if (expect.body && await res.text() !== expect.body) {
+    if (test.bodyFile)
+        reqInit.body = JSON.stringify(await Bun.file(test.bodyFile).json());
+    if (test.headers)
+        reqInit.headers = test.headers;
+
+    const res = await fetch(url, reqInit);
+
+    if (expect.body) {
         const recieved = await res.text();
 
         if (recieved !== expect.body) {
@@ -118,7 +121,9 @@ async function testURL(url: string, test: Test) {
     if (expect.headers) {
         if (!res.headers)
             return false;
-        for (const header in expect.headers) {
+
+        let header: string;
+        for (header in expect.headers) {
             if (!Array.isArray(expect.headers[header]))
                 // @ts-ignore
                 expect.headers[header] = [expect.headers[header]];

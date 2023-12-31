@@ -1,9 +1,9 @@
 import { init } from '@stricjs/app';
-import { head } from '@stricjs/app/send';
+import { status } from '@stricjs/app/send';
 
-const notFound = { status: 404 };
-
-init({
+const app = await init({
     routes: [import.meta.dir + '/src'],
-    fallback: () => head(notFound)
+    fallback: () => status(404)
 });
+
+app.logRoutes();

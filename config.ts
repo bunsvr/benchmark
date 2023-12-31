@@ -6,7 +6,7 @@ import { randomString, randomNum } from 'lib/utils/config';
 export const rootDir = import.meta.dir;
 
 export default {
-    boot: 8000,
+    boot: 5000,
     tests: [
         {
             path: '/',
@@ -37,19 +37,9 @@ export default {
                 'Content-Type': 'application/json'
             },
             expect: {
-                body: JSON.stringify(body),
-                headers: {
-                    // Works for all the framework that tried to put a freaking space between ; and charset
-                    'Content-Type': [
-                        'application/json',
-                        'application/json;charset=utf-8',
-                        'application/json;charset=UTF-8',
-                        'application/json; charset=utf-8',
-                        'application/json; charset=UTF-8'
-                    ]
-                }
+                body: `${body.id}: ${body.name}`
             },
-            description: 'Return the request body with `Content-Type` set to `application/json`.'
+            description: 'Return the response in format `${id}: ${name}`. Must include request validation in the process.'
         }
     ],
     scripts: [
