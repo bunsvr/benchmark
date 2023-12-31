@@ -9,8 +9,8 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@sinclair/typebox": "^0.31.1",
-    "@stricjs/utils": "^2.0.0-alpha.1",
-    "mitata": "^0.1.6"
+    "@sinclair/typebox": "^0.32.4",
+    "mitata": "^0.1.6",
+    "vld-ts": "^0.0.4"
   }
 }
