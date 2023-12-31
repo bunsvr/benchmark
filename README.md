@@ -47,11 +47,11 @@ See [configuration file](/config.ts) and the [type declarations](/lib/types.ts).
 ### Table 
 
 
-| Name | Average | GET `/` | GET `/a/b` | GET `/api/id/83?name=16I` | POST `/api/json` |
+| Name | Average | GET `/` | GET `/a/b` | GET `/api/id/95?name=whu` | POST `/api/json` |
 |  :---: | :---: | :---: | :---: | :---: | :---: |
-| [Stric 1.0](/results/main/Stric) | 44962.91 | 48450.07 | 48084.17 | 46538.43 | 36778.98 |
-| [Elysia 0.7](/results/main/Elysia) | 43523.57 | 48428.90 | 45613.26 | 43711.28 | 36340.84 |
-| [Hono 3.11](/results/main/Hono) | 38574.88 | 44768.20 | 36465.75 | 39995.97 | 33069.61 |
+| [Stric 1.0](/results/main/Stric) | 45191.86 | 48404.85 | 47631.00 | 47203.20 | 37528.41 |
+| [Elysia 0.8](/results/main/Elysia) | 44047.30 | 47939.41 | 47195.94 | 44591.21 | 36462.64 |
+| [Hono 3.11](/results/main/Hono) | 38624.51 | 45305.97 | 35971.81 | 39816.45 | 33403.81 |
 ## Frameworks
 - [Hono](https://hono.dev): Ultrafast framework for the Edge.
 - [Stric](https://stricjs.netlify.app): A web framework for building high-performance, scalable web applications.

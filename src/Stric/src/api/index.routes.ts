@@ -6,8 +6,6 @@ export function main() {
     const parse = qs.searchKey('name');
 
     return routes()
-        .post('/json', c => c.json().then(json))
-        .get('/id/:id', c => text(
-            c.params.id + ' ' + parse(c)
-        ));
+        .post('/json', async c => json(await c.req.json()))
+        .get('/id/:id', c => text(c.params.id + ' ' + parse(c)));
 }

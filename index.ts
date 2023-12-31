@@ -77,8 +77,8 @@ const failedFramework: string[] = [];
 function cleanup(server: Bun.Subprocess) {
     // Clean up
     server.kill();
-    // @ts-ignore
-    Bun.sleepSync(data.boot);
+
+    Bun.sleepSync(data.boot ?? 5000);
 }
 
 let frameworksDescription = '## Frameworks\n';

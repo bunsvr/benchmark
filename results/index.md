@@ -1,6 +1,6 @@
-Bun: 1.0.18
+Bun: 1.0.20
 
-Tested at: 16:35, December 18th, 2023
+Tested at: 12:01, December 31st, 2023
 
 ## OS Details
 - Cores: 8
@@ -13,7 +13,7 @@ Tested at: 16:35, December 18th, 2023
 Should return `Hi` as a response.
 ### GET `/a/b`
 Should return a response with status code 404.
-### GET `/api/id/59?name=KfD`
+### GET `/api/id/84?name=P87`
 Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.
 ### POST `/api/json`
 Return the request body with `Content-Type` set to `application/json`.
@@ -24,8 +24,8 @@ Return the request body with `Content-Type` set to `application/json`.
 - Results are measured in requests per second.
 
 ## Results
-| Name | Average | GET `/` | GET `/a/b` | GET `/api/id/83?name=16I` | POST `/api/json` |
+| Name | Average | GET `/` | GET `/a/b` | GET `/api/id/95?name=whu` | POST `/api/json` |
 |  :---: | :---: | :---: | :---: | :---: | :---: |
-| [Stric 1.0](/results/main/Stric) | 44962.91 | 48450.07 | 48084.17 | 46538.43 | 36778.98 |
-| [Elysia 0.7](/results/main/Elysia) | 43523.57 | 48428.90 | 45613.26 | 43711.28 | 36340.84 |
-| [Hono 3.11](/results/main/Hono) | 38574.88 | 44768.20 | 36465.75 | 39995.97 | 33069.61 |
+| [Stric 1.0](/results/main/Stric) | 45191.86 | 48404.85 | 47631.00 | 47203.20 | 37528.41 |
+| [Elysia 0.8](/results/main/Elysia) | 44047.30 | 47939.41 | 47195.94 | 44591.21 | 36462.64 |
+| [Hono 3.11](/results/main/Hono) | 38624.51 | 45305.97 | 35971.81 | 39816.45 | 33403.81 |

@@ -11,7 +11,8 @@
         "ins": "bun scripts/install.ts",
         "start": "bun ins && bun bench && bun chart",
         "test-bench": "bun index.ts test",
-        "chart": "bun scripts/chart.ts"
+        "chart": "bun scripts/chart.ts",
+        "bench-chart": "bun bench && bun chart"
     },
     "dependencies": {}
 }

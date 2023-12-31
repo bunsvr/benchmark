@@ -1,8 +1,8 @@
 {
     "dependencies": {
-        "elysia": "^0.7.30"
+        "elysia": "^0.8.6"
     },
-    "version": "0.7",
+    "version": "0.8",
     "homepage": "https://elysiajs.com",
     "description": "Ergonomic Framework for Humans"
 }

@@ -6,7 +6,7 @@
     ],
     "module": "esnext",
     "target": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
     "downlevelIteration": true,
     "skipLibCheck": true,
@@ -17,11 +17,10 @@
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "types": [
-      "@types/node",
-      "bun-types" // add Bun global
-    ],
     "baseUrl": ".",
+    "types": [
+      "bun-types"
+    ],
     "paths": {
       "body.json": [
         "assets/body.json"
