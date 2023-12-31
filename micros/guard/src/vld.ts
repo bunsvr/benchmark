@@ -8,7 +8,7 @@ const hobby = t.obj({
 const person = t.obj({
     name: t.str,
     age: t.num,
-    hobbies: t.arr(hobby)
+    hobby
 });
 
 export default vld(person);

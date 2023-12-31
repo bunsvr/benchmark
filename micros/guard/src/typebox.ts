@@ -13,7 +13,7 @@ const Hobby = Type.Object({
 const Person = Type.Object({
     name: Type.String(),
     age: Type.Number(),
-    hobbies: Type.Array(Hobby)
+    hobby: Hobby
 });
 
 // @ts-ignore
