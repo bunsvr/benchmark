@@ -1,0 +1,8 @@
+{
+    "dependencies": {
+        "fastify": "^4.25.2"
+    },
+    "version": "4.25",
+    "homepage": "https://fastify.dev",
+    "description": "Fast and low overhead web framework, for Node.js"
+}

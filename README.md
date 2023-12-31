@@ -47,10 +47,12 @@ See [configuration file](/config.ts) and the [type declarations](/lib/types.ts).
 ### Table 
 
 
-| Name | Average | GET `/` | GET `/a/b` | GET `/api/id/59?name=wvN` | POST `/api/json` |
+| Name | Average | GET `/` | GET `/a/b` | GET `/id/35?name=Sjf` | POST `/json` |
 |  :---: | :---: | :---: | :---: | :---: | :---: |
-| [Stric 1.0](/results/main/Stric) | 45499.82 | 48423.83 | 47922.43 | 47816.83 | 37836.19 |
-| [Elysia 0.8](/results/main/Elysia) | 43776.75 | 47800.66 | 47264.47 | 43231.20 | 36810.65 |
+| [Stric 1.0](/results/main/Stric) | 45590.92 | 48989.59 | 47952.32 | 47773.36 | 37648.41 |
+| [Elysia 0.8](/results/main/Elysia) | 44149.48 | 47920.90 | 47583.62 | 44954.67 | 36138.72 |
+| [Fastify 4.25](/results/main/Fastify) | 20920.99 | 26717.65 | 23783.40 | 24189.96 | 8992.93 |
 ## Frameworks
 - [Stric](https://stricjs.netlify.app): A web framework for building high-performance, scalable web applications.
 - [Elysia](https://elysiajs.com): Ergonomic Framework for Humans.
+- [Fastify](https://fastify.dev): Fast and low overhead web framework, for Node.js.

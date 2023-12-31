@@ -23,14 +23,14 @@ export default {
             description: 'Should return a response with status code 404.'
         },
         {
-            path: `/api/id/${randomNum}?name=${randomString}`,
+            path: `/id/${randomNum}?name=${randomString}`,
             expect: {
                 body: `${randomNum} ${randomString}`
             },
             description: 'Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.'
         },
         {
-            path: '/api/json',
+            path: '/json',
             method: 'POST',
             bodyFile: `${rootDir}/assets/body.json`,
             headers: {
