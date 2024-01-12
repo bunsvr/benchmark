@@ -12,5 +12,9 @@
     "@sinclair/typebox": "^0.32.4",
     "mitata": "^0.1.6",
     "vld-ts": "^0.0.4"
+  },
+  "scripts": {
+    "bench:jitless": "BUN_JSC_UseJit=0 bun .",
+    "bench": "BUN_JSC_jitPolicyScale=0.0 BUN_JSC_thresholdForOptimizeSoon=0.0 BUN_JSC_thresholdForJITSoon=0.0 bun ."
   }
 }
