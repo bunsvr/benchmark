@@ -27,11 +27,11 @@ export function render(output: string, result: typeof import('../../results/data
                     data: result.map(v => v.results[1])
                 },
                 {
-                    label: 'Query',
+                    label: 'URL params',
                     data: result.map(v => v.results[2])
                 },
                 {
-                    label: 'JSON',
+                    label: 'Body validation',
                     data: result.map(v => v.results[3])
                 }
             ]

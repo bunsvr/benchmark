@@ -43,8 +43,10 @@ if (data.exclude)
 // URLs to test and benchmark
 const urls = data.tests.map(v => {
     const arr: any[] = [v.path, v.method || 'GET'];
+
     if (v.bodyFile)
         arr.push(v.bodyFile);
+
     if (v.headers) {
         const headerArr: string[] = []
         for (const key in v.headers)
@@ -53,6 +55,7 @@ const urls = data.tests.map(v => {
         arr.push(headerArr);
     }
 
+    arr.push(v.name);
     return arr;
 });
 
@@ -92,6 +95,8 @@ let frameworksDescription = '## Frameworks\n';
 
     // Run commands
     const commands = urls.map(v => {
+        v = v.slice(0, -1);
+
         const arr = [tool, ...defaultArgs, 'http://localhost:3000' + v[0], '--method', v[1]];
         if (v[2])
             arr.push('--body-file', v[2]);
@@ -108,7 +113,6 @@ let frameworksDescription = '## Frameworks\n';
             mkdirSync(resultDir);
 
         Bun.gc(true);
-
         const desDir = `${rootDir}/src/${frameworks[i]}`,
             info = await find(desDir + '/package.json') as Info;
 
@@ -120,19 +124,17 @@ let frameworksDescription = '## Frameworks\n';
 
         // Check framework version
         if (info.version) {
-            if (info.version === 'runtime')
-                switch (info.runtime) {
-                    case 'bun':
-                        info.version = Bun.version;
-                        break;
-                    case 'node':
-                        info.version = Bun.spawnSync(['node', '--version']).stdout.toString().substring(1).replace('\n', '');
-                        break;
-                    case 'deno':
-                        let versionMsg = Bun.spawnSync(['deno', '--version']).stdout.toString().substring(5);
-                        info.version = versionMsg.substring(0, versionMsg.indexOf(' '));
-                        break;
+            if (info.version === 'runtime') {
+                if (info.runtime.endsWith('bun'))
+                    info.version = Bun.version;
+                if (info.runtime.endsWith('deno'))
+                    info.version = Bun.spawnSync([info.runtime, '--version']).stdout.toString().substring(1).replace('\n', '');
+                else {
+                    let versionMsg = Bun.spawnSync([info.runtime, '--version']).stdout.toString().substring(5);
+                    info.version = versionMsg.substring(0, versionMsg.indexOf(' '));
                 }
+            }
+
             frameworks[i] += ' ' + info.version;
         }
 
@@ -218,7 +220,7 @@ if (inTestMode) {
     const tableResultString = sortResults(frameworks, urls.length, results),
         resultTable = // Prepare table headers
             '| Name | Average | '
-            + urls.map(v => `${v[1]} \`${v[0]}\``).join(' | ') + ' |\n| '
+            + urls.map(v => v.at(-1) ?? `${v[1]} \`${v[0]}\``).join(' | ') + ' |\n| '
             // Split headers and results
             + ' :---: |'.repeat(urls.length + 2) + '\n'
             // All results

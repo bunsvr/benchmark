@@ -6,9 +6,17 @@ import { randomString, randomNum } from 'lib/utils/config';
 export const rootDir = import.meta.dir;
 
 export default {
-    boot: 5000,
+    env: {
+        'NODE_ENV': 'production',
+        // JSC flags
+        'BUN_JSC_jitPolicyScale': '0.0',
+        'BUN_JSC_thresholdForOptimizeSoon': '0.0',
+        'BUN_JSC_thresholdForJITSoon': '0.0'
+    },
+    boot: 8000,
     tests: [
         {
+            name: 'Text',
             path: '/',
             expect: {
                 body: 'Hi'
@@ -16,6 +24,7 @@ export default {
             description: 'Should return `Hi` as a response.'
         },
         {
+            name: '404',
             path: '/a/b',
             expect: {
                 statusCode: 404
@@ -23,6 +32,7 @@ export default {
             description: 'Should return a response with status code 404.'
         },
         {
+            name: 'URL params',
             path: `/id/${randomNum}?name=${randomString}`,
             expect: {
                 body: `${randomNum} ${randomString}`
@@ -30,6 +40,7 @@ export default {
             description: 'Should return the `id` parameter value and the query value, for example `1 a` when the request path is `/id/1?name=a`.'
         },
         {
+            name: 'Body validation',
             path: '/json',
             method: 'POST',
             bodyFile: `${rootDir}/assets/body.json`,

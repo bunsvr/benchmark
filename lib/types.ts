@@ -45,6 +45,11 @@ export interface Test {
      * Test description
      */
     description: string;
+
+    /**
+     * Test name
+     */
+    name?: string;
 }
 
 /**

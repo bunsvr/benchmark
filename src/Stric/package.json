@@ -1,7 +1,7 @@
 {
     "dependencies": {
-        "@stricjs/app": "^1.0.0-rc.5",
-        "@stricjs/utils": "^2.0.3",
+        "@stricjs/app": "^1.0.0-rc.10",
+        "@stricjs/utils": "^2.0.5",
         "vld-ts": "^0.0.4"
     },
     "version": "1.0",

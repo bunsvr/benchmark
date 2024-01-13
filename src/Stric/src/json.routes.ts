@@ -7,9 +7,9 @@ import { t, vld } from 'vld-ts';
 const User = t.obj({
     id: t.num,
     name: t.str
-});
+}), isUser = vld(User);
 
 export default routes()
-    .state(jsonv(vld(User)))
+    .state(jsonv(isUser))
     .post('/json', c => text(c.state.id + ': ' + c.state.name));
 

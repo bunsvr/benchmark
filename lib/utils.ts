@@ -31,6 +31,8 @@ export async function run(commands: [string, ...string[]][], desDir: string) {
     let i = 1;
 
     for (const command of commands) {
+        console.log(command.join(' '));
+
         const out = Bun.spawnSync(command).stdout?.toString() || '-1';
         const res = getReqSec(out);
 
@@ -39,8 +41,6 @@ export async function run(commands: [string, ...string[]][], desDir: string) {
 
         await Bun.write(desDir + '/' + i + '.txt', formatOutput(out));
         ++i;
-        // Run the garbage collector after every test
-        Bun.gc(true);
     }
 
     return resArr;
@@ -152,11 +152,13 @@ export async function validate(tests: Test[]) {
             continue;
         test.expect.statusCode ||= 200;
 
+        const name = test.name ?? `${test.method} ${test.path}`;
+
         if (!await testURL('http://localhost:3000' + test.path, test)) {
-            console.log(`Test ${test.method} ${test.path} failed!`);
+            console.log(`Test ${name} failed!`);
             return false;
         } else
-            console.log(`Test ${test.method} ${test.path} passed!`);
+            console.log(`Test ${name} passed!`);
     }
 
     return true;
