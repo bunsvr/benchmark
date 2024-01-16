@@ -1,24 +1,24 @@
 {
-    "name": "bench",
-    "module": "index.ts",
-    "type": "module",
-    "devDependencies": {
-        "bun-types": "latest",
-        "quickchart-js": "latest"
-    },
-    "scripts": {
-        "bench": "bun index.ts && cat results/index.md",
-        "ins": "bun scripts/install.ts",
-        "start": "bun ins && bun bench && bun chart",
-        "test-bench": "bun index.ts test",
-        "chart": "bun scripts/chart.ts",
-        "bench-chart": "bun bench && bun chart"
-    },
-    "dependencies": {
-        "@stricjs/app": "^1.0.0-rc.11",
-        "@stricjs/utils": "^2.0.5",
-        "vld-ts": "^0.0.4",
-        "fastify": "^4.25.2",
-        "elysia": "^0.8.9"
-    }
+  "name": "bench",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest",
+    "quickchart-js": "latest"
+  },
+  "scripts": {
+    "bench": "bun index.ts && cat results/index.md",
+    "ins": "bun scripts/install.ts",
+    "start": "bun ins && bun bench && bun chart",
+    "test-bench": "bun index.ts test",
+    "chart": "bun scripts/chart.ts",
+    "bench-chart": "bun bench && bun chart"
+  },
+  "dependencies": {
+    "@stricjs/app": "^1.0.0-rc.12",
+    "@stricjs/utils": "^2.0.5",
+    "elysia": "^0.8.9",
+    "fastify": "^4.25.2",
+    "vld-ts": "^0.0.4"
+  }
 }
