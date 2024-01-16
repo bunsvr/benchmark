@@ -11,5 +11,5 @@ const User = t.obj({
 
 export default routes()
     .state(jsonv(isUser))
-    .post('/json', c => text(c.state.id + ': ' + c.state.name));
+    .post('/json', c => text(`${c.state.id}: ${c.state.name}`));
 

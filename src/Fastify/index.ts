@@ -3,7 +3,7 @@ import fastify from 'fastify';
 fastify()
     .get('/', () => 'Hi')
     // @ts-ignore
-    .get('/id/:id', c => c.params.id + ' ' + c.query.name)
+    .get('/id/:id', c => `${c.params.id} ${c.query.name}`)
     .route({
         method: 'POST',
         url: '/json',
@@ -18,7 +18,7 @@ fastify()
             }
         },
         // @ts-ignore
-        handler: c => c.body.id + ': ' + c.body.name
+        handler: c => `${c.body.id}: ${c.body.name}`
     })
     .listen({ port: 3000 });
 

@@ -1,5 +1,0 @@
-# Reduce memory usage
-smol = true
-
-[define]
-"process.env.NODE_ENV" = "'production'"

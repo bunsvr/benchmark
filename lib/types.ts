@@ -133,7 +133,7 @@ export interface Info {
     /**
      * Runtime for the framework
      */
-    runtime: 'bun' | 'node' | 'deno' | (string & {});
+    runtime: 'bun' | 'node' | (string & {});
     /**
      * The framework version
      */

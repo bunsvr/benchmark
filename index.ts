@@ -127,12 +127,8 @@ let frameworksDescription = '## Frameworks\n';
             if (info.version === 'runtime') {
                 if (info.runtime.endsWith('bun'))
                     info.version = Bun.version;
-                if (info.runtime.endsWith('deno'))
+                if (info.runtime.endsWith('node'))
                     info.version = Bun.spawnSync([info.runtime, '--version']).stdout.toString().substring(1).replace('\n', '');
-                else {
-                    let versionMsg = Bun.spawnSync([info.runtime, '--version']).stdout.toString().substring(5);
-                    info.version = versionMsg.substring(0, versionMsg.indexOf(' '));
-                }
             }
 
             frameworks[i] += ' ' + info.version;
@@ -150,10 +146,8 @@ let frameworksDescription = '## Frameworks\n';
 
         // Start the server command args
         info.main ||= 'index.ts';
-        const args = info.run || (info.runtime === 'deno'
-            ? ['deno', 'run', '--allow-net', '--unstable', info.main]
-            : [info.runtime, `${desDir}/${info.main}`]
-        );
+        const args = info.run || [info.runtime, `${desDir}/${info.main}`];
+
         console.log(args.join(' '));
 
         // Boot up
@@ -170,6 +164,7 @@ let frameworksDescription = '## Frameworks\n';
                 cleanup(server);
                 continue;
             }
+
             Bun.gc(true);
             Bun.sleepSync(data.boot);
 
@@ -196,15 +191,6 @@ let frameworksDescription = '## Frameworks\n';
 if (inTestMode) {
     console.log(frameworksDescription);
     process.exit(0);
-}
-
-// Remove package.json dependencies field
-{
-    const pkgPath = rootDir + '/package.json',
-        pkg = await import(pkgPath).then(v => v.default);
-
-    pkg.dependencies = {};
-    Bun.write(pkgPath, JSON.stringify(pkg, null, 4));
 }
 
 // Sort results

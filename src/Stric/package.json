@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "@stricjs/app": "^1.0.0-rc.10",
+        "@stricjs/app": "^1.0.0-rc.11",
         "@stricjs/utils": "^2.0.5",
         "vld-ts": "^0.0.4"
     },
